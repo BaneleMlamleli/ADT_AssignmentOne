@@ -25,32 +25,32 @@
 
 
 ### **Items**
-White cheese 
-Parmesan cheese
-Cheese
+    - White cheese 
+    - Parmesan cheese
+    - Cheese
 
-Beef
-Chicken breast
-Chicken strips
+    - Beef
+    - Chicken breast
+    - Chicken strips
 
-Calamari
-Blue point oyster
-Shrimp
-Crawfish
+    - Calamari
+    - Blue point oyster
+    - Shrimp
+    - Crawfish
 
-Garlic bread
-Crouton
+    - Garlic bread
+    - Crouton
 
-Green leaf lettuce
-Red leaf lettuce
-Romaine lettuce
+    - Green leaf lettuce
+    - Red leaf lettuce
+    - Romaine lettuce
 
-Gherkins
-Caesar dressing
-Cucumber
-Carrot
-Red onion
-White onion
-Roma tomatoes
-Black-eyed peas
-Black pepper
+    - Gherkins
+    - Caesar dressing
+    - Cucumber
+    - Carrot
+    - Red onion
+    - White onion
+    - Roma tomatoes
+    - Black-eyed peas
+    - Black pepper
