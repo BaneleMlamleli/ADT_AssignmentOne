@@ -24,7 +24,7 @@
     - Garden salad (Romaine, green & red leaf lettuce, Roma tomatoes, cucumbers, red onions, carrots & croutons)
 
 
-ITEMS
+### **Items**
 White cheese 
 Parmesan cheese
 Cheese
