@@ -4,7 +4,6 @@
 ### **Menu**
 1. Burger :hamburger:
     - Cheese Burger (Cheese, Beef, lettuce, tomatoe, onion)
-    - Cheese Burger (Cheese, Beef, lettuce, tomatoe, onion)
     - Chicken burger (Chicken, lettuce, tomatoe, onion)
     - Beef burger (Beef, lettuce, tomatoe, onion)
 			
