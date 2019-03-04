@@ -5,6 +5,9 @@
  */
 package FrontEnd;
 
+import java.awt.Color;
+import javax.swing.JPanel;
+
 /**
  *
  * @author Shaun
@@ -32,13 +35,13 @@ public class Restaurant extends javax.swing.JFrame {
         lblMinimiseForm = new javax.swing.JLabel();
         lblCloseForm = new javax.swing.JLabel();
         pnlLeftSide = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
+        btnStorkReport = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jPanel6 = new javax.swing.JPanel();
+        btnOrderMenu = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
+        btnOrderBoard = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -92,43 +95,53 @@ public class Restaurant extends javax.swing.JFrame {
         pnlLeftSide.setBackground(new java.awt.Color(51, 204, 255));
         pnlLeftSide.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel3.setBackground(new java.awt.Color(51, 204, 255));
-        jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnStorkReport.setBackground(new java.awt.Color(51, 204, 255));
+        btnStorkReport.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnStorkReport.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnStorkReportMouseClicked(evt);
+            }
+        });
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/move_by_trolley_48px.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/bullish_48px.png"))); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Trebuchet MS", 1, 25)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 102, 255));
         jLabel4.setText("STORK/REPORT");
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout btnStorkReportLayout = new javax.swing.GroupLayout(btnStorkReport);
+        btnStorkReport.setLayout(btnStorkReportLayout);
+        btnStorkReportLayout.setHorizontalGroup(
+            btnStorkReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnStorkReportLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4)
                 .addContainerGap())
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        btnStorkReportLayout.setVerticalGroup(
+            btnStorkReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnStorkReportLayout.createSequentialGroup()
                 .addContainerGap(17, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGroup(btnStorkReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnStorkReportLayout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnStorkReportLayout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addGap(21, 21, 21))))
         );
 
-        pnlLeftSide.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 270, 80));
+        pnlLeftSide.add(btnStorkReport, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 270, 80));
 
-        jPanel6.setBackground(new java.awt.Color(204, 255, 204));
-        jPanel6.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnOrderMenu.setBackground(new java.awt.Color(204, 255, 204));
+        btnOrderMenu.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnOrderMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnOrderMenuMouseClicked(evt);
+            }
+        });
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/restaurant_table_48px.png"))); // NOI18N
 
@@ -136,33 +149,38 @@ public class Restaurant extends javax.swing.JFrame {
         jLabel10.setForeground(new java.awt.Color(0, 102, 255));
         jLabel10.setText("ORDER MENU");
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+        javax.swing.GroupLayout btnOrderMenuLayout = new javax.swing.GroupLayout(btnOrderMenu);
+        btnOrderMenu.setLayout(btnOrderMenuLayout);
+        btnOrderMenuLayout.setHorizontalGroup(
+            btnOrderMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnOrderMenuLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel9)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel10)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+        btnOrderMenuLayout.setVerticalGroup(
+            btnOrderMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnOrderMenuLayout.createSequentialGroup()
                 .addContainerGap(12, Short.MAX_VALUE)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(btnOrderMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnOrderMenuLayout.createSequentialGroup()
                         .addComponent(jLabel10)
                         .addGap(9, 9, 9)))
                 .addContainerGap())
         );
 
-        pnlLeftSide.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 270, -1));
+        pnlLeftSide.add(btnOrderMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 270, -1));
 
-        jPanel7.setBackground(new java.awt.Color(51, 204, 255));
-        jPanel7.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnOrderBoard.setBackground(new java.awt.Color(51, 204, 255));
+        btnOrderBoard.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnOrderBoard.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnOrderBoardMouseClicked(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Trebuchet MS", 1, 25)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 102, 255));
@@ -170,30 +188,30 @@ public class Restaurant extends javax.swing.JFrame {
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/waiter_48px.png"))); // NOI18N
 
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+        javax.swing.GroupLayout btnOrderBoardLayout = new javax.swing.GroupLayout(btnOrderBoard);
+        btnOrderBoard.setLayout(btnOrderBoardLayout);
+        btnOrderBoardLayout.setHorizontalGroup(
+            btnOrderBoardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnOrderBoardLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel5)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel7)
                 .addContainerGap(24, Short.MAX_VALUE))
         );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+        btnOrderBoardLayout.setVerticalGroup(
+            btnOrderBoardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnOrderBoardLayout.createSequentialGroup()
                 .addContainerGap(12, Short.MAX_VALUE)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(btnOrderBoardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
-                    .addGroup(jPanel7Layout.createSequentialGroup()
+                    .addGroup(btnOrderBoardLayout.createSequentialGroup()
                         .addGap(8, 8, 8)
                         .addComponent(jLabel7)))
                 .addContainerGap())
         );
 
-        pnlLeftSide.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 270, -1));
+        pnlLeftSide.add(btnOrderBoard, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 270, -1));
         pnlLeftSide.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 240, 17));
 
         jLabel6.setFont(new java.awt.Font("Trebuchet MS", 1, 36)); // NOI18N
@@ -243,6 +261,35 @@ public class Restaurant extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_lblCloseFormMouseClicked
 
+    private void btnOrderMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOrderMenuMouseClicked
+        // Change color once selected
+        setColour(btnOrderMenu);
+        resetColour(btnOrderBoard);
+        resetColour(btnStorkReport);
+    }//GEN-LAST:event_btnOrderMenuMouseClicked
+
+    private void btnOrderBoardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOrderBoardMouseClicked
+        // Change color once selected
+        setColour(btnOrderBoard);
+        resetColour(btnOrderMenu);
+        resetColour(btnStorkReport);
+    }//GEN-LAST:event_btnOrderBoardMouseClicked
+
+    private void btnStorkReportMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnStorkReportMouseClicked
+        // Change color once selected
+        setColour(btnStorkReport);
+        resetColour(btnOrderMenu);
+        resetColour(btnOrderBoard);
+    }//GEN-LAST:event_btnStorkReportMouseClicked
+
+    void setColour(JPanel panel){
+        panel.setBackground(new Color(204,255,204));
+    }
+    
+    void resetColour(JPanel panel){
+        panel.setBackground(new Color(51,204,255));
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -279,6 +326,9 @@ public class Restaurant extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel btnOrderBoard;
+    private javax.swing.JPanel btnOrderMenu;
+    private javax.swing.JPanel btnStorkReport;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel3;
@@ -287,9 +337,6 @@ public class Restaurant extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel lblBackButton;
