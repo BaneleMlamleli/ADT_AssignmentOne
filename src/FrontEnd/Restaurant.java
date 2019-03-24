@@ -273,8 +273,8 @@ public class Restaurant extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Trebuchet MS", 1, 36)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Cipher ");
-        pnlLeftSide.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 140, -1));
+        jLabel6.setText("Banele's");
+        pnlLeftSide.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 140, -1));
 
         jLabel1.setFont(new java.awt.Font("Trebuchet MS", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -789,15 +789,15 @@ public class Restaurant extends javax.swing.JFrame {
         );
         pnlOrderBoardLayout.setVerticalGroup(
             pnlOrderBoardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
         );
 
         pnlMain.add(pnlOrderBoard, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 50, 730, 550));
 
-        pnlTwo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 255), 3, true));
+        pnlTwo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 255), 2, true));
         pnlTwo.setLayout(new javax.swing.BoxLayout(pnlTwo, javax.swing.BoxLayout.LINE_AXIS));
 
-        pnlOne.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 255), 3, true));
+        pnlOne.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 255), 2, true));
         pnlOne.setLayout(new javax.swing.BoxLayout(pnlOne, javax.swing.BoxLayout.LINE_AXIS));
 
         javax.swing.GroupLayout pnlStorkReportLayout = new javax.swing.GroupLayout(pnlStorkReport);

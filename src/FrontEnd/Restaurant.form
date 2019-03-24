@@ -330,11 +330,11 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Cipher "/>
+                <Property name="text" type="java.lang.String" value="Banele&apos;s"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="70" y="70" width="140" height="-1"/>
+                  <AbsoluteConstraints x="60" y="70" width="140" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -1493,7 +1493,7 @@
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                    <LineBorder roundedCorners="true" thickness="3">
+                    <LineBorder roundedCorners="true" thickness="2">
                       <Color PropertyName="color" blue="ff" green="cc" red="0" type="rgb"/>
                     </LineBorder>
                   </Border>
@@ -1506,7 +1506,7 @@
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                    <LineBorder roundedCorners="true" thickness="3">
+                    <LineBorder roundedCorners="true" thickness="2">
                       <Color PropertyName="color" blue="ff" green="cc" red="0" type="rgb"/>
                     </LineBorder>
                   </Border>
