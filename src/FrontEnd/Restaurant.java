@@ -497,7 +497,7 @@ public class Restaurant extends javax.swing.JFrame {
         jPanel2.add(rbtSteak_1l, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, -1, -1));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/steak_96px.png"))); // NOI18N
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, 70));
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, 80));
 
         javax.swing.GroupLayout pnlOrderMenuLayout = new javax.swing.GroupLayout(pnlOrderMenu);
         pnlOrderMenu.setLayout(pnlOrderMenuLayout);

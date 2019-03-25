@@ -5,6 +5,7 @@
  */
 package FrontEnd;
 
+import java.util.Arrays;
 import javax.swing.JOptionPane;
 
 /**
@@ -49,8 +50,6 @@ public class LoginForm extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         pwdPassword = new javax.swing.JPasswordField();
-        pwdConfirmPassword = new javax.swing.JPasswordField();
-        jLabel16 = new javax.swing.JLabel();
         pnlRegister = new javax.swing.JPanel();
         txtName = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -59,11 +58,13 @@ public class LoginForm extends javax.swing.JFrame {
         btnRegister1 = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         cmbRegisterTitle = new javax.swing.JComboBox<>();
-        txtRegisterUsername = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         pwdRegisterPassword = new javax.swing.JPasswordField();
         txtSurname = new javax.swing.JTextField();
+        pwdConfirmPassword = new javax.swing.JPasswordField();
+        jLabel16 = new javax.swing.JLabel();
+        lblRegisterUsername = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login");
@@ -174,7 +175,7 @@ public class LoginForm extends javax.swing.JFrame {
         });
 
         lblRegisterNewUser.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblRegisterNewUser.setForeground(new java.awt.Color(255, 51, 51));
+        lblRegisterNewUser.setForeground(new java.awt.Color(255, 0, 51));
         lblRegisterNewUser.setText("Register as new user");
         lblRegisterNewUser.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -205,17 +206,6 @@ public class LoginForm extends javax.swing.JFrame {
             }
         });
 
-        pwdConfirmPassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        pwdConfirmPassword.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pwdConfirmPasswordActionPerformed(evt);
-            }
-        });
-
-        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(0, 102, 255));
-        jLabel16.setText("Confirm Password");
-
         javax.swing.GroupLayout pnlLoginLayout = new javax.swing.GroupLayout(pnlLogin);
         pnlLogin.setLayout(pnlLoginLayout);
         pnlLoginLayout.setHorizontalGroup(
@@ -227,20 +217,17 @@ public class LoginForm extends javax.swing.JFrame {
                         .addComponent(jLabel4))
                     .addGroup(pnlLoginLayout.createSequentialGroup()
                         .addGap(33, 33, 33)
-                        .addGroup(pnlLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(pwdConfirmPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(pnlLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel8)
-                                .addComponent(jLabel9)
-                                .addComponent(jLabel7)
-                                .addComponent(cmbTitle, 0, 342, Short.MAX_VALUE)
-                                .addComponent(txtUsername)
-                                .addComponent(pwdPassword, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(btnRegister, javax.swing.GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE)
-                                .addGroup(pnlLoginLayout.createSequentialGroup()
-                                    .addGap(108, 108, 108)
-                                    .addComponent(lblRegisterNewUser)))
-                            .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.LEADING))))
+                        .addGroup(pnlLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel7)
+                            .addComponent(cmbTitle, 0, 342, Short.MAX_VALUE)
+                            .addComponent(txtUsername)
+                            .addComponent(pwdPassword, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnRegister, javax.swing.GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE)
+                            .addGroup(pnlLoginLayout.createSequentialGroup()
+                                .addGap(108, 108, 108)
+                                .addComponent(lblRegisterNewUser)))))
                 .addContainerGap(35, Short.MAX_VALUE))
         );
         pnlLoginLayout.setVerticalGroup(
@@ -260,15 +247,11 @@ public class LoginForm extends javax.swing.JFrame {
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pwdPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel16)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pwdConfirmPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addGap(40, 40, 40)
                 .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblRegisterNewUser)
-                .addGap(58, 58, 58))
+                .addContainerGap(119, Short.MAX_VALUE))
         );
 
         pnlRightSide.add(pnlLogin, "card2");
@@ -302,12 +285,6 @@ public class LoginForm extends javax.swing.JFrame {
 
         cmbRegisterTitle.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Manager", "Chef", "Waiter", "Bus boy" }));
 
-        txtRegisterUsername.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-
-        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(0, 102, 255));
-        jLabel13.setText("Username");
-
         jLabel14.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(0, 102, 255));
         jLabel14.setText("Password");
@@ -321,36 +298,68 @@ public class LoginForm extends javax.swing.JFrame {
 
         txtSurname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
+        pwdConfirmPassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        pwdConfirmPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pwdConfirmPasswordActionPerformed(evt);
+            }
+        });
+
+        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(0, 102, 255));
+        jLabel16.setText("Confirm Password");
+
+        lblRegisterUsername.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblRegisterUsername.setForeground(new java.awt.Color(255, 0, 0));
+        lblRegisterUsername.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblRegisterUsername.setToolTipText("");
+        lblRegisterUsername.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        lblRegisterUsername.setEnabled(false);
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel2.setText("Username");
+
         javax.swing.GroupLayout pnlRegisterLayout = new javax.swing.GroupLayout(pnlRegister);
         pnlRegister.setLayout(pnlRegisterLayout);
         pnlRegisterLayout.setHorizontalGroup(
             pnlRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlRegisterLayout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addGroup(pnlRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(btnRegister1, javax.swing.GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE)
-                    .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtName, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cmbRegisterTitle, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtRegisterUsername, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pwdRegisterPassword)
-                    .addComponent(txtSurname, javax.swing.GroupLayout.Alignment.LEADING))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRegisterLayout.createSequentialGroup()
                 .addGap(0, 78, Short.MAX_VALUE)
                 .addComponent(jLabel11)
                 .addGap(71, 71, 71))
+            .addGroup(pnlRegisterLayout.createSequentialGroup()
+                .addGroup(pnlRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlRegisterLayout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addGroup(pnlRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(pwdConfirmPassword)
+                            .addComponent(jLabel16)
+                            .addComponent(btnRegister1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE)
+                            .addComponent(jLabel14)
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel6)
+                            .addComponent(txtName)
+                            .addComponent(cmbRegisterTitle, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(pwdRegisterPassword, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtSurname)
+                            .addComponent(lblRegisterUsername, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(pnlRegisterLayout.createSequentialGroup()
+                        .addGap(167, 167, 167)
+                        .addComponent(jLabel2)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlRegisterLayout.setVerticalGroup(
             pnlRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRegisterLayout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addComponent(jLabel11)
-                .addGap(33, 33, 33)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblRegisterUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel12)
                 .addGap(3, 3, 3)
                 .addComponent(cmbRegisterTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -363,16 +372,16 @@ public class LoginForm extends javax.swing.JFrame {
                 .addGap(2, 2, 2)
                 .addComponent(txtSurname, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel13)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtRegisterUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel14)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pwdRegisterPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel16)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pwdConfirmPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
                 .addComponent(btnRegister1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45))
+                .addGap(22, 22, 22))
         );
 
         pnlRightSide.add(pnlRegister, "card2");
@@ -401,11 +410,38 @@ public class LoginForm extends javax.swing.JFrame {
     }//GEN-LAST:event_pwdPasswordActionPerformed
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
-        // TODO add your handling code here:
+        // Register a new user into the database
+        String title = (String)cmbTitle.getSelectedItem();
+        String username = txtUsername.getText();
+        String password = pwdPassword.getText();       
+
+        if(!username.trim().equals("")){
+            if(!password.trim().equals("")){
+                // code here
+            }else{
+                JOptionPane.showMessageDialog(null, "Password field is empty", "ERROR",JOptionPane.ERROR_MESSAGE);
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Username field is empty", "ERROR",JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     private void btnRegister1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegister1ActionPerformed
         // TODO add your handling code here:
+
+//        String title = (String)cmbTitle.getSelectedItem();
+//                String newUsername = txtUsername.getText();
+//                String password = Arrays.toString(pwdPassword.getPassword());
+//                String confirmPassword = Arrays.toString(pwdConfirmPassword.getPassword());
+//
+//                System.out.println(password + " + " + confirmPassword);
+//
+//
+//                if(password.equals(confirmPassword)){
+//                    JOptionPane.showMessageDialog(null, "Everything works!!", "YHEEY",JOptionPane.INFORMATION_MESSAGE);
+//                }else{
+//                    JOptionPane.showMessageDialog(null, "Password mismatch", "ERROR",JOptionPane.ERROR_MESSAGE);
+//                }
     }//GEN-LAST:event_btnRegister1ActionPerformed
 
     private void pwdRegisterPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pwdRegisterPasswordActionPerformed
@@ -473,10 +509,10 @@ public class LoginForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
@@ -488,6 +524,7 @@ public class LoginForm extends javax.swing.JFrame {
     private javax.swing.JLabel lblCloseForm;
     private javax.swing.JLabel lblMinimiseForm1;
     private javax.swing.JLabel lblRegisterNewUser;
+    private javax.swing.JLabel lblRegisterUsername;
     private javax.swing.JPanel pnlLeftSide;
     private javax.swing.JPanel pnlLogin;
     private javax.swing.JPanel pnlRegister;
@@ -496,7 +533,6 @@ public class LoginForm extends javax.swing.JFrame {
     private javax.swing.JPasswordField pwdPassword;
     private javax.swing.JPasswordField pwdRegisterPassword;
     private javax.swing.JTextField txtName;
-    private javax.swing.JTextField txtRegisterUsername;
     private javax.swing.JTextField txtSurname;
     private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
