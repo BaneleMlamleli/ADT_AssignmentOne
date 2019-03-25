@@ -221,7 +221,7 @@
                                   <Component id="cmbTitle" alignment="0" pref="342" max="32767" attributes="0"/>
                                   <Component id="txtUsername" alignment="0" max="32767" attributes="0"/>
                                   <Component id="pwdPassword" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="btnRegister" alignment="0" pref="342" max="32767" attributes="0"/>
+                                  <Component id="btnLogin" alignment="0" pref="342" max="32767" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
                                       <Component id="lblRegisterNewUser" min="-2" max="-2" attributes="0"/>
@@ -251,7 +251,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="pwdPassword" min="-2" pref="33" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                      <Component id="btnRegister" min="-2" pref="45" max="-2" attributes="0"/>
+                      <Component id="btnLogin" min="-2" pref="45" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="lblRegisterNewUser" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="119" max="32767" attributes="0"/>
@@ -271,7 +271,7 @@
                 <Property name="text" type="java.lang.String" value="LOGIN PAGE"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="btnRegister">
+            <Component class="javax.swing.JButton" name="btnLogin">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="24" style="1"/>
@@ -279,10 +279,10 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="66" red="0" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="REGISTER"/>
+                <Property name="text" type="java.lang.String" value="LOGIN"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRegisterActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLoginActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="lblRegisterNewUser">
@@ -384,7 +384,7 @@
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="pwdConfirmPassword" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jLabel16" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btnRegister1" alignment="1" pref="342" max="32767" attributes="0"/>
+                                  <Component id="btnRegister" alignment="1" pref="342" max="32767" attributes="0"/>
                                   <Component id="jLabel14" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel12" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -435,7 +435,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="pwdConfirmPassword" min="-2" pref="33" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                      <Component id="btnRegister1" min="-2" pref="45" max="-2" attributes="0"/>
+                      <Component id="btnRegister" min="-2" pref="45" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -480,7 +480,7 @@
                 <Property name="text" type="java.lang.String" value="REGISTRATION PAGE"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="btnRegister1">
+            <Component class="javax.swing.JButton" name="btnRegister">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="24" style="1"/>
@@ -491,7 +491,7 @@
                 <Property name="text" type="java.lang.String" value="REGISTER"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRegister1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRegisterActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel12">

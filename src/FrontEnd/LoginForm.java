@@ -42,7 +42,7 @@ public class LoginForm extends javax.swing.JFrame {
         pnlRightSide = new javax.swing.JPanel();
         pnlLogin = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        btnRegister = new javax.swing.JButton();
+        btnLogin = new javax.swing.JButton();
         lblRegisterNewUser = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         cmbTitle = new javax.swing.JComboBox<>();
@@ -55,7 +55,7 @@ public class LoginForm extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        btnRegister1 = new javax.swing.JButton();
+        btnRegister = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         cmbRegisterTitle = new javax.swing.JComboBox<>();
         jLabel14 = new javax.swing.JLabel();
@@ -165,12 +165,12 @@ public class LoginForm extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(0, 102, 255));
         jLabel4.setText("LOGIN PAGE");
 
-        btnRegister.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        btnRegister.setForeground(new java.awt.Color(0, 102, 255));
-        btnRegister.setText("REGISTER");
-        btnRegister.addActionListener(new java.awt.event.ActionListener() {
+        btnLogin.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        btnLogin.setForeground(new java.awt.Color(0, 102, 255));
+        btnLogin.setText("LOGIN");
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegisterActionPerformed(evt);
+                btnLoginActionPerformed(evt);
             }
         });
 
@@ -224,7 +224,7 @@ public class LoginForm extends javax.swing.JFrame {
                             .addComponent(cmbTitle, 0, 342, Short.MAX_VALUE)
                             .addComponent(txtUsername)
                             .addComponent(pwdPassword, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnRegister, javax.swing.GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE)
+                            .addComponent(btnLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE)
                             .addGroup(pnlLoginLayout.createSequentialGroup()
                                 .addGap(108, 108, 108)
                                 .addComponent(lblRegisterNewUser)))))
@@ -248,7 +248,7 @@ public class LoginForm extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pwdPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
-                .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblRegisterNewUser)
                 .addContainerGap(119, Short.MAX_VALUE))
@@ -270,12 +270,12 @@ public class LoginForm extends javax.swing.JFrame {
         jLabel11.setForeground(new java.awt.Color(0, 102, 255));
         jLabel11.setText("REGISTRATION PAGE");
 
-        btnRegister1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        btnRegister1.setForeground(new java.awt.Color(0, 102, 255));
-        btnRegister1.setText("REGISTER");
-        btnRegister1.addActionListener(new java.awt.event.ActionListener() {
+        btnRegister.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        btnRegister.setForeground(new java.awt.Color(0, 102, 255));
+        btnRegister.setText("REGISTER");
+        btnRegister.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegister1ActionPerformed(evt);
+                btnRegisterActionPerformed(evt);
             }
         });
 
@@ -335,7 +335,7 @@ public class LoginForm extends javax.swing.JFrame {
                         .addGroup(pnlRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(pwdConfirmPassword)
                             .addComponent(jLabel16)
-                            .addComponent(btnRegister1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE)
+                            .addComponent(btnRegister, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE)
                             .addComponent(jLabel14)
                             .addComponent(jLabel12)
                             .addComponent(jLabel10)
@@ -380,7 +380,7 @@ public class LoginForm extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pwdConfirmPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
-                .addComponent(btnRegister1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22))
         );
 
@@ -409,7 +409,7 @@ public class LoginForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_pwdPasswordActionPerformed
 
-    private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // Register a new user into the database
         String title = (String)cmbTitle.getSelectedItem();
         String username = txtUsername.getText();
@@ -424,25 +424,51 @@ public class LoginForm extends javax.swing.JFrame {
         }else{
             JOptionPane.showMessageDialog(null, "Username field is empty", "ERROR",JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_btnRegisterActionPerformed
+    }//GEN-LAST:event_btnLoginActionPerformed
 
-    private void btnRegister1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegister1ActionPerformed
+    private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
         // TODO add your handling code here:
-
-//        String title = (String)cmbTitle.getSelectedItem();
-//                String newUsername = txtUsername.getText();
-//                String password = Arrays.toString(pwdPassword.getPassword());
-//                String confirmPassword = Arrays.toString(pwdConfirmPassword.getPassword());
-//
-//                System.out.println(password + " + " + confirmPassword);
-//
-//
-//                if(password.equals(confirmPassword)){
-//                    JOptionPane.showMessageDialog(null, "Everything works!!", "YHEEY",JOptionPane.INFORMATION_MESSAGE);
-//                }else{
-//                    JOptionPane.showMessageDialog(null, "Password mismatch", "ERROR",JOptionPane.ERROR_MESSAGE);
-//                }
-    }//GEN-LAST:event_btnRegister1ActionPerformed
+        
+        String title = (String)cmbRegisterTitle.getSelectedItem();
+        String name = txtName.getText();
+        String surname = txtSurname.getText();
+        String newUsername = txtUsername.getText();
+        String password = pwdPassword.getText();
+        String confirmPassword = pwdConfirmPassword.getText();
+        
+        if(!name.trim().equals("")){
+            if(!surname.trim().equals("")){
+                if(!newUsername.trim().equals("")){
+                    if(!password.trim().equals("")){
+                        if(!(confirmPassword.length() == 0)){
+                            // confirming password match
+                            if(password.equals(confirmPassword)){
+                                // code here
+                                // clearing the fields
+                                txtName.setText("");
+                                txtSurname.setText("");
+                                txtUsername.setText("");
+                                pwdPassword.setText("");
+                                pwdConfirmPassword.setText("");
+                            }else{
+                                JOptionPane.showMessageDialog(null, "Password mismatch", "ERROR",JOptionPane.ERROR_MESSAGE);
+                            }
+                        }else{
+                            JOptionPane.showMessageDialog(null, "confirm password field is empty", "ERROR",JOptionPane.ERROR_MESSAGE);
+                        }
+                    }else{
+                        JOptionPane.showMessageDialog(null, "password field is empty", "ERROR",JOptionPane.ERROR_MESSAGE);
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(null, "username field is empty", "ERROR",JOptionPane.ERROR_MESSAGE);
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "surname field is empty", "ERROR",JOptionPane.ERROR_MESSAGE);
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "name field is empty", "ERROR",JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnRegisterActionPerformed
 
     private void pwdRegisterPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pwdRegisterPasswordActionPerformed
         // TODO add your handling code here:
@@ -501,8 +527,8 @@ public class LoginForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnLogin;
     private javax.swing.JButton btnRegister;
-    private javax.swing.JButton btnRegister1;
     private javax.swing.JComboBox<String> cmbRegisterTitle;
     private javax.swing.JComboBox<String> cmbTitle;
     private javax.swing.JLabel jLabel1;
