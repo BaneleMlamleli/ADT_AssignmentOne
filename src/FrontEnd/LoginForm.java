@@ -5,7 +5,10 @@
  */
 package FrontEnd;
 
-import java.util.Arrays;
+import BackEnd.DatabaseConnection;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -417,7 +420,17 @@ public class LoginForm extends javax.swing.JFrame {
 
         if(!username.trim().equals("")){
             if(!password.trim().equals("")){
-                // code here
+                try {
+                    // Calling method to verify the entered user details
+                    if(DatabaseConnection.verifyUser(username, password, title)){
+                        new LoginForm().setVisible(false);
+                        new Restaurant(username, title).setVisible(true);
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Incorrect login details.", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(LoginForm.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }else{
                 JOptionPane.showMessageDialog(null, "Password field is empty", "ERROR",JOptionPane.ERROR_MESSAGE);
             }

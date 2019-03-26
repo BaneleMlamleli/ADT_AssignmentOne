@@ -13,18 +13,18 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema restaurant
 -- -----------------------------------------------------
-DROP SCHEMA IF EXISTS `restaurant` ;
+DROP SCHEMA IF EXISTS `restaurant`;
 
 -- -----------------------------------------------------
 -- Schema restaurant
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `restaurant` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
-USE `restaurant` ;
+CREATE SCHEMA IF NOT EXISTS `restaurant` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
+USE `restaurant`;
 
 -- -----------------------------------------------------
 -- Table `restaurant`.`order`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `restaurant`.`order` ;
+DROP TABLE IF EXISTS `restaurant`.`order`;
 
 CREATE TABLE IF NOT EXISTS `restaurant`.`order` (
   `order_id` INT(11) NOT NULL AUTO_INCREMENT,
@@ -43,7 +43,7 @@ COLLATE = utf8mb4_0900_ai_ci;
 -- -----------------------------------------------------
 -- Table `restaurant`.`stock`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `restaurant`.`stock` ;
+DROP TABLE IF EXISTS `restaurant`.`stock`;
 
 CREATE TABLE IF NOT EXISTS `restaurant`.`stock` (
   `stock_id` INT(11) NOT NULL AUTO_INCREMENT,
@@ -58,7 +58,7 @@ COLLATE = utf8mb4_0900_ai_ci;
 -- -----------------------------------------------------
 -- Table `restaurant`.`table`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `restaurant`.`table` ;
+DROP TABLE IF EXISTS `restaurant`.`table`;
 
 CREATE TABLE IF NOT EXISTS `restaurant`.`table` (
   `table_id` INT(11) NOT NULL AUTO_INCREMENT,
@@ -74,7 +74,7 @@ COLLATE = utf8mb4_0900_ai_ci;
 -- -----------------------------------------------------
 -- Table `restaurant`.`user`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `restaurant`.`user` ;
+DROP TABLE IF EXISTS `restaurant`.`user`;
 
 CREATE TABLE IF NOT EXISTS `restaurant`.`user` (
   `user_id` INT(11) NOT NULL AUTO_INCREMENT,

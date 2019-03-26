@@ -17,13 +17,15 @@ import org.jfree.data.category.*;
  * @author Shaun
  */
 public class Restaurant extends javax.swing.JFrame {
-
-    /**
-     * Creates new form Restaurant
-     */
-    public Restaurant() {
+    
+    public final String username;
+    public final String title;
+    // Creates new form Restaurant
+    public Restaurant(String username, String title) {
         initComponents();
-        
+        this.username = username;
+        this.title = title;
+        lblLoginUser.setText(this.username);
         pnlOrderMenu.setVisible(true);
         pnlOrderBoard.setVisible(false);
         pnlStorkReport.setVisible(false);
@@ -284,8 +286,7 @@ public class Restaurant extends javax.swing.JFrame {
         pnlMain.add(pnlLeftSide, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 600));
 
         lblLoginUser.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        lblLoginUser.setText("...LOGIN USER...");
-        pnlMain.add(lblLoginUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(539, 14, -1, -1));
+        pnlMain.add(lblLoginUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(539, 14, 230, 20));
 
         btnTableOne.setBackground(new java.awt.Color(204, 255, 255));
         btnTableOne.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
