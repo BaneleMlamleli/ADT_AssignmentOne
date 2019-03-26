@@ -51,19 +51,11 @@ public class DatabaseConnection {
                 prepStatement.setInt(2, 0);
                 prepStatement.execute();
             }
-            prepStatement.close();
-            connection.close();
+            System.out.println("Database connection established and stock table initial data inserted");
         }catch(SQLSyntaxErrorException see){
             see.printStackTrace();
         }catch(SQLException ex){
             ex.printStackTrace();
-        }finally{
-            if(resultset != null){
-                resultset.close();
-            }
-            if(statement != null){
-                statement.close();
-            }
         }
     }
     
@@ -102,19 +94,13 @@ public class DatabaseConnection {
             prepStatement.setString(3, newUser[2]);
             prepStatement.setString(4, newUser[3]);
             prepStatement.setString(5, newUser[4]);
+            System.out.println(newUser[0]+" has been registered successfully");
         }catch(SQLSyntaxErrorException see){
             see.printStackTrace();
         }catch(SQLException ex){
             ex.printStackTrace();
         }catch(Exception e){
             e.printStackTrace();
-        }finally{
-            if(resultset != null){
-                resultset.close();
-            }
-            if(statement != null){
-                statement.close();
-            }
         }
     }
     
@@ -132,27 +118,48 @@ public class DatabaseConnection {
             // creating the statement
             statement = connection.createStatement();
             // execute the sql query
-            resultset=  statement.executeQuery("SELECT restaurant.user.name, restaurant.user.password FROM restaurant.user");
+            resultset =  statement.executeQuery("SELECT restaurant.user.name, restaurant.user.password FROM restaurant.user");
             // processing the results to very the entered login details
             while(resultset.next()){
                 verify = ((resultset.getString("restaurant.user.username").equals(username)) &&
                         (resultset.getString("restaurant.user.password").equals(password)) &&
                         (resultset.getString("restaurant.user.title").equals(title)));
             }
+            System.out.println("User verification executed");
         }catch(SQLSyntaxErrorException see){
             see.printStackTrace();
         }catch(SQLException ex){
             ex.printStackTrace();
         }catch(Exception e){
             e.printStackTrace();
-        }finally{
-            if(resultset != null){
-                resultset.close();
-            }
-            if(statement != null){
-                statement.close();
-            }
         }
         return verify;
+    }
+
+    /**
+     * This method will return all the amount of users that exist in the user database table
+     * @return 
+     * @throws java.sql.SQLException 
+     */
+    public static int howManyUsers() throws SQLException{
+        int totalUsers = 0;
+        try{
+            // creating the statement
+            statement = connection.createStatement();
+            // execute the sql query
+            resultset=  statement.executeQuery("SELECT * FROM restaurant.user");
+            // processing the results to very the entered login details
+            while(resultset.next()){
+                totalUsers++;
+            }
+            System.out.println("total user calculation executed");
+        }catch(SQLSyntaxErrorException see){
+            see.printStackTrace();
+        }catch(SQLException ex){
+            ex.printStackTrace();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return totalUsers;
     }
 }

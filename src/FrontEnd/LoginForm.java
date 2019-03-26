@@ -445,41 +445,37 @@ public class LoginForm extends javax.swing.JFrame {
         String title = (String)cmbRegisterTitle.getSelectedItem();
         String name = txtName.getText();
         String surname = txtSurname.getText();
-        String newUsername = txtUsername.getText();
-        String password = pwdPassword.getText();
+        String password = pwdRegisterPassword.getText();
         String confirmPassword = pwdConfirmPassword.getText();
-        
-        if(!name.trim().equals("")){
-            if(!surname.trim().equals("")){
-                if(!newUsername.trim().equals("")){
-                    if(!password.trim().equals("")){
-                        if(!(confirmPassword.length() == 0)){
-                            // confirming password match
-                            if(password.equals(confirmPassword)){
-                                // code here
-                                // clearing the fields
-                                txtName.setText("");
-                                txtSurname.setText("");
-                                txtUsername.setText("");
-                                pwdPassword.setText("");
-                                pwdConfirmPassword.setText("");
-                            }else{
-                                JOptionPane.showMessageDialog(null, "Password mismatch", "ERROR",JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Title: "+title+"\nName: "+name+"\nSurname: "+surname+"\nPassword: "+password+"\nConfirm password: "+confirmPassword);
+        if (!name.trim().equals("")) {
+            if (!surname.trim().equals("")) {
+                if (password.length() != 0) {
+                    if (confirmPassword.length() != 0) {
+                        // confirming password match
+                        if (password.equals(confirmPassword)) {
+                            try {
+                                String username = name+surname+(DatabaseConnection.howManyUsers()+1);
+                                DatabaseConnection.registerUser(name, surname, title, username, confirmPassword);
+                                lblRegisterUsername.setText(username);
+                                JOptionPane.showMessageDialog(null, name+" has been registered successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+                            } catch (SQLException ex) {
+                                Logger.getLogger(LoginForm.class.getName()).log(Level.SEVERE, null, ex);
                             }
-                        }else{
-                            JOptionPane.showMessageDialog(null, "confirm password field is empty", "ERROR",JOptionPane.ERROR_MESSAGE);
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Password mismatch", "ERROR", JOptionPane.ERROR_MESSAGE);
                         }
-                    }else{
-                        JOptionPane.showMessageDialog(null, "password field is empty", "ERROR",JOptionPane.ERROR_MESSAGE);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "confirm password field is empty", "ERROR", JOptionPane.ERROR_MESSAGE);
                     }
-                }else{
-                    JOptionPane.showMessageDialog(null, "username field is empty", "ERROR",JOptionPane.ERROR_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(null, "password field is empty", "ERROR", JOptionPane.ERROR_MESSAGE);
                 }
-            }else{
-                JOptionPane.showMessageDialog(null, "surname field is empty", "ERROR",JOptionPane.ERROR_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "surname field is empty", "ERROR", JOptionPane.ERROR_MESSAGE);
             }
-        }else{
-            JOptionPane.showMessageDialog(null, "name field is empty", "ERROR",JOptionPane.ERROR_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "name field is empty", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnRegisterActionPerformed
 
