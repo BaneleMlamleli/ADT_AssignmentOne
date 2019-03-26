@@ -12,6 +12,8 @@ package BackEnd;
 import java.io.*;
 import java.sql.*;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 public class DatabaseConnection {
     public static Statement statement = null;
     public static ResultSet resultset = null;
@@ -25,7 +27,7 @@ public class DatabaseConnection {
      */
     public static void connection() throws SQLException{
         try{
-            connection = DriverManager.getConnection("jdbc:mysql://localhost/3306/restaurant", "root", "B!n@ryM@n01");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/restaurant", "root", "B!n@ryM@n01");
             // call method that will read the sql script from restaurant.sql
             // String sql = DatabaseConnection1.getSqlScript();
             // create a prepared statement
@@ -33,29 +35,50 @@ public class DatabaseConnection {
             // Execute SQL query
             // prepStatement.executeUpdate();
             
-            // inserting all the individual menu items into the stock table and initialising the stock to zero
-            String itemName[] = {"White cheese", "Parmesan cheese", "Cheese","Beef",
-                "Chicken breast","Chicken strips","Calamari","Blue point oyster","Shrimp",
-                "Crawfish","Garlic bread","Crouton","Green leaf lettuce","Red leaf lettuce",
-                "Romaine lettuce","Gherkins","Caesar dressing","Cucumber","Carrot","Red onion",
-                "White onion","Roma tomatoes","Black-eyed peas", "Black pepper"};
+            /**
+             * The purpose of this selection is to check if the stock table is
+             * populated. If the variable 'availableData' is zero that mean the
+             * table is empty and can be populated with default data.
+             */
+            statement = connection.createStatement();
+            resultset = statement.executeQuery("SELECT * FROM restaurant.stock");
+            int availableData = 0;
+            while(resultset.next()){
+                availableData++;
+            }
             
-            for (int a = 0; a < itemName.length; a++) {
-                // create a prepared statement
-                prepStatement = connection.prepareStatement(
-                        "INSERT INTO restaurant.stock (restaurant.stock.item_name, restaurant.stock.usage)\n" +
-                        "VALUES (?, ?);");
-                
-                // Execute SQL query
-                prepStatement.setString(1, itemName[a]);
-                prepStatement.setInt(2, 0);
-                prepStatement.execute();
+            if(availableData == 0){
+                // inserting all the individual menu items into the stock table and initialising the stock to zero
+                String itemName[] = {"White cheese", "Parmesan cheese", "Cheese", "Beef",
+                    "Chicken breast", "Chicken strips", "Calamari", "Blue point oyster", "Shrimp",
+                    "Crawfish", "Garlic bread", "Crouton", "Green leaf lettuce", "Red leaf lettuce",
+                    "Romaine lettuce", "Gherkins", "Caesar dressing", "Cucumber", "Carrot", "Red onion",
+                    "White onion", "Roma tomatoes", "Black-eyed peas", "Black pepper"};
+
+                for (int a = 0; a < itemName.length; a++) {
+                    // create a prepared statement
+                    prepStatement = connection.prepareStatement(
+                            "INSERT INTO restaurant.stock (restaurant.stock.item_name, restaurant.stock.usage)\n"
+                            + "VALUES (?, ?);");
+
+                    // Execute SQL query
+                    prepStatement.setString(1, itemName[a]);
+                    prepStatement.setInt(2, 0);
+                    prepStatement.execute();
+                }
             }
             System.out.println("Database connection established and stock table initial data inserted");
         }catch(SQLSyntaxErrorException see){
             see.printStackTrace();
         }catch(SQLException ex){
             ex.printStackTrace();
+        }finally{
+            if(resultset != null){
+                resultset.close();
+            }
+            if(statement != null){
+                statement.close();
+            }
         }
     }
     
@@ -101,6 +124,13 @@ public class DatabaseConnection {
             ex.printStackTrace();
         }catch(Exception e){
             e.printStackTrace();
+        }finally{
+            if(resultset != null){
+                resultset.close();
+            }
+            if(statement != null){
+                statement.close();
+            }
         }
     }
     
@@ -118,7 +148,7 @@ public class DatabaseConnection {
             // creating the statement
             statement = connection.createStatement();
             // execute the sql query
-            resultset =  statement.executeQuery("SELECT restaurant.user.name, restaurant.user.password FROM restaurant.user");
+            resultset=  statement.executeQuery("SELECT restaurant.user.name, restaurant.user.password FROM restaurant.user");
             // processing the results to very the entered login details
             while(resultset.next()){
                 verify = ((resultset.getString("restaurant.user.username").equals(username)) &&
@@ -132,6 +162,13 @@ public class DatabaseConnection {
             ex.printStackTrace();
         }catch(Exception e){
             e.printStackTrace();
+        }finally{
+            if(resultset != null){
+                resultset.close();
+            }
+            if(statement != null){
+                statement.close();
+            }
         }
         return verify;
     }
@@ -159,7 +196,15 @@ public class DatabaseConnection {
             ex.printStackTrace();
         }catch(Exception e){
             e.printStackTrace();
+        }finally{
+            if(resultset != null){
+                resultset.close();
+            }
+            if(statement != null){
+                statement.close();
+            }
         }
+        System.out.println("total users:" + totalUsers);
         return totalUsers;
     }
 }

@@ -423,7 +423,7 @@ public class LoginForm extends javax.swing.JFrame {
                 try {
                     // Calling method to verify the entered user details
                     if(DatabaseConnection.verifyUser(username, password, title)){
-                        new LoginForm().setVisible(false);
+                        this.dispose();
                         new Restaurant(username, title).setVisible(true);
                     }else{
                         JOptionPane.showMessageDialog(null, "Incorrect login details.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -530,6 +530,11 @@ public class LoginForm extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                try {
+                    DatabaseConnection.connection();
+                } catch (SQLException ex) {
+                    Logger.getLogger(LoginForm.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 new LoginForm().setVisible(true);
             }
         });
