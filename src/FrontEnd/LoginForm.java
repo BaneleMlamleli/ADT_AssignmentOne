@@ -419,7 +419,7 @@ public class LoginForm extends javax.swing.JFrame {
         String password = pwdPassword.getText();       
 
         if(!username.trim().equals("")){
-            if(!password.trim().equals("")){
+            if(password.length() != 0){
                 try {
                     // Calling method to verify the entered user details
                     if(DatabaseConnection.verifyUser(username, password, title)){
@@ -530,6 +530,7 @@ public class LoginForm extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                // executing the database connection method
                 try {
                     DatabaseConnection.connection();
                 } catch (SQLException ex) {

@@ -285,8 +285,8 @@ public class Restaurant extends javax.swing.JFrame {
 
         pnlMain.add(pnlLeftSide, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 600));
 
-        lblLoginUser.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        pnlMain.add(lblLoginUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(539, 14, 230, 20));
+        lblLoginUser.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        pnlMain.add(lblLoginUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(559, 14, 210, 20));
 
         btnTableOne.setBackground(new java.awt.Color(204, 255, 255));
         btnTableOne.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N

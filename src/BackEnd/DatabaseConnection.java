@@ -27,17 +27,10 @@ public class DatabaseConnection {
      */
     public static void connection() throws SQLException{
         try{
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/restaurant", "root", "B!n@ryM@n01");
-            // call method that will read the sql script from restaurant.sql
-            // String sql = DatabaseConnection1.getSqlScript();
-            // create a prepared statement
-            // prepStatement = connection.prepareStatement(sql);
-            // Execute SQL query
-            // prepStatement.executeUpdate();
-            
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/restaurant", "root", "B!n@ryM@n01");         
             /**
              * The purpose of this selection is to check if the stock table is
-             * populated. If the variable 'availableData' is zero that mean the
+             * populated. If the variable 'availableData' is zero that means the
              * table is empty and can be populated with default data.
              */
             statement = connection.createStatement();
@@ -46,7 +39,7 @@ public class DatabaseConnection {
             while(resultset.next()){
                 availableData++;
             }
-            
+            System.out.println("availableData: " + availableData);
             if(availableData == 0){
                 // inserting all the individual menu items into the stock table and initialising the stock to zero
                 String itemName[] = {"White cheese", "Parmesan cheese", "Cheese", "Beef",
@@ -57,9 +50,7 @@ public class DatabaseConnection {
 
                 for (int a = 0; a < itemName.length; a++) {
                     // create a prepared statement
-                    prepStatement = connection.prepareStatement(
-                            "INSERT INTO restaurant.stock (restaurant.stock.item_name, restaurant.stock.usage)\n"
-                            + "VALUES (?, ?);");
+                    prepStatement = connection.prepareStatement("INSERT INTO restaurant.stock (item_name, usage) VALUES (?, ?)");
 
                     // Execute SQL query
                     prepStatement.setString(1, itemName[a]);
@@ -110,13 +101,13 @@ public class DatabaseConnection {
      */
     public static void registerUser(String... newUser) throws SQLException{
         try{
-            prepStatement = connection.prepareStatement("INSERT INTO restaurant.user(restaurant.user.name, restaurant.user.surname, "+ 
-                    "restaurant.user.title, restaurant.user.username, restaurant.user.password VALUES(?, ?, ?, ?, ?)");
+            prepStatement = connection.prepareStatement("INSERT INTO restaurant.user (name, surname, title, username, password) VALUES(?, ?, ?, ?, ?)");
             prepStatement.setString(1, newUser[0]);
             prepStatement.setString(2, newUser[1]);
             prepStatement.setString(3, newUser[2]);
             prepStatement.setString(4, newUser[3]);
             prepStatement.setString(5, newUser[4]);
+            prepStatement.execute();
             System.out.println(newUser[0]+" has been registered successfully");
         }catch(SQLSyntaxErrorException see){
             see.printStackTrace();
@@ -148,12 +139,12 @@ public class DatabaseConnection {
             // creating the statement
             statement = connection.createStatement();
             // execute the sql query
-            resultset=  statement.executeQuery("SELECT restaurant.user.name, restaurant.user.password FROM restaurant.user");
+            resultset=  statement.executeQuery("SELECT username, password, title FROM restaurant.user;");
             // processing the results to very the entered login details
             while(resultset.next()){
-                verify = ((resultset.getString("restaurant.user.username").equals(username)) &&
-                        (resultset.getString("restaurant.user.password").equals(password)) &&
-                        (resultset.getString("restaurant.user.title").equals(title)));
+                verify = ((resultset.getString("username").equals(username)) &&
+                        (resultset.getString("password").equals(password)) &&
+                        (resultset.getString("title").equals(title)));
             }
             System.out.println("User verification executed");
         }catch(SQLSyntaxErrorException see){
