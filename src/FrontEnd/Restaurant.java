@@ -275,8 +275,8 @@ public class Restaurant extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Trebuchet MS", 1, 36)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Banele's");
-        pnlLeftSide.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 140, -1));
+        jLabel6.setText("BM-JV");
+        pnlLeftSide.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 110, -1));
 
         jLabel1.setFont(new java.awt.Font("Trebuchet MS", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -288,10 +288,15 @@ public class Restaurant extends javax.swing.JFrame {
         lblLoginUser.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         pnlMain.add(lblLoginUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(559, 14, 210, 20));
 
-        btnTableOne.setBackground(new java.awt.Color(204, 255, 255));
+        btnTableOne.setBackground(new java.awt.Color(255, 0, 0));
         btnTableOne.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnTableOne.setForeground(new java.awt.Color(0, 102, 255));
+        btnTableOne.setForeground(new java.awt.Color(255, 255, 255));
         btnTableOne.setText("Table 1");
+        btnTableOne.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTableOneActionPerformed(evt);
+            }
+        });
 
         btnTableTwo.setBackground(new java.awt.Color(204, 255, 255));
         btnTableTwo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -974,6 +979,10 @@ public class Restaurant extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_rbtSalad_1ActionPerformed
 
+    private void btnTableOneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTableOneActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTableOneActionPerformed
+
     void setColour(JPanel panel){
         panel.setBackground(new Color(204,255,204));
     }
@@ -985,37 +994,37 @@ public class Restaurant extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(Restaurant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(Restaurant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(Restaurant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(Restaurant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new Restaurant().setVisible(true);
-//            }
-//        });
-//    }
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Restaurant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Restaurant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Restaurant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Restaurant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Restaurant("", "").setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel btnOrderBoard;
