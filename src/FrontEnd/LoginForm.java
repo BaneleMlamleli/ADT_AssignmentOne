@@ -455,10 +455,17 @@ public class LoginForm extends javax.swing.JFrame {
                         // confirming password match
                         if (password.equals(confirmPassword)) {
                             try {
-                                String username = name+surname+(DatabaseConnection.howManyUsers()+1);
-                                DatabaseConnection.registerUser(name, surname, title, username, confirmPassword);
-                                lblRegisterUsername.setText(username);
-                                JOptionPane.showMessageDialog(null, name+" has been registered successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+                                if(DatabaseConnection.howManyUsers() == 0){
+                                    String username = name+surname+(DatabaseConnection.howManyUsers());
+                                    DatabaseConnection.registerUser(name, surname, title, username, confirmPassword);
+                                    lblRegisterUsername.setText(username);
+                                    JOptionPane.showMessageDialog(null, name+" has been registered successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+                                }else{
+                                    String username = name+surname+(DatabaseConnection.howManyUsers()+1);
+                                    DatabaseConnection.registerUser(name, surname, title, username, confirmPassword);
+                                    lblRegisterUsername.setText(username);
+                                    JOptionPane.showMessageDialog(null, name+" has been registered successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+                                }
                             } catch (SQLException ex) {
                                 Logger.getLogger(LoginForm.class.getName()).log(Level.SEVERE, null, ex);
                             }

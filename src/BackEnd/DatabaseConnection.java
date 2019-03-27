@@ -12,8 +12,6 @@ package BackEnd;
 import java.io.*;
 import java.sql.*;
 import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 public class DatabaseConnection {
     public static Statement statement = null;
     public static ResultSet resultset = null;
@@ -27,7 +25,8 @@ public class DatabaseConnection {
      */
     public static void connection() throws SQLException{
         try{
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/restaurant", "root", "B!n@ryM@n01");         
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/restaurant", "root", "C!ph3r01");
+            System.out.println("Database connection successfully established");
             /**
              * The purpose of this selection is to check if the stock table is
              * populated. If the variable 'availableData' is zero that means the
@@ -39,7 +38,6 @@ public class DatabaseConnection {
             while(resultset.next()){
                 availableData++;
             }
-            System.out.println("availableData: " + availableData);
             if(availableData == 0){
                 // inserting all the individual menu items into the stock table and initialising the stock to zero
                 String itemName[] = {"White cheese", "Parmesan cheese", "Cheese", "Beef",
@@ -50,15 +48,16 @@ public class DatabaseConnection {
 
                 for (int a = 0; a < itemName.length; a++) {
                     // create a prepared statement
-                    prepStatement = connection.prepareStatement("INSERT INTO restaurant.stock (item_name, usage) VALUES (?, ?)");
+                    prepStatement = connection.prepareStatement("INSERT INTO restaurant.stock (restaurant.stock.item_name, restaurant.stock.usage)\n" +
+                            "VALUES (?, ?);");
 
                     // Execute SQL query
                     prepStatement.setString(1, itemName[a]);
                     prepStatement.setInt(2, 0);
                     prepStatement.execute();
                 }
+                System.out.println("Default stock items have been inserted into the stock database table");
             }
-            System.out.println("Database connection established and stock table initial data inserted");
         }catch(SQLSyntaxErrorException see){
             see.printStackTrace();
         }catch(SQLException ex){
@@ -70,12 +69,16 @@ public class DatabaseConnection {
             if(statement != null){
                 statement.close();
             }
+            if(prepStatement != null){
+                prepStatement.close();
+            }
         }
     }
     
     /**
      * This method will read the restaurant.sql scrip that contains all the code
      * for creating database, tables and relationships
+     * @return 
      */ 
     public static String getSqlScript(){
         String path = "C:\\Users\\Shaun\\Documents\\PROGRAMMING\\Java\\Projects\\SchoolWork\\New syllabus\\ADT_AssignmentOne\\ADT_AssignmentOne\\src\\BackEnd\\restaurant.sql";
@@ -86,8 +89,7 @@ public class DatabaseConnection {
             while(scn.hasNext()){
                 script += scn.nextLine()+"\n";
             }
-        }catch(Exception e){
-            e.printStackTrace();
+        }catch(FileNotFoundException e){
         }
         return script;
     }
@@ -121,6 +123,9 @@ public class DatabaseConnection {
             }
             if(statement != null){
                 statement.close();
+            }
+            if(prepStatement != null){
+                prepStatement.close();
             }
         }
     }
