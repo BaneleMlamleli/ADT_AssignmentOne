@@ -351,7 +351,7 @@ public class Restaurant extends javax.swing.JFrame {
         jPanel5.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 16, 240, 90));
 
         rbtSalad_3.setText("Garden salad");
-        jPanel5.add(rbtSalad_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, -1, -1));
+        jPanel5.add(rbtSalad_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, -1, -1));
 
         rbtSalad_2.setText("Grilled chicken salad");
         rbtSalad_2.addActionListener(new java.awt.event.ActionListener() {
@@ -359,7 +359,7 @@ public class Restaurant extends javax.swing.JFrame {
                 rbtSalad_2ActionPerformed(evt);
             }
         });
-        jPanel5.add(rbtSalad_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, -1, -1));
+        jPanel5.add(rbtSalad_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, -1, -1));
 
         rbtSalad_1.setText("Ceaser salad");
         rbtSalad_1.addActionListener(new java.awt.event.ActionListener() {
@@ -367,7 +367,7 @@ public class Restaurant extends javax.swing.JFrame {
                 rbtSalad_1ActionPerformed(evt);
             }
         });
-        jPanel5.add(rbtSalad_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, -1, -1));
+        jPanel5.add(rbtSalad_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, -1, -1));
 
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/lettuce_96px.png"))); // NOI18N
         jPanel5.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, 70));
@@ -395,10 +395,10 @@ public class Restaurant extends javax.swing.JFrame {
         jPanel6.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 16, 240, 90));
 
         jLabel2.setText("with Garlic bread");
-        jPanel6.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, -1, -1));
+        jPanel6.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, -1, 20));
 
         rbtSeafood_3.setText("Shrimp & Crawfish fondeaux");
-        jPanel6.add(rbtSeafood_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, -1, -1));
+        jPanel6.add(rbtSeafood_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, -1, -1));
 
         rbtSeafood_2.setText("Blue PIont Oysters");
         rbtSeafood_2.addActionListener(new java.awt.event.ActionListener() {
@@ -406,7 +406,7 @@ public class Restaurant extends javax.swing.JFrame {
                 rbtSeafood_2ActionPerformed(evt);
             }
         });
-        jPanel6.add(rbtSeafood_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, -1, -1));
+        jPanel6.add(rbtSeafood_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 40, -1, -1));
 
         rbtSeafood_1.setText("Fried Calamari");
         rbtSeafood_1.addActionListener(new java.awt.event.ActionListener() {
@@ -414,7 +414,7 @@ public class Restaurant extends javax.swing.JFrame {
                 rbtSeafood_1ActionPerformed(evt);
             }
         });
-        jPanel6.add(rbtSeafood_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, -1, -1));
+        jPanel6.add(rbtSeafood_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, -1, -1));
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/prawn_96px.png"))); // NOI18N
         jPanel6.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 80, 80));
@@ -428,7 +428,7 @@ public class Restaurant extends javax.swing.JFrame {
                 rbtBurger_1ActionPerformed(evt);
             }
         });
-        jPanel4.add(rbtBurger_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, -1, -1));
+        jPanel4.add(rbtBurger_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, -1, -1));
 
         rbtBurger_2.setText("Chicken burger");
         rbtBurger_2.addActionListener(new java.awt.event.ActionListener() {
@@ -436,10 +436,10 @@ public class Restaurant extends javax.swing.JFrame {
                 rbtBurger_2ActionPerformed(evt);
             }
         });
-        jPanel4.add(rbtBurger_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, -1, -1));
+        jPanel4.add(rbtBurger_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, -1, -1));
 
         rbtBurger_3.setText("Beef burger");
-        jPanel4.add(rbtBurger_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, -1, -1));
+        jPanel4.add(rbtBurger_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, -1, -1));
 
         btnOrderBurger.setBackground(new java.awt.Color(204, 255, 255));
         btnOrderBurger.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -484,7 +484,7 @@ public class Restaurant extends javax.swing.JFrame {
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 20, 250, 80));
 
         rbtSteak_3.setText("Grilled Steak with Black-Eyed Peas");
-        jPanel2.add(rbtSteak_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, -1, -1));
+        jPanel2.add(rbtSteak_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, -1, -1));
 
         rbtSteak_2.setText("Steak and chips");
         rbtSteak_2.addActionListener(new java.awt.event.ActionListener() {
@@ -492,7 +492,7 @@ public class Restaurant extends javax.swing.JFrame {
                 rbtSteak_2ActionPerformed(evt);
             }
         });
-        jPanel2.add(rbtSteak_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, -1, -1));
+        jPanel2.add(rbtSteak_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, -1, -1));
 
         rbtSteak_1l.setText("Big steak salad");
         rbtSteak_1l.addActionListener(new java.awt.event.ActionListener() {
@@ -500,7 +500,7 @@ public class Restaurant extends javax.swing.JFrame {
                 rbtSteak_1lActionPerformed(evt);
             }
         });
-        jPanel2.add(rbtSteak_1l, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, -1, -1));
+        jPanel2.add(rbtSteak_1l, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, -1, -1));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/steak_96px.png"))); // NOI18N
         jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, 80));
