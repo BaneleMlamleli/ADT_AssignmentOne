@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Shaun
+ * @author Banele
  */
 public class LoginForm extends javax.swing.JFrame {
 
@@ -445,7 +445,6 @@ public class LoginForm extends javax.swing.JFrame {
         String surname = txtSurname.getText();
         String password = pwdRegisterPassword.getText();
         String confirmPassword = pwdConfirmPassword.getText();
-        JOptionPane.showMessageDialog(null, "Title: "+title+"\nName: "+name+"\nSurname: "+surname+"\nPassword: "+password+"\nConfirm password: "+confirmPassword);
         if (!name.trim().equals("")) {
             if (!surname.trim().equals("")) {
                 if (password.length() != 0) {

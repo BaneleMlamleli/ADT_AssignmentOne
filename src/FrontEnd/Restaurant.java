@@ -5,8 +5,10 @@
  */
 package FrontEnd;
 
+import BackEnd.Order;
 import java.awt.Color;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import org.jfree.chart.*;
 import org.jfree.chart.plot.*;
 import org.jfree.data.category.*;
@@ -14,12 +16,20 @@ import org.jfree.data.category.*;
 
 /**
  *
- * @author Shaun
+ * @author Banele
  */
 public class Restaurant extends javax.swing.JFrame {
     
     public final String username;
     public final String title;
+    
+    /**
+     * Array that will store all the selected menu item/s. An item can only be
+     * selected(True) or not selected(False) as I am using grouped radio buttons
+     */
+    public static Order[] selectedItem = new Order[12];
+    
+    
     // Creates new form Restaurant
     public Restaurant(String username, String title) {
         initComponents();
@@ -58,45 +68,32 @@ public class Restaurant extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         lblLoginUser = new javax.swing.JLabel();
         pnlOrderMenu = new javax.swing.JPanel();
-        btnTableOne = new javax.swing.JButton();
-        btnTableTwo = new javax.swing.JButton();
-        btnTableFour = new javax.swing.JButton();
-        btnTableThree = new javax.swing.JButton();
-        btnTableSix = new javax.swing.JButton();
-        btnTableFive = new javax.swing.JButton();
-        jPanel5 = new javax.swing.JPanel();
-        btnOrderSalad = new javax.swing.JButton();
+        btnPlaceOrder = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        txtSaladOrderComment = new javax.swing.JTextArea();
-        rbtSalad_3 = new javax.swing.JRadioButton();
-        rbtSalad_2 = new javax.swing.JRadioButton();
-        rbtSalad_1 = new javax.swing.JRadioButton();
-        jLabel13 = new javax.swing.JLabel();
-        jPanel6 = new javax.swing.JPanel();
-        btnOrderSeafood = new javax.swing.JButton();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        txtSeafoodOrderComment = new javax.swing.JTextArea();
-        jLabel2 = new javax.swing.JLabel();
-        rbtSeafood_3 = new javax.swing.JRadioButton();
-        rbtSeafood_2 = new javax.swing.JRadioButton();
-        rbtSeafood_1 = new javax.swing.JRadioButton();
-        jLabel12 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        rbtBurger_1 = new javax.swing.JRadioButton();
-        rbtBurger_2 = new javax.swing.JRadioButton();
-        rbtBurger_3 = new javax.swing.JRadioButton();
-        btnOrderBurger = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        txtBurgerOrderComment = new javax.swing.JTextArea();
-        jLabel11 = new javax.swing.JLabel();
+        txtOrderComment = new javax.swing.JTextArea();
         jPanel2 = new javax.swing.JPanel();
-        btnOrderSteak = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txtSteakOrderComment = new javax.swing.JTextArea();
-        rbtSteak_3 = new javax.swing.JRadioButton();
-        rbtSteak_2 = new javax.swing.JRadioButton();
-        rbtSteak_1l = new javax.swing.JRadioButton();
+        rbtSteakMenu2 = new javax.swing.JRadioButton();
+        rbtSteakMenu1 = new javax.swing.JRadioButton();
+        rbtSteakMenu0 = new javax.swing.JRadioButton();
         jLabel8 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        rbtBurgerMenu0 = new javax.swing.JRadioButton();
+        rbtBurgerMenu1 = new javax.swing.JRadioButton();
+        rbtBurgerMenu2 = new javax.swing.JRadioButton();
+        jLabel11 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        rbtSeafoodMenu2 = new javax.swing.JRadioButton();
+        rbtSeafoodMenu1 = new javax.swing.JRadioButton();
+        rbtSeafoodMenu0 = new javax.swing.JRadioButton();
+        jLabel12 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        rbtSaladMenu2 = new javax.swing.JRadioButton();
+        rbtSaladMenu1 = new javax.swing.JRadioButton();
+        rbtSaladMenu0 = new javax.swing.JRadioButton();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        cmbTable = new javax.swing.JComboBox<>();
         pnlOrderBoard = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
@@ -288,222 +285,154 @@ public class Restaurant extends javax.swing.JFrame {
         lblLoginUser.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         pnlMain.add(lblLoginUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(559, 14, 210, 20));
 
-        btnTableOne.setBackground(new java.awt.Color(255, 0, 0));
-        btnTableOne.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnTableOne.setForeground(new java.awt.Color(255, 255, 255));
-        btnTableOne.setText("Table 1");
-        btnTableOne.addActionListener(new java.awt.event.ActionListener() {
+        btnPlaceOrder.setBackground(new java.awt.Color(0, 204, 255));
+        btnPlaceOrder.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnPlaceOrder.setForeground(new java.awt.Color(0, 102, 255));
+        btnPlaceOrder.setText("PLACE ORDER");
+        btnPlaceOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTableOneActionPerformed(evt);
+                btnPlaceOrderActionPerformed(evt);
             }
         });
 
-        btnTableTwo.setBackground(new java.awt.Color(204, 255, 255));
-        btnTableTwo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnTableTwo.setForeground(new java.awt.Color(0, 102, 255));
-        btnTableTwo.setText("Table 2");
-
-        btnTableFour.setBackground(new java.awt.Color(204, 255, 255));
-        btnTableFour.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnTableFour.setForeground(new java.awt.Color(0, 102, 255));
-        btnTableFour.setText("Table 4");
-        btnTableFour.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTableFourActionPerformed(evt);
-            }
-        });
-
-        btnTableThree.setBackground(new java.awt.Color(204, 255, 255));
-        btnTableThree.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnTableThree.setForeground(new java.awt.Color(0, 102, 255));
-        btnTableThree.setText("Table 3");
-
-        btnTableSix.setBackground(new java.awt.Color(204, 255, 255));
-        btnTableSix.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnTableSix.setForeground(new java.awt.Color(0, 102, 255));
-        btnTableSix.setText("Table 6");
-
-        btnTableFive.setBackground(new java.awt.Color(204, 255, 255));
-        btnTableFive.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnTableFive.setForeground(new java.awt.Color(0, 102, 255));
-        btnTableFive.setText("Table 5");
-
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 255, 255), 2, true), "Salad Menu", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Trebuchet MS", 1, 12), new java.awt.Color(0, 102, 255))); // NOI18N
-        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btnOrderSalad.setBackground(new java.awt.Color(204, 255, 255));
-        btnOrderSalad.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnOrderSalad.setForeground(new java.awt.Color(0, 102, 255));
-        btnOrderSalad.setText("ORDER");
-        btnOrderSalad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnOrderSaladActionPerformed(evt);
-            }
-        });
-        jPanel5.add(btnOrderSalad, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, -1, 80));
-
-        txtSaladOrderComment.setColumns(20);
-        txtSaladOrderComment.setRows(5);
-        txtSaladOrderComment.setToolTipText("Comment");
-        txtSaladOrderComment.setWrapStyleWord(true);
-        jScrollPane3.setViewportView(txtSaladOrderComment);
-
-        jPanel5.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 16, 240, 90));
-
-        rbtSalad_3.setText("Garden salad");
-        jPanel5.add(rbtSalad_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, -1, -1));
-
-        rbtSalad_2.setText("Grilled chicken salad");
-        rbtSalad_2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbtSalad_2ActionPerformed(evt);
-            }
-        });
-        jPanel5.add(rbtSalad_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, -1, -1));
-
-        rbtSalad_1.setText("Ceaser salad");
-        rbtSalad_1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbtSalad_1ActionPerformed(evt);
-            }
-        });
-        jPanel5.add(rbtSalad_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, -1, -1));
-
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/lettuce_96px.png"))); // NOI18N
-        jPanel5.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, 70));
-
-        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 255, 255), 2, true), "Seafood Menu", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Trebuchet MS", 1, 12), new java.awt.Color(0, 102, 255))); // NOI18N
-        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btnOrderSeafood.setBackground(new java.awt.Color(204, 255, 255));
-        btnOrderSeafood.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnOrderSeafood.setForeground(new java.awt.Color(0, 102, 255));
-        btnOrderSeafood.setText("ORDER");
-        btnOrderSeafood.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnOrderSeafoodActionPerformed(evt);
-            }
-        });
-        jPanel6.add(btnOrderSeafood, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, -1, 80));
-
-        txtSeafoodOrderComment.setColumns(20);
-        txtSeafoodOrderComment.setRows(5);
-        txtSeafoodOrderComment.setToolTipText("Comment");
-        txtSeafoodOrderComment.setWrapStyleWord(true);
-        jScrollPane4.setViewportView(txtSeafoodOrderComment);
-
-        jPanel6.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 16, 240, 90));
-
-        jLabel2.setText("with Garlic bread");
-        jPanel6.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, -1, 20));
-
-        rbtSeafood_3.setText("Shrimp & Crawfish fondeaux");
-        jPanel6.add(rbtSeafood_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, -1, -1));
-
-        rbtSeafood_2.setText("Blue PIont Oysters");
-        rbtSeafood_2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbtSeafood_2ActionPerformed(evt);
-            }
-        });
-        jPanel6.add(rbtSeafood_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 40, -1, -1));
-
-        rbtSeafood_1.setText("Fried Calamari");
-        rbtSeafood_1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbtSeafood_1ActionPerformed(evt);
-            }
-        });
-        jPanel6.add(rbtSeafood_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, -1, -1));
-
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/prawn_96px.png"))); // NOI18N
-        jPanel6.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 80, 80));
-
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 255, 255), 2, true), "Burger Menu", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Trebuchet MS", 1, 12), new java.awt.Color(0, 102, 255))); // NOI18N
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        rbtBurger_1.setText("Cheese burger");
-        rbtBurger_1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbtBurger_1ActionPerformed(evt);
-            }
-        });
-        jPanel4.add(rbtBurger_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, -1, -1));
-
-        rbtBurger_2.setText("Chicken burger");
-        rbtBurger_2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbtBurger_2ActionPerformed(evt);
-            }
-        });
-        jPanel4.add(rbtBurger_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, -1, -1));
-
-        rbtBurger_3.setText("Beef burger");
-        jPanel4.add(rbtBurger_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, -1, -1));
-
-        btnOrderBurger.setBackground(new java.awt.Color(204, 255, 255));
-        btnOrderBurger.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnOrderBurger.setForeground(new java.awt.Color(0, 102, 255));
-        btnOrderBurger.setText("ORDER");
-        btnOrderBurger.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnOrderBurgerActionPerformed(evt);
-            }
-        });
-        jPanel4.add(btnOrderBurger, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, -1, 80));
-
-        txtBurgerOrderComment.setColumns(20);
-        txtBurgerOrderComment.setRows(5);
-        txtBurgerOrderComment.setToolTipText("Comment");
-        jScrollPane2.setViewportView(txtBurgerOrderComment);
-
-        jPanel4.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 20, 240, 80));
-
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/hamburger_96px.png"))); // NOI18N
-        jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 90, 80));
+        txtOrderComment.setColumns(20);
+        txtOrderComment.setLineWrap(true);
+        txtOrderComment.setRows(5);
+        txtOrderComment.setToolTipText("Comment");
+        txtOrderComment.setWrapStyleWord(true);
+        jScrollPane3.setViewportView(txtOrderComment);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 255, 255), 2, true), "Steak Menu", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Trebuchet MS", 1, 12), new java.awt.Color(0, 102, 255))); // NOI18N
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnOrderSteak.setBackground(new java.awt.Color(204, 255, 255));
-        btnOrderSteak.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnOrderSteak.setForeground(new java.awt.Color(0, 102, 255));
-        btnOrderSteak.setText("ORDER");
-        btnOrderSteak.addActionListener(new java.awt.event.ActionListener() {
+        rbtSteakMenu2.setText("Grilled Steak with Black-Eyed Peas");
+        rbtSteakMenu2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnOrderSteakActionPerformed(evt);
+                rbtSteakMenu2ActionPerformed(evt);
             }
         });
-        jPanel2.add(btnOrderSteak, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, -1, 80));
+        jPanel2.add(rbtSteakMenu2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, -1, -1));
 
-        txtSteakOrderComment.setColumns(20);
-        txtSteakOrderComment.setRows(5);
-        txtSteakOrderComment.setToolTipText("Comment");
-        jScrollPane1.setViewportView(txtSteakOrderComment);
-
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 20, 250, 80));
-
-        rbtSteak_3.setText("Grilled Steak with Black-Eyed Peas");
-        jPanel2.add(rbtSteak_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, -1, -1));
-
-        rbtSteak_2.setText("Steak and chips");
-        rbtSteak_2.addActionListener(new java.awt.event.ActionListener() {
+        rbtSteakMenu1.setText("Steak and chips");
+        rbtSteakMenu1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbtSteak_2ActionPerformed(evt);
+                rbtSteakMenu1ActionPerformed(evt);
             }
         });
-        jPanel2.add(rbtSteak_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, -1, -1));
+        jPanel2.add(rbtSteakMenu1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, -1, -1));
 
-        rbtSteak_1l.setText("Big steak salad");
-        rbtSteak_1l.addActionListener(new java.awt.event.ActionListener() {
+        rbtSteakMenu0.setText("Big steak salad");
+        rbtSteakMenu0.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbtSteak_1lActionPerformed(evt);
+                rbtSteakMenu0ActionPerformed(evt);
             }
         });
-        jPanel2.add(rbtSteak_1l, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, -1, -1));
+        jPanel2.add(rbtSteakMenu0, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, -1, -1));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/steak_96px.png"))); // NOI18N
         jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, 80));
+
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 255, 255), 2, true), "Burger Menu", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Trebuchet MS", 1, 12), new java.awt.Color(0, 102, 255))); // NOI18N
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        rbtBurgerMenu0.setText("Cheese burger");
+        rbtBurgerMenu0.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtBurgerMenu0ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(rbtBurgerMenu0, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, -1, -1));
+
+        rbtBurgerMenu1.setText("Chicken burger");
+        rbtBurgerMenu1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtBurgerMenu1ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(rbtBurgerMenu1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, -1, -1));
+
+        rbtBurgerMenu2.setText("Beef burger");
+        rbtBurgerMenu2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtBurgerMenu2ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(rbtBurgerMenu2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, -1, -1));
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/hamburger_96px.png"))); // NOI18N
+        jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 90, 80));
+
+        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 255, 255), 2, true), "Seafood Menu", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Trebuchet MS", 1, 12), new java.awt.Color(0, 102, 255))); // NOI18N
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setText("with Garlic bread");
+        jPanel6.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, -1, 20));
+
+        rbtSeafoodMenu2.setText("Shrimp & Crawfish fondeaux");
+        rbtSeafoodMenu2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtSeafoodMenu2ActionPerformed(evt);
+            }
+        });
+        jPanel6.add(rbtSeafoodMenu2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, -1, -1));
+
+        rbtSeafoodMenu1.setText("Blue PIont Oysters");
+        rbtSeafoodMenu1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtSeafoodMenu1ActionPerformed(evt);
+            }
+        });
+        jPanel6.add(rbtSeafoodMenu1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 40, -1, -1));
+
+        rbtSeafoodMenu0.setText("Fried Calamari");
+        rbtSeafoodMenu0.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtSeafoodMenu0ActionPerformed(evt);
+            }
+        });
+        jPanel6.add(rbtSeafoodMenu0, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, -1, -1));
+
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/prawn_96px.png"))); // NOI18N
+        jPanel6.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 80, 80));
+
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 255, 255), 2, true), "Salad Menu", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Trebuchet MS", 1, 12), new java.awt.Color(0, 102, 255))); // NOI18N
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        rbtSaladMenu2.setText("Garden salad");
+        rbtSaladMenu2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtSaladMenu2ActionPerformed(evt);
+            }
+        });
+        jPanel5.add(rbtSaladMenu2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, -1, -1));
+
+        rbtSaladMenu1.setText("Grilled chicken salad");
+        rbtSaladMenu1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtSaladMenu1ActionPerformed(evt);
+            }
+        });
+        jPanel5.add(rbtSaladMenu1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, -1, -1));
+
+        rbtSaladMenu0.setText("Ceaser salad");
+        rbtSaladMenu0.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtSaladMenu0ActionPerformed(evt);
+            }
+        });
+        jPanel5.add(rbtSaladMenu0, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, -1, -1));
+
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/lettuce_96px.png"))); // NOI18N
+        jPanel5.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, 70));
+
+        jLabel14.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(0, 102, 255));
+        jLabel14.setText("Select table");
+
+        cmbTable.setBackground(new java.awt.Color(204, 255, 255));
+        cmbTable.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        cmbTable.setForeground(new java.awt.Color(0, 102, 255));
+        cmbTable.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Table 1", "Table 2", "Table 3", "Table 4", "Table 5" }));
 
         javax.swing.GroupLayout pnlOrderMenuLayout = new javax.swing.GroupLayout(pnlOrderMenu);
         pnlOrderMenu.setLayout(pnlOrderMenuLayout);
@@ -512,44 +441,41 @@ public class Restaurant extends javax.swing.JFrame {
             .addGroup(pnlOrderMenuLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlOrderMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlOrderMenuLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnTableOne, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(btnTableTwo, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(6, 6, 6)
-                        .addComponent(btnTableThree, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(btnTableFour, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(6, 6, 6)
-                        .addComponent(btnTableFive, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(6, 6, 6)
-                        .addComponent(btnTableSix, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnPlaceOrder, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3)
+                    .addGroup(pnlOrderMenuLayout.createSequentialGroup()
+                        .addGroup(pnlOrderMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(pnlOrderMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE)))
+                    .addGroup(pnlOrderMenuLayout.createSequentialGroup()
+                        .addComponent(jLabel14)
+                        .addGap(31, 31, 31)
+                        .addComponent(cmbTable, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         pnlOrderMenuLayout.setVerticalGroup(
             pnlOrderMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlOrderMenuLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnlOrderMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnTableOne)
-                    .addComponent(btnTableTwo)
-                    .addComponent(btnTableThree)
-                    .addComponent(btnTableFour)
-                    .addComponent(btnTableFive)
-                    .addComponent(btnTableSix))
-                .addGap(11, 11, 11)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pnlOrderMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmbTable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel14))
+                .addGap(19, 19, 19)
+                .addGroup(pnlOrderMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(pnlOrderMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnPlaceOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -927,61 +853,93 @@ public class Restaurant extends javax.swing.JFrame {
         pnlTwo.updateUI();
     }//GEN-LAST:event_btnStorkReportMouseClicked
 
-    private void btnTableFourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTableFourActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnTableFourActionPerformed
+    private void rbtSteakMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtSteakMenu1ActionPerformed
+        // check if the array index has not been initialised
+        int arrayIndex = 1;
+        getSelectedItem(arrayIndex, rbtSteakMenu1);
+    }//GEN-LAST:event_rbtSteakMenu1ActionPerformed
 
-    private void rbtSteak_1lActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtSteak_1lActionPerformed
+    private void rbtSteakMenu0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtSteakMenu0ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_rbtSteak_1lActionPerformed
+        int arrayIndex = 0;
+        getSelectedItem(arrayIndex, rbtSteakMenu0);
+    }//GEN-LAST:event_rbtSteakMenu0ActionPerformed
 
-    private void rbtSteak_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtSteak_2ActionPerformed
+    private void rbtBurgerMenu0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtBurgerMenu0ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_rbtSteak_2ActionPerformed
+        int arrayIndex = 3;
+        getSelectedItem(arrayIndex, rbtBurgerMenu0);
+    }//GEN-LAST:event_rbtBurgerMenu0ActionPerformed
 
-    private void rbtSeafood_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtSeafood_2ActionPerformed
+    private void rbtBurgerMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtBurgerMenu1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_rbtSeafood_2ActionPerformed
+        int arrayIndex = 4;
+        getSelectedItem(arrayIndex, rbtBurgerMenu1);
+    }//GEN-LAST:event_rbtBurgerMenu1ActionPerformed
 
-    private void rbtSeafood_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtSeafood_1ActionPerformed
+    private void rbtSeafoodMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtSeafoodMenu1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_rbtSeafood_1ActionPerformed
+        int arrayIndex = 7;
+        getSelectedItem(arrayIndex, rbtSeafoodMenu1);
+    }//GEN-LAST:event_rbtSeafoodMenu1ActionPerformed
 
-    private void btnOrderSteakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderSteakActionPerformed
+    private void rbtSeafoodMenu0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtSeafoodMenu0ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnOrderSteakActionPerformed
+        int arrayIndex = 6;
+        getSelectedItem(arrayIndex, rbtSeafoodMenu0);
+    }//GEN-LAST:event_rbtSeafoodMenu0ActionPerformed
 
-    private void rbtBurger_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtBurger_1ActionPerformed
+    private void rbtSaladMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtSaladMenu1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_rbtBurger_1ActionPerformed
+        int arrayIndex = 10;
+        getSelectedItem(arrayIndex, rbtSaladMenu1);
+    }//GEN-LAST:event_rbtSaladMenu1ActionPerformed
 
-    private void rbtBurger_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtBurger_2ActionPerformed
+    private void rbtSaladMenu0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtSaladMenu0ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_rbtBurger_2ActionPerformed
+        int arrayIndex = 9;
+        getSelectedItem(arrayIndex, rbtSaladMenu0);
+    }//GEN-LAST:event_rbtSaladMenu0ActionPerformed
 
-    private void btnOrderBurgerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderBurgerActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnOrderBurgerActionPerformed
+    private void btnPlaceOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlaceOrderActionPerformed
+        // button to place an order
+        String orderComment = txtOrderComment.getText();
+        String selectedTable = (String)cmbTable.getSelectedItem();
+        String waiterName = username;
+        //check if there is any comment in the text box.
+        if(orderComment.length() > 0){
+            
+        }else{// If there is no comment
+        }
+    }//GEN-LAST:event_btnPlaceOrderActionPerformed
 
-    private void btnOrderSaladActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderSaladActionPerformed
+    private void rbtSteakMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtSteakMenu2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnOrderSaladActionPerformed
+        int arrayIndex = 2;
+        getSelectedItem(arrayIndex, rbtSteakMenu2);
+    }//GEN-LAST:event_rbtSteakMenu2ActionPerformed
 
-    private void btnOrderSeafoodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderSeafoodActionPerformed
+    private void rbtBurgerMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtBurgerMenu2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnOrderSeafoodActionPerformed
+        int arrayIndex = 5;
+        getSelectedItem(arrayIndex, rbtBurgerMenu2);
+    }//GEN-LAST:event_rbtBurgerMenu2ActionPerformed
 
-    private void rbtSalad_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtSalad_2ActionPerformed
+    private void rbtSeafoodMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtSeafoodMenu2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_rbtSalad_2ActionPerformed
+        int arrayIndex = 8;
+        if (rbtSeafoodMenu2.isSelected()){
+            selectedItem[arrayIndex] = new Order(rbtSeafoodMenu2.isSelected(), rbtSeafoodMenu2.getText()+ " with Garlic bread");
+        }else{
+            selectedItem[arrayIndex] = new Order(rbtSeafoodMenu2.isSelected(), rbtSeafoodMenu2.getText()+" with Garlic bread");
+        }
+    }//GEN-LAST:event_rbtSeafoodMenu2ActionPerformed
 
-    private void rbtSalad_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtSalad_1ActionPerformed
+    private void rbtSaladMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtSaladMenu2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_rbtSalad_1ActionPerformed
-
-    private void btnTableOneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTableOneActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnTableOneActionPerformed
+        int arrayIndex = 11;
+        getSelectedItem(arrayIndex, rbtSaladMenu2);
+    }//GEN-LAST:event_rbtSaladMenu2ActionPerformed
 
     void setColour(JPanel panel){
         panel.setBackground(new Color(204,255,204));
@@ -989,6 +947,14 @@ public class Restaurant extends javax.swing.JFrame {
     
     void resetColour(JPanel panel){
         panel.setBackground(new Color(51,204,255));
+    }
+    
+    public void getSelectedItem(int arrayIndex, JRadioButton rbtItemSelected){
+        if (rbtItemSelected.isSelected()){
+            selectedItem[arrayIndex] = new Order(rbtItemSelected.isSelected(), rbtItemSelected.getText());
+        }else{
+            selectedItem[arrayIndex] = new Order(rbtItemSelected.isSelected(), rbtItemSelected.getText());
+        }
     }
     
     /**
@@ -1021,30 +987,23 @@ public class Restaurant extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Restaurant("", "").setVisible(true);
+                new Restaurant("Jacob", "Waiter").setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel btnOrderBoard;
-    private javax.swing.JButton btnOrderBurger;
     private javax.swing.JPanel btnOrderMenu;
-    private javax.swing.JButton btnOrderSalad;
-    private javax.swing.JButton btnOrderSeafood;
-    private javax.swing.JButton btnOrderSteak;
+    private javax.swing.JButton btnPlaceOrder;
     private javax.swing.JPanel btnStorkReport;
-    private javax.swing.JButton btnTableFive;
-    private javax.swing.JButton btnTableFour;
-    private javax.swing.JButton btnTableOne;
-    private javax.swing.JButton btnTableSix;
-    private javax.swing.JButton btnTableThree;
-    private javax.swing.JButton btnTableTwo;
+    private javax.swing.JComboBox<String> cmbTable;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1065,10 +1024,7 @@ public class Restaurant extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
@@ -1086,25 +1042,22 @@ public class Restaurant extends javax.swing.JFrame {
     private javax.swing.JPanel pnlOrderMenu;
     private javax.swing.JPanel pnlStorkReport;
     private javax.swing.JPanel pnlTwo;
-    private javax.swing.JRadioButton rbtBurger_1;
-    private javax.swing.JRadioButton rbtBurger_2;
-    private javax.swing.JRadioButton rbtBurger_3;
-    private javax.swing.JRadioButton rbtSalad_1;
-    private javax.swing.JRadioButton rbtSalad_2;
-    private javax.swing.JRadioButton rbtSalad_3;
-    private javax.swing.JRadioButton rbtSeafood_1;
-    private javax.swing.JRadioButton rbtSeafood_2;
-    private javax.swing.JRadioButton rbtSeafood_3;
-    private javax.swing.JRadioButton rbtSteak_1l;
-    private javax.swing.JRadioButton rbtSteak_2;
-    private javax.swing.JRadioButton rbtSteak_3;
+    private javax.swing.JRadioButton rbtBurgerMenu0;
+    private javax.swing.JRadioButton rbtBurgerMenu1;
+    private javax.swing.JRadioButton rbtBurgerMenu2;
+    private javax.swing.JRadioButton rbtSaladMenu0;
+    private javax.swing.JRadioButton rbtSaladMenu1;
+    private javax.swing.JRadioButton rbtSaladMenu2;
+    private javax.swing.JRadioButton rbtSeafoodMenu0;
+    private javax.swing.JRadioButton rbtSeafoodMenu1;
+    private javax.swing.JRadioButton rbtSeafoodMenu2;
+    private javax.swing.JRadioButton rbtSteakMenu0;
+    private javax.swing.JRadioButton rbtSteakMenu1;
+    private javax.swing.JRadioButton rbtSteakMenu2;
     private javax.swing.JTable tblCollectionOrder;
     private javax.swing.JTable tblInprogressOrder;
     private javax.swing.JTable tblNewOrder;
     private javax.swing.JTable tblOrderWithIssue;
-    private javax.swing.JTextArea txtBurgerOrderComment;
-    private javax.swing.JTextArea txtSaladOrderComment;
-    private javax.swing.JTextArea txtSeafoodOrderComment;
-    private javax.swing.JTextArea txtSteakOrderComment;
+    private javax.swing.JTextArea txtOrderComment;
     // End of variables declaration//GEN-END:variables
 }
