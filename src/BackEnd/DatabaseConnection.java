@@ -80,17 +80,12 @@ public class DatabaseConnection {
      * for creating database, tables and relationships
      * @return 
      */ 
-    public static String getSqlScript(){
-        String windowsPath = "C:\\Users\\Shaun\\Documents\\PROGRAMMING\\Java\\Projects\\SchoolWork\\New syllabus\\ADT_AssignmentOne\\ADT_AssignmentOne\\src\\BackEnd\\restaurant.sql";
-        String macPath = "/Users/banelemlamleli/Documents/Programming/Java/ADT_AssignmentOne/src/BackEnd/restaurant.sql";
+    public String getSqlScript(){
         String script = "";
-        try{
-            FileReader fileReader = new FileReader(new File(macPath));
-            Scanner scn = new Scanner(fileReader);
-            while(scn.hasNext()){
-                script += scn.nextLine()+"\n";
-            }
-        }catch(FileNotFoundException e){
+        InputStream fileReader = this.getClass().getResourceAsStream("restaurant.sql");
+        Scanner scn = new Scanner(fileReader);
+        while(scn.hasNext()){
+            script += scn.nextLine()+"\n";
         }
         return script;
     }
@@ -204,12 +199,8 @@ public class DatabaseConnection {
         System.out.println("total users:" + totalUsers);
         return totalUsers;
     }
-//    public static void main(String[]args){
-//        Order[] selectedItem = new Order[12];
-//        selectedItem[0] = new Order(true, "Steak and Kidney");
-//        selectedItem[1] = new Order(false, "Green salad");
-//        selectedItem[2] = new Order(true, "Shrimps");
-//        
-//        System.out.println(selectedItem[0].isSelectedRadioButtonItem() + "\n" + selectedItem[0].getOrder_name());
-//    }
+    public static void main(String[]args){
+        DatabaseConnection dbCon = new DatabaseConnection();
+        System.out.println(dbCon.getSqlScript());
+    }
 }
