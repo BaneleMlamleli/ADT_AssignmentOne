@@ -302,7 +302,7 @@ public class Restaurant extends javax.swing.JFrame {
         txtOrderComment.setWrapStyleWord(true);
         jScrollPane3.setViewportView(txtOrderComment);
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 255, 255), 2, true), "Steak Menu", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Trebuchet MS", 1, 12), new java.awt.Color(0, 102, 255))); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 255, 255), 2, true), "Steak Menu", 1, 0, new java.awt.Font("Trebuchet MS", 1, 12), new java.awt.Color(0, 102, 255))); // NOI18N
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         rbtSteakMenu2.setText("Grilled Steak with Black-Eyed Peas");
@@ -332,7 +332,7 @@ public class Restaurant extends javax.swing.JFrame {
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/steak_96px.png"))); // NOI18N
         jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, 80));
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 255, 255), 2, true), "Burger Menu", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Trebuchet MS", 1, 12), new java.awt.Color(0, 102, 255))); // NOI18N
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 255, 255), 2, true), "Burger Menu", 1, 0, new java.awt.Font("Trebuchet MS", 1, 12), new java.awt.Color(0, 102, 255))); // NOI18N
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         rbtBurgerMenu0.setText("Cheese burger");
@@ -362,7 +362,7 @@ public class Restaurant extends javax.swing.JFrame {
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/hamburger_96px.png"))); // NOI18N
         jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 90, 80));
 
-        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 255, 255), 2, true), "Seafood Menu", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Trebuchet MS", 1, 12), new java.awt.Color(0, 102, 255))); // NOI18N
+        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 255, 255), 2, true), "Seafood Menu", 1, 0, new java.awt.Font("Trebuchet MS", 1, 12), new java.awt.Color(0, 102, 255))); // NOI18N
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setText("with Garlic bread");
@@ -395,7 +395,7 @@ public class Restaurant extends javax.swing.JFrame {
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/prawn_96px.png"))); // NOI18N
         jPanel6.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 80, 80));
 
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 255, 255), 2, true), "Salad Menu", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Trebuchet MS", 1, 12), new java.awt.Color(0, 102, 255))); // NOI18N
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 255, 255), 2, true), "Salad Menu", 1, 0, new java.awt.Font("Trebuchet MS", 1, 12), new java.awt.Color(0, 102, 255))); // NOI18N
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         rbtSaladMenu2.setText("Garden salad");
@@ -429,9 +429,6 @@ public class Restaurant extends javax.swing.JFrame {
         jLabel14.setForeground(new java.awt.Color(0, 102, 255));
         jLabel14.setText("Select table");
 
-        cmbTable.setBackground(new java.awt.Color(204, 255, 255));
-        cmbTable.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
-        cmbTable.setForeground(new java.awt.Color(0, 102, 255));
         cmbTable.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Table 1", "Table 2", "Table 3", "Table 4", "Table 5" }));
 
         javax.swing.GroupLayout pnlOrderMenuLayout = new javax.swing.GroupLayout(pnlOrderMenu);
@@ -473,7 +470,7 @@ public class Restaurant extends javax.swing.JFrame {
                     .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnPlaceOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -910,6 +907,7 @@ public class Restaurant extends javax.swing.JFrame {
         if(orderComment.length() > 0){
             
         }else{// If there is no comment
+            orderComment = "No special comment";
         }
     }//GEN-LAST:event_btnPlaceOrderActionPerformed
 

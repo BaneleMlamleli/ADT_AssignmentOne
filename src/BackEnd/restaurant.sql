@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `restaurant`.`order` (
   `order_id` INT(11) NOT NULL AUTO_INCREMENT,
   `comment` VARCHAR(256) NULL DEFAULT NULL,
   `order_name` VARCHAR(45) NULL DEFAULT NULL COMMENT 'This refers to the actual name of the order that is in the menu. E.g. Steak and Chips or Grilled chicken salad',
-  `table_number` INT(11) NULL DEFAULT NULL COMMENT 'I\\\\\'\'ve changed it to table_number instead of table_name',
+  `table_name` VARCHAR(45) NULL DEFAULT NULL,
   `waiter_name` VARCHAR(45) NULL DEFAULT NULL,
   `order_status` VARCHAR(45) NULL DEFAULT NULL,
   `order_bill` DOUBLE NOT NULL,
@@ -64,7 +64,7 @@ DROP TABLE IF EXISTS `restaurant`.`table`;
 CREATE TABLE IF NOT EXISTS `restaurant`.`table` (
   `table_id` INT(11) NOT NULL AUTO_INCREMENT,
   `table_status` VARCHAR(45) NULL DEFAULT NULL,
-  `table_number` INT(11) NULL DEFAULT NULL COMMENT 'I\\\\\'\'ve changed it to table_number instead of table_name',
+  `table_name` VARCHAR(45) NULL DEFAULT NULL,
   `waiter_name` VARCHAR(45) NULL DEFAULT NULL,
   PRIMARY KEY (`table_id`))
 ENGINE = InnoDB

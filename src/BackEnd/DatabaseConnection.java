@@ -199,8 +199,8 @@ public class DatabaseConnection {
         System.out.println("total users:" + totalUsers);
         return totalUsers;
     }
-    public static void main(String[]args){
-        DatabaseConnection dbCon = new DatabaseConnection();
-        System.out.println(dbCon.getSqlScript());
-    }
+//    public static void main(String[]args){
+//        DatabaseConnection dbCon = new DatabaseConnection();
+//        System.out.println(dbCon.getSqlScript());
+//    }
 }
