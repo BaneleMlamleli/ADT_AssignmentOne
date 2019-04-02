@@ -5,8 +5,10 @@
  */
 package FrontEnd;
 
+import BackEnd.DatabaseConnection;
 import BackEnd.Order;
 import java.awt.Color;
+import java.util.Calendar;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import org.jfree.chart.*;
@@ -904,6 +906,8 @@ public class Restaurant extends javax.swing.JFrame {
         String selectedTable = (String)cmbTable.getSelectedItem();
         String waiterName = username;
         double bill = 1.0 + (Math.random() * (2000.00 - 1.0));
+        Calendar c = Calendar.getInstance();
+        String date = c.get(Calendar.DAY_OF_MONTH)+"/"+c.get(Calendar.MONTH)+"/"+c.get(Calendar.YEAR);
         //check if there is any comment in the text box.
         if(orderComment.length() > 0){
             for(int a = 0; a < selectedItem.length; a++){
@@ -915,9 +919,9 @@ public class Restaurant extends javax.swing.JFrame {
                         case 0:
                             // These are all the items that make up the 'Big steak salad' food
                             String bigSteakSalad[] = {"Beef", "Roma tomatoes", "Lettuce", "Black pepper", "Red onion", "White cheese"};
-                            updateStock(bigSteakSalad[]);
-                            insertTableDetails("Occupied", selectedTable, waiterName);
-                            insertOrderDetails(orderComment, selectedItem[a].getOrder_name(), selectedTable, waiterName, "New", bill, date);
+                            DatabaseConnection.updateStock(bigSteakSalad);
+                            DatabaseConnection.insertTableDetails("Occupied", selectedTable, waiterName);
+                            DatabaseConnection.insertOrderDetails(orderComment, selectedItem[a].getOrder_name(), selectedTable, waiterName, "New", bill, date);
                             break;
                         case 1:
                             // These are all the items that make up the 'Steak and chips' food
