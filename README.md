@@ -3,9 +3,9 @@
 
 ### **Menu**
 1. Burger :hamburger:
-    - Cheese Burger (Cheese, Beef, lettuce, tomatoe, onion)
-    - Chicken burger (Chicken, lettuce, tomatoe, onion)
-    - Beef burger (Beef, lettuce, tomatoe, onion)
+    - Cheese Burger (Cheese, Beef patty, lettuce, tomatoe, onion)
+    - Chicken burger (Chicken patty, lettuce, tomatoe, onion)
+    - Beef burger (Beef patty, lettuce, tomatoe, onion)
 			
 2. Steak :meat_on_bone:
     - Steak and chips (Potatoes)
