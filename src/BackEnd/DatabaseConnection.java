@@ -40,11 +40,11 @@ public class DatabaseConnection {
             }
             if(availableData == 0){
                 // inserting all the individual menu items into the stock table and initialising the stock to zero
-                String itemName[] = {"White cheese", "Parmesan cheese", "Cheese", "Beef",
-                    "Chicken breast", "Chicken strips", "Calamari", "Blue point oyster", "Shrimp",
-                    "Crawfish", "Garlic bread", "Crouton", "Green leaf lettuce", "Red leaf lettuce",
+                String itemName[] = {"White cheese", "Parmesan cheese", "Cheese", "Beef", "Beef patty",
+                    "Chicken breast", "Chicken patty", "Chicken strips", "Calamari", "Blue point oyster", "Shrimp",
+                    "Crawfish", "Garlic bread", "Crouton", "Green leaf lettuce", "Red leaf lettuce", "Lemon",
                     "Romaine lettuce", "Gherkins", "Caesar dressing", "Cucumber", "Carrot", "Red onion",
-                    "White onion", "Roma tomatoes", "Black-eyed peas", "Black pepper"};
+                    "White onion", "Roma tomatoes", "Black-eyed peas", "Black pepper", "canola oil", "Flour"};
 
                 for (int a = 0; a < itemName.length; a++) {
                     // create a prepared statement
@@ -199,8 +199,9 @@ public class DatabaseConnection {
         System.out.println("total users:" + totalUsers);
         return totalUsers;
     }
-//    public static void main(String[]args){
-//        DatabaseConnection dbCon = new DatabaseConnection();
-//        System.out.println(dbCon.getSqlScript());
-//    }
+    public static void main(String[]args){
+        java.util.Date date;
+        date = new java.util.Date();
+        System.out.println(date.toString());
+    }
 }

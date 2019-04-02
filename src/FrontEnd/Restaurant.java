@@ -903,9 +903,68 @@ public class Restaurant extends javax.swing.JFrame {
         String orderComment = txtOrderComment.getText();
         String selectedTable = (String)cmbTable.getSelectedItem();
         String waiterName = username;
+        double bill = 1.0 + (Math.random() * (2000.00 - 1.0));
         //check if there is any comment in the text box.
         if(orderComment.length() > 0){
-            
+            for(int a = 0; a < selectedItem.length; a++){
+                if(selectedItem[a] == null){
+                    continue;
+                }
+                if(selectedItem[a].isSelectedRadioButtonItem()){
+                    switch(a){
+                        case 0:
+                            // These are all the items that make up the 'Big steak salad' food
+                            String bigSteakSalad[] = {"Beef", "Roma tomatoes", "Lettuce", "Black pepper", "Red onion", "White cheese"};
+                            updateStock(bigSteakSalad[]);
+                            insertTableDetails("Occupied", selectedTable, waiterName);
+                            insertOrderDetails(orderComment, selectedItem[a].getOrder_name(), selectedTable, waiterName, "New", bill, date);
+                            break;
+                        case 1:
+                            // These are all the items that make up the 'Steak and chips' food
+                            String steakAndChips[] = {"Beef", "Potatoes"};
+                            break;
+                        case 2:
+                            
+                            break;
+                        case 3:
+                            // These are all the items that make up the 'Cheese burger' food
+                            String cheeseBurger[] = {"Cheese", "Beef patty", "Lettuce", "Tomatoe", "Onion"};
+                            break;
+                        case 4:
+                            // These are all the items that make up the 'Chicken burger' food
+                            String chickenBurger[] = {"Chicken patty", "Lettuce", "Tomatoe", "Onion"};
+                            break;
+                        case 5:
+                            // These are all the items that make up the 'Beef burger' food
+                            String beefBurger[] = {"Beef patty", "Lettuce", "Tomatoe", "Onion"};
+                            break;
+                        case 6:
+                            // These are all the items that make up the 'Fried Calamari' food
+                            String friedCalamari[] = {"Calamari", "Canola oil", "Flour"};
+                            break;
+                        case 7:
+                            // These are all the items that make up the 'Blue point Oysters' food
+                            String bluePointOysters[] = {"Blue point Oysters", "Lemon"};
+                            break;
+                        case 8:
+                            // These are all the items that make up the 'Shrimp & Crawfish fondeaux with Garlic break' food
+                            String shrimpAndCrawfishFondeauxWithGarlicBread[] = {"Shrimp", "Crawfish", "Garlic bread"};
+                            break;
+                        case 9:
+                            // These are all the items that make up the 'Ceaser salad' food
+                            String ceaserSalad[] = {"Parmesan cheese", "Croutons", "Romaine lettuce", "Caesar dressing"};
+                            break;
+                        case 10:
+                            // These are all the items that make up the 'Grilled chicken salad' food
+                            String grilledChickenSalad[] = {"Green leaf lettuce", "Red leaf lettuce", "Roma tomatoes", "Red onion", "Carrot", "Crouton", "Cucumber", "Chicken breast"};
+                            break;
+                        case 11:
+                            // These are all the items that make up the 'Garden salad' food
+                            String gardenSalad[] = {"Green leaf lettuce", "Red leaf lettuce", "Romaine lettuce", "Red onion", "Crouton", "Cucumber", "Roma tomatoes"};
+                            break;
+                    }
+                }
+            }
         }else{// If there is no comment
             orderComment = "No special comment";
         }
