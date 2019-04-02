@@ -199,9 +199,19 @@ public class DatabaseConnection {
         System.out.println("total users:" + totalUsers);
         return totalUsers;
     }
-    public static void main(String[]args){
-        java.util.Date date;
-        date = new java.util.Date();
-        System.out.println(date.toString());
+    
+    public static void updateStock(String bigSteakSalad[]){
+        
     }
+    
+    public static void insertTableDetails(String tableStatus, String selectedTable, String waiterName){
+    }
+    
+    public static void insertOrderDetails(String orderComment, String order_name, String selectedTable, String waiterName, String orderStatus, double bill, String date){
+        
+    }
+    
+//    public static void main(String[]args){
+//        System.out.println();
+//    }
 }
