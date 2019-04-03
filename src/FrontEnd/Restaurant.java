@@ -8,6 +8,8 @@ package FrontEnd;
 import BackEnd.DatabaseConnection;
 import BackEnd.Order;
 import java.awt.Color;
+import java.sql.SQLException;
+import java.sql.SQLSyntaxErrorException;
 import java.util.Calendar;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
@@ -906,6 +908,7 @@ public class Restaurant extends javax.swing.JFrame {
         String selectedTable = (String)cmbTable.getSelectedItem();
         String waiterName = username;
         double bill = 1.0 + (Math.random() * (2000.00 - 1.0));
+        // Creating a date stamp for the order
         Calendar c = Calendar.getInstance();
         String date = c.get(Calendar.DAY_OF_MONTH)+"/"+c.get(Calendar.MONTH)+"/"+c.get(Calendar.YEAR);
         //check if there is any comment in the text box.
@@ -915,62 +918,23 @@ public class Restaurant extends javax.swing.JFrame {
                     continue;
                 }
                 if(selectedItem[a].isSelectedRadioButtonItem()){
-                    switch(a){
-                        case 0:
-                            // These are all the items that make up the 'Big steak salad' food
-                            String bigSteakSalad[] = {"Beef", "Roma tomatoes", "Lettuce", "Black pepper", "Red onion", "White cheese"};
-                            DatabaseConnection.updateStock(bigSteakSalad);
-                            DatabaseConnection.insertTableDetails("Occupied", selectedTable, waiterName);
-                            DatabaseConnection.insertOrderDetails(orderComment, selectedItem[a].getOrder_name(), selectedTable, waiterName, "New", bill, date);
-                            break;
-                        case 1:
-                            // These are all the items that make up the 'Steak and chips' food
-                            String steakAndChips[] = {"Beef", "Potatoes"};
-                            break;
-                        case 2:
-                            
-                            break;
-                        case 3:
-                            // These are all the items that make up the 'Cheese burger' food
-                            String cheeseBurger[] = {"Cheese", "Beef patty", "Lettuce", "Tomatoe", "Onion"};
-                            break;
-                        case 4:
-                            // These are all the items that make up the 'Chicken burger' food
-                            String chickenBurger[] = {"Chicken patty", "Lettuce", "Tomatoe", "Onion"};
-                            break;
-                        case 5:
-                            // These are all the items that make up the 'Beef burger' food
-                            String beefBurger[] = {"Beef patty", "Lettuce", "Tomatoe", "Onion"};
-                            break;
-                        case 6:
-                            // These are all the items that make up the 'Fried Calamari' food
-                            String friedCalamari[] = {"Calamari", "Canola oil", "Flour"};
-                            break;
-                        case 7:
-                            // These are all the items that make up the 'Blue point Oysters' food
-                            String bluePointOysters[] = {"Blue point Oysters", "Lemon"};
-                            break;
-                        case 8:
-                            // These are all the items that make up the 'Shrimp & Crawfish fondeaux with Garlic break' food
-                            String shrimpAndCrawfishFondeauxWithGarlicBread[] = {"Shrimp", "Crawfish", "Garlic bread"};
-                            break;
-                        case 9:
-                            // These are all the items that make up the 'Ceaser salad' food
-                            String ceaserSalad[] = {"Parmesan cheese", "Croutons", "Romaine lettuce", "Caesar dressing"};
-                            break;
-                        case 10:
-                            // These are all the items that make up the 'Grilled chicken salad' food
-                            String grilledChickenSalad[] = {"Green leaf lettuce", "Red leaf lettuce", "Roma tomatoes", "Red onion", "Carrot", "Crouton", "Cucumber", "Chicken breast"};
-                            break;
-                        case 11:
-                            // These are all the items that make up the 'Garden salad' food
-                            String gardenSalad[] = {"Green leaf lettuce", "Red leaf lettuce", "Romaine lettuce", "Red onion", "Crouton", "Cucumber", "Roma tomatoes"};
-                            break;
-                    }
+                    updateStockForSelectedMenuName(a);
                 }
+                DatabaseConnection.insertOrderDetails(orderComment, selectedItem[a].getOrder_name(), selectedTable, waiterName, "New", bill, date);
             }
+            DatabaseConnection.insertTableDetails("Occupied", selectedTable, waiterName);
         }else{// If there is no comment
             orderComment = "No special comment";
+            for(int a = 0; a < selectedItem.length; a++){
+                if(selectedItem[a] == null){
+                    continue;
+                }
+                if(selectedItem[a].isSelectedRadioButtonItem()){
+                    updateStockForSelectedMenuName(a);
+                }
+                DatabaseConnection.insertOrderDetails(orderComment, selectedItem[a].getOrder_name(), selectedTable, waiterName, "New", bill, date);
+            }
+            DatabaseConnection.insertTableDetails("Occupied", selectedTable, waiterName);
         }
     }//GEN-LAST:event_btnPlaceOrderActionPerformed
 
@@ -1018,40 +982,111 @@ public class Restaurant extends javax.swing.JFrame {
         }
     }
     
+    public void updateStockForSelectedMenuName(int a){
+        try {
+            switch (a) {
+                case 0:
+                    // These are all the items that make up the 'Big steak salad' food
+                    String bigSteakSalad[] = {"Beef", "Roma tomatoes", "Lettuce", "Black pepper", "Red onion", "White cheese"};
+                    DatabaseConnection.updateStock(bigSteakSalad);
+                    break;
+                case 1:
+                    // These are all the items that make up the 'Steak and chips' food
+                    String steakAndChips[] = {"Beef", "Potatoes"};
+                    DatabaseConnection.updateStock(steakAndChips);
+                    break;
+                case 2:
+
+                    break;
+                case 3:
+                    // These are all the items that make up the 'Cheese burger' food
+                    String cheeseBurger[] = {"Cheese", "Beef patty", "Lettuce", "Tomatoe", "Onion"};
+                    DatabaseConnection.updateStock(cheeseBurger);
+                    break;
+                case 4:
+                    // These are all the items that make up the 'Chicken burger' food
+                    String chickenBurger[] = {"Chicken patty", "Lettuce", "Tomatoe", "Onion"};
+                    DatabaseConnection.updateStock(chickenBurger);
+                    break;
+                case 5:
+                    // These are all the items that make up the 'Beef burger' food
+                    String beefBurger[] = {"Beef patty", "Lettuce", "Tomatoe", "Onion"};
+                    DatabaseConnection.updateStock(beefBurger);
+                    break;
+                case 6:
+                    // These are all the items that make up the 'Fried Calamari' food
+                    String friedCalamari[] = {"Calamari", "Canola oil", "Flour"};
+                    DatabaseConnection.updateStock(friedCalamari);
+                    break;
+                case 7:
+                    // These are all the items that make up the 'Blue point Oysters' food
+                    String bluePointOysters[] = {"Blue point Oysters", "Lemon"};
+                    DatabaseConnection.updateStock(bluePointOysters);
+                    break;
+                case 8:
+                    // These are all the items that make up the 'Shrimp & Crawfish fondeaux with Garlic break' food
+                    String shrimpAndCrawfishFondeauxWithGarlicBread[] = {"Shrimp", "Crawfish", "Garlic bread"};
+                    DatabaseConnection.updateStock(shrimpAndCrawfishFondeauxWithGarlicBread);
+                    break;
+                case 9:
+                    // These are all the items that make up the 'Ceaser salad' food
+                    String ceaserSalad[] = {"Parmesan cheese", "Croutons", "Romaine lettuce", "Caesar dressing"};
+                    DatabaseConnection.updateStock(ceaserSalad);
+                    break;
+                case 10:
+                    // These are all the items that make up the 'Grilled chicken salad' food
+                    String grilledChickenSalad[] = {"Green leaf lettuce", "Red leaf lettuce", "Roma tomatoes", "Red onion", "Carrot", "Crouton", "Cucumber", "Chicken breast"};
+                    DatabaseConnection.updateStock(grilledChickenSalad);
+                    break;
+                case 11:
+                    // These are all the items that make up the 'Garden salad' food
+                    String gardenSalad[] = {"Green leaf lettuce", "Red leaf lettuce", "Romaine lettuce", "Red onion", "Crouton", "Cucumber", "Roma tomatoes"};
+                    DatabaseConnection.updateStock(gardenSalad);
+                    break;
+            }
+        } catch (SQLSyntaxErrorException see) {
+            see.printStackTrace();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Restaurant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Restaurant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Restaurant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Restaurant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Restaurant("Jacob", "Waiter").setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(Restaurant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(Restaurant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(Restaurant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(Restaurant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new Restaurant("Jacob", "Waiter").setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel btnOrderBoard;

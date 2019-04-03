@@ -196,12 +196,47 @@ public class DatabaseConnection {
                 statement.close();
             }
         }
-        System.out.println("total users:" + totalUsers);
         return totalUsers;
     }
     
-    public static void updateStock(String bigSteakSalad[]){
-        
+    public static void updateStock(String itemMenu[]) throws SQLException{
+        System.out.println("Inside method");
+        try{
+            // creating the statement
+            statement = connection.createStatement();
+            // execute the sql query
+            resultset = statement.executeQuery("SELECT * FROM restaurant.stock");
+            // processing the results to very the entered login details
+            for (String itemMenu1 : itemMenu) {
+                while(resultset.next()){
+                    System.out.println(resultset.getInt(2));
+                    if (itemMenu1.equalsIgnoreCase(resultset.getString("item_name"))) {
+                        System.out.println("resultset.getString(\"item_name\"): " + resultset.getString("item_name") + "\n" +
+                                "itemMenu1: " + itemMenu1 + "\n" + "resultset.getInt(2)+1): " + (resultset.getInt(2)+1));
+//                        prepStatement = connection.prepareStatement("UPDATE restaurant.stock SET usage = ?");
+//                        prepStatement.setInt(2, (resultset.getInt(2)+1));
+//                        prepStatement.executeUpdate();
+                    }
+                }
+            }
+            System.out.println("stock update executed");
+        }catch(SQLSyntaxErrorException see){
+            see.printStackTrace();
+        }catch(SQLException ex){
+            ex.printStackTrace();
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            if(resultset != null){
+                resultset.close();
+            }
+            if(statement != null){
+                statement.close();
+            }
+            if(prepStatement != null){
+                prepStatement.close();
+            }
+        }
     }
     
     public static void insertTableDetails(String tableStatus, String selectedTable, String waiterName){
@@ -211,7 +246,8 @@ public class DatabaseConnection {
         
     }
     
-//    public static void main(String[]args){
-//        System.out.println();
-//    }
+    public static void main(String[]args) throws SQLException{
+        String items[] = {"Beef", "Beef patty"};
+        DatabaseConnection.updateStock(items);
+    }
 }
