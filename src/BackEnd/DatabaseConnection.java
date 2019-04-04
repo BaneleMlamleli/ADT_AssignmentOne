@@ -11,6 +11,7 @@ package BackEnd;
  */
 import java.io.*;
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.*;
 public class DatabaseConnection {
     public static Statement statement = null;
@@ -200,7 +201,6 @@ public class DatabaseConnection {
     }
     
     public static void updateStock(String itemMenu[]) throws SQLException{
-        System.out.println("Inside method");
         try{
             // creating the statement
             statement = connection.createStatement();
@@ -209,13 +209,11 @@ public class DatabaseConnection {
             // processing the results to very the entered login details
             for (String itemMenu1 : itemMenu) {
                 while(resultset.next()){
-                    System.out.println(resultset.getInt(2));
                     if (itemMenu1.equalsIgnoreCase(resultset.getString("item_name"))) {
-                        System.out.println("resultset.getString(\"item_name\"): " + resultset.getString("item_name") + "\n" +
-                                "itemMenu1: " + itemMenu1 + "\n" + "resultset.getInt(2)+1): " + (resultset.getInt(2)+1));
-//                        prepStatement = connection.prepareStatement("UPDATE restaurant.stock SET usage = ?");
-//                        prepStatement.setInt(2, (resultset.getInt(2)+1));
-//                        prepStatement.executeUpdate();
+                        prepStatement = connection.prepareStatement("UPDATE restaurant.stock SET restaurant.stock.usage = ? WHERE restaurant.stock.item_name = ?");
+                        prepStatement.setInt(1, (Integer.parseInt(resultset.getString("usage"))+1));
+                        prepStatement.setString(2, itemMenu1);
+                        prepStatement.executeUpdate();
                     }
                 }
             }
@@ -239,15 +237,67 @@ public class DatabaseConnection {
         }
     }
     
-    public static void insertTableDetails(String tableStatus, String selectedTable, String waiterName){
+    public static void insertTableDetails(String tableStatus, String selectedTable, String waiterName) throws SQLException{
+        try{
+            prepStatement = connection.prepareStatement("INSERT INTO restaurant.table (table_status, table_name, waiter_name) VALUES(?, ?, ?)");
+            prepStatement.setString(1, tableStatus);
+            prepStatement.setString(2, selectedTable);
+            prepStatement.setString(3, waiterName);
+            prepStatement.execute();
+            System.out.println(selectedTable+" order details inserted successfully");
+        }catch(SQLSyntaxErrorException see){
+            see.printStackTrace();
+        }catch(SQLException ex){
+            ex.printStackTrace();
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            if(resultset != null){
+                resultset.close();
+            }
+            if(statement != null){
+                statement.close();
+            }
+            if(prepStatement != null){
+                prepStatement.close();
+            }
+        }
     }
     
-    public static void insertOrderDetails(String orderComment, String order_name, String selectedTable, String waiterName, String orderStatus, double bill, String date){
-        
+    public static void insertOrderDetails(String orderComment, String order_name, String selectedTable, String waiterName, String orderStatus, double bill, String date) throws SQLException{
+        try{
+            prepStatement = connection.prepareStatement("INSERT INTO restaurant.order (comment, order_name, table_name, waiter_name, order_status, order_bill, order_date) VALUES(?, ?, ?, ?, ?, ?, ?)");
+            prepStatement.setString(1, orderComment);
+            prepStatement.setString(2, order_name);
+            prepStatement.setString(3, selectedTable);
+            prepStatement.setString(4, waiterName);
+            prepStatement.setString(5, orderStatus);
+            prepStatement.setDouble(6, bill);
+            prepStatement.setString(7, date);
+            prepStatement.execute();
+            System.out.println("Order has been placed successfully");
+        }catch(SQLSyntaxErrorException see){
+            see.printStackTrace();
+        }catch(SQLException ex){
+            ex.printStackTrace();
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            if(resultset != null){
+                resultset.close();
+            }
+            if(statement != null){
+                statement.close();
+            }
+            if(prepStatement != null){
+                prepStatement.close();
+            }
+        }        
     }
     
-    public static void main(String[]args) throws SQLException{
-        String items[] = {"Beef", "Beef patty"};
-        DatabaseConnection.updateStock(items);
-    }
+//    public static void main(String[]args) throws SQLException{
+//        java.util.Date date = new java.util.Date();
+//        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+//        System.out.println(formatter.format(date));
+//    }
 }

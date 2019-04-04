@@ -10,7 +10,13 @@ import BackEnd.Order;
 import java.awt.Color;
 import java.sql.SQLException;
 import java.sql.SQLSyntaxErrorException;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import org.jfree.chart.*;
@@ -108,10 +114,6 @@ public class Restaurant extends javax.swing.JFrame {
         jPanel12 = new javax.swing.JPanel();
         jScrollPane6 = new javax.swing.JScrollPane();
         tblInprogressOrder = new javax.swing.JTable();
-        jPanel8 = new javax.swing.JPanel();
-        jPanel11 = new javax.swing.JPanel();
-        jScrollPane7 = new javax.swing.JScrollPane();
-        tblNewOrder = new javax.swing.JTable();
         jPanel9 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         jScrollPane8 = new javax.swing.JScrollPane();
@@ -306,7 +308,7 @@ public class Restaurant extends javax.swing.JFrame {
         txtOrderComment.setWrapStyleWord(true);
         jScrollPane3.setViewportView(txtOrderComment);
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 255, 255), 2, true), "Steak Menu", 1, 0, new java.awt.Font("Trebuchet MS", 1, 12), new java.awt.Color(0, 102, 255))); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 255, 255), 2, true), "Steak Menu", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Trebuchet MS", 1, 12), new java.awt.Color(0, 102, 255))); // NOI18N
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         rbtSteakMenu2.setText("Grilled Steak with Black-Eyed Peas");
@@ -336,7 +338,7 @@ public class Restaurant extends javax.swing.JFrame {
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/steak_96px.png"))); // NOI18N
         jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, 80));
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 255, 255), 2, true), "Burger Menu", 1, 0, new java.awt.Font("Trebuchet MS", 1, 12), new java.awt.Color(0, 102, 255))); // NOI18N
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 255, 255), 2, true), "Burger Menu", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Trebuchet MS", 1, 12), new java.awt.Color(0, 102, 255))); // NOI18N
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         rbtBurgerMenu0.setText("Cheese burger");
@@ -366,7 +368,7 @@ public class Restaurant extends javax.swing.JFrame {
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/hamburger_96px.png"))); // NOI18N
         jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 90, 80));
 
-        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 255, 255), 2, true), "Seafood Menu", 1, 0, new java.awt.Font("Trebuchet MS", 1, 12), new java.awt.Color(0, 102, 255))); // NOI18N
+        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 255, 255), 2, true), "Seafood Menu", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Trebuchet MS", 1, 12), new java.awt.Color(0, 102, 255))); // NOI18N
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setText("with Garlic bread");
@@ -399,7 +401,7 @@ public class Restaurant extends javax.swing.JFrame {
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/prawn_96px.png"))); // NOI18N
         jPanel6.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 80, 80));
 
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 255, 255), 2, true), "Salad Menu", 1, 0, new java.awt.Font("Trebuchet MS", 1, 12), new java.awt.Color(0, 102, 255))); // NOI18N
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 255, 255), 2, true), "Salad Menu", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Trebuchet MS", 1, 12), new java.awt.Color(0, 102, 255))); // NOI18N
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         rbtSaladMenu2.setText("Garden salad");
@@ -597,64 +599,6 @@ public class Restaurant extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("In progress order", jPanel7);
-
-        tblNewOrder.setAutoCreateRowSorter(true);
-        tblNewOrder.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Order id", "Table number", "Waiter name", "Order name", "Order bill"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tblNewOrder.setGridColor(new java.awt.Color(0, 102, 255));
-        tblNewOrder.setIntercellSpacing(new java.awt.Dimension(3, 3));
-        jScrollPane7.setViewportView(tblNewOrder);
-
-        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
-        jPanel11.setLayout(jPanel11Layout);
-        jPanel11Layout.setHorizontalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 705, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel11Layout.setVerticalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("New order", jPanel8);
 
         tblOrderWithIssue.setAutoCreateRowSorter(true);
         tblOrderWithIssue.setModel(new javax.swing.table.DefaultTableModel(
@@ -907,34 +851,41 @@ public class Restaurant extends javax.swing.JFrame {
         String orderComment = txtOrderComment.getText();
         String selectedTable = (String)cmbTable.getSelectedItem();
         String waiterName = username;
-        double bill = 1.0 + (Math.random() * (2000.00 - 1.0));
         // Creating a date stamp for the order
+        Date dt = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        String date = formatter.format(dt);
         Calendar c = Calendar.getInstance();
-        String date = c.get(Calendar.DAY_OF_MONTH)+"/"+c.get(Calendar.MONTH)+"/"+c.get(Calendar.YEAR);
-        //check if there is any comment in the text box.
-        if(orderComment.length() > 0){
-            for(int a = 0; a < selectedItem.length; a++){
-                if(selectedItem[a] == null){
-                    continue;
+        try {
+            //check if there is any comment in the txtOrderComment text box.
+            if (orderComment.length() > 0) {
+                for (int a = 0; a < selectedItem.length; a++) {
+                    if (selectedItem[a] == null) {
+                        continue;
+                    }
+                    if (selectedItem[a].isSelectedRadioButtonItem()) {
+                        updateStockForSelectedMenuName(a);
+                    }
+                    DatabaseConnection.insertOrderDetails(orderComment, selectedItem[a].getOrder_name(), selectedTable, waiterName, "New", Double.parseDouble(String.format( "%.2f",  1.0 + (Math.random() * (2000.00 - 1.0)))), date);
                 }
-                if(selectedItem[a].isSelectedRadioButtonItem()){
-                    updateStockForSelectedMenuName(a);
+                DatabaseConnection.insertTableDetails("Occupied", selectedTable, waiterName);
+                cmbTable.removeItemAt(cmbTable.getSelectedIndex()); // removing the table in the list since it is occupied
+            } else {// If there is no comment in the txtOrderComment text box
+                orderComment = "No special comment";
+                for (int a = 0; a < selectedItem.length; a++) {
+                    if (selectedItem[a] == null) {
+                        continue;
+                    }
+                    if (selectedItem[a].isSelectedRadioButtonItem()) {
+                        updateStockForSelectedMenuName(a);
+                    }
+                    DatabaseConnection.insertOrderDetails(orderComment, selectedItem[a].getOrder_name(), selectedTable, waiterName, "New", Double.parseDouble(String.format( "%.2f",  1.0 + (Math.random() * (2000.00 - 1.0)))), date);
                 }
-                DatabaseConnection.insertOrderDetails(orderComment, selectedItem[a].getOrder_name(), selectedTable, waiterName, "New", bill, date);
+                DatabaseConnection.insertTableDetails("Occupied", selectedTable, waiterName);
+                cmbTable.removeItemAt(cmbTable.getSelectedIndex()); // removing the table in the list since it is occupied
             }
-            DatabaseConnection.insertTableDetails("Occupied", selectedTable, waiterName);
-        }else{// If there is no comment
-            orderComment = "No special comment";
-            for(int a = 0; a < selectedItem.length; a++){
-                if(selectedItem[a] == null){
-                    continue;
-                }
-                if(selectedItem[a].isSelectedRadioButtonItem()){
-                    updateStockForSelectedMenuName(a);
-                }
-                DatabaseConnection.insertOrderDetails(orderComment, selectedItem[a].getOrder_name(), selectedTable, waiterName, "New", bill, date);
-            }
-            DatabaseConnection.insertTableDetails("Occupied", selectedTable, waiterName);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
         }
     }//GEN-LAST:event_btnPlaceOrderActionPerformed
 
@@ -1053,40 +1004,60 @@ public class Restaurant extends javax.swing.JFrame {
         }
     }
     
+    // This method will return the month name instead of a month number
+    public String getMonthName(int monthNumber){
+        String month = "";
+        switch(monthNumber){
+            case 1: month = "January";break;
+            case 2: month = "Fabruary";break;
+            case 3: month = "March";break;
+            case 4: month = "April";break;
+            case 5: month = "May";break;
+            case 6: month = "June";break;
+            case 7: month = "July";break;
+            case 8: month = "August";break;
+            case 9: month = "September";break;
+            case 10: month = "October";break;
+            case 11: month = "November";break;
+            case 12: month = "December";break;
+        }
+        return month;
+    }
+    
     /**
      * @param args the command line arguments
      */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(Restaurant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(Restaurant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(Restaurant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(Restaurant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new Restaurant("Jacob", "Waiter").setVisible(true);
-//            }
-//        });
-//    }
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Restaurant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Restaurant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Restaurant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Restaurant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Restaurant("Jacob", "Waiter").setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel btnOrderBoard;
@@ -1110,7 +1081,6 @@ public class Restaurant extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -1118,12 +1088,10 @@ public class Restaurant extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator3;
@@ -1152,7 +1120,6 @@ public class Restaurant extends javax.swing.JFrame {
     private javax.swing.JRadioButton rbtSteakMenu2;
     private javax.swing.JTable tblCollectionOrder;
     private javax.swing.JTable tblInprogressOrder;
-    private javax.swing.JTable tblNewOrder;
     private javax.swing.JTable tblOrderWithIssue;
     private javax.swing.JTextArea txtOrderComment;
     // End of variables declaration//GEN-END:variables
