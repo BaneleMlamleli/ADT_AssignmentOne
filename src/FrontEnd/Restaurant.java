@@ -758,30 +758,23 @@ public class Restaurant extends javax.swing.JFrame {
         pnlOrderBoard.setVisible(false);
         pnlStorkReport.setVisible(true);
         
+        String itemName[] = {"White cheese", "Parmesan cheese", "Cheese", "Beef", "Beef patty",
+                    "Chicken breast", "Chicken patty", "Chicken strips", "Calamari", "Blue point oyster", "Shrimp",
+                    "Crawfish", "Garlic bread", "Crouton", "Green leaf lettuce", "Red leaf lettuce", "Lemon",
+                    "Romaine lettuce", "Gherkins", "Caesar dressing", "Cucumber", "Carrot", "Red onion",
+                    "White onion", "Roma tomatoes", "Black-eyed peas", "Black pepper", "canola oil", "Flour"};
+        
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        dataset.setValue(30, "Used stock (%)", "Xxxx Xxxx");
-        dataset.setValue(50, "Used stock (%)", "Xxxxx xxxxx");
-        dataset.setValue(70, "Used stock (%)", "Xxxxx xxxx x");
-        dataset.setValue(16, "Used stock (%)", "Xxxxx xxxxx");
-        dataset.setValue(20, "Used stock (%)", "Xxxx xxxxx");
-        dataset.setValue(90, "Used stock (%)", "Xxxxxxx");
-        dataset.setValue(50, "Used stock (%)", "XXXXXXXXXX");
-        dataset.setValue(90, "Used stock (%)", "Xxxxxxx");
-        JFreeChart jchart = ChartFactory.createBarChart3D("Stock report", "Product", "Stock used(%)", dataset, PlotOrientation.VERTICAL,
-                true, true, false);
+        for(int i = 0; i < 15; i++){
+            dataset.setValue(Math.random(), "Used stock (%)", itemName[i]);
+        }
+        JFreeChart jchart = ChartFactory.createBarChart("Stock report", "Product", "Stock used(%)", dataset, PlotOrientation.VERTICAL, true, true, false);
         
         DefaultCategoryDataset dataset1 = new DefaultCategoryDataset();
-        dataset1.setValue(10, "Used stock (%)", "Xxx xxx");
-        dataset1.setValue(30, "Used stock (%)", "Xxxx Xxxx");
-        dataset1.setValue(50, "Used stock (%)", "Xxxxx xxxxx");
-        dataset1.setValue(70, "Used stock (%)", "Xxxxx xxxx x");
-        dataset1.setValue(16, "Used stock (%)", "Xxxxx xxxxx");
-        dataset1.setValue(20, "Used stock (%)", "Xxxx xxxxx");
-        dataset1.setValue(90, "Used stock (%)", "Xxxxxxx");
-        dataset1.setValue(50, "Used stock (%)", "XXXXXXXXXX");
-        dataset1.setValue(90, "Used stock (%)", "Xxxxxxx");
-        JFreeChart jchart1 = ChartFactory.createBarChart("Stock report", "Product", "Stock used(%)", dataset1, PlotOrientation.VERTICAL,
-                true, true, false);
+        for(int a = 14; a < itemName.length; a++){
+            dataset1.setValue(Math.random(), "Used stock (%)", itemName[a]);
+        }
+        JFreeChart jchart1 = ChartFactory.createBarChart("Stock report", "Product", "Stock used(%)", dataset1, PlotOrientation.VERTICAL, true, true, false);
         
         CategoryPlot plot = jchart.getCategoryPlot();
         CategoryPlot plot1 = jchart.getCategoryPlot();
