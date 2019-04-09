@@ -121,6 +121,7 @@ public class Restaurant extends javax.swing.JFrame {
         pnlStorkReport = new javax.swing.JPanel();
         pnlTwo = new javax.swing.JPanel();
         pnlOne = new javax.swing.JPanel();
+        btnUpdateAllStork = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -677,24 +678,35 @@ public class Restaurant extends javax.swing.JFrame {
         pnlOne.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 255), 2, true));
         pnlOne.setLayout(new javax.swing.BoxLayout(pnlOne, javax.swing.BoxLayout.LINE_AXIS));
 
+        btnUpdateAllStork.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnUpdateAllStork.setText("UPDATE ALL STORK");
+        btnUpdateAllStork.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateAllStorkActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlStorkReportLayout = new javax.swing.GroupLayout(pnlStorkReport);
         pnlStorkReport.setLayout(pnlStorkReportLayout);
         pnlStorkReportLayout.setHorizontalGroup(
             pnlStorkReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlStorkReportLayout.createSequentialGroup()
+            .addGroup(pnlStorkReportLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnlStorkReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(pnlOne, javax.swing.GroupLayout.DEFAULT_SIZE, 710, Short.MAX_VALUE)
-                    .addComponent(pnlTwo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(pnlStorkReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnlTwo, javax.swing.GroupLayout.DEFAULT_SIZE, 710, Short.MAX_VALUE)
+                    .addComponent(pnlOne, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnUpdateAllStork, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         pnlStorkReportLayout.setVerticalGroup(
             pnlStorkReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlStorkReportLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(pnlOne, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(pnlTwo, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(pnlOne, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(pnlTwo, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnUpdateAllStork, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -910,6 +922,10 @@ public class Restaurant extends javax.swing.JFrame {
         getSelectedItem(arrayIndex, rbtSaladMenu2);
     }//GEN-LAST:event_rbtSaladMenu2ActionPerformed
 
+    private void btnUpdateAllStorkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateAllStorkActionPerformed
+        // Update all stock:
+    }//GEN-LAST:event_btnUpdateAllStorkActionPerformed
+
     void setColour(JPanel panel){
         panel.setBackground(new Color(204,255,204));
     }
@@ -1037,6 +1053,7 @@ public class Restaurant extends javax.swing.JFrame {
     private javax.swing.JPanel btnOrderMenu;
     private javax.swing.JButton btnPlaceOrder;
     private javax.swing.JPanel btnStorkReport;
+    private javax.swing.JButton btnUpdateAllStork;
     private javax.swing.JComboBox<String> cmbTable;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
