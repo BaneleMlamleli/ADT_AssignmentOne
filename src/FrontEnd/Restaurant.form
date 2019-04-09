@@ -106,7 +106,7 @@
             <Property name="useNullLayout" type="boolean" value="false"/>
           </Layout>
           <SubComponents>
-            <Container class="javax.swing.JPanel" name="btnStorkReport">
+            <Container class="javax.swing.JPanel" name="btnStockReport">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="cc" red="33" type="rgb"/>
@@ -118,7 +118,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnStorkReportMouseClicked"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnStockReportMouseClicked"/>
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -172,7 +172,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="66" red="0" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="STORK/REPORT"/>
+                    <Property name="text" type="java.lang.String" value="STOCK/REPORT"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -1160,7 +1160,7 @@
             </Container>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="pnlStorkReport">
+        <Container class="javax.swing.JPanel" name="pnlStockReport">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="270" y="50" width="730" height="550"/>
@@ -1175,7 +1175,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="pnlTwo" pref="710" max="32767" attributes="0"/>
                           <Component id="pnlOne" max="32767" attributes="0"/>
-                          <Component id="btnUpdateAllStork" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnUpdateAllStock" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -1189,7 +1189,7 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="pnlTwo" min="-2" pref="253" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnUpdateAllStork" pref="37" max="32767" attributes="0"/>
+                      <Component id="btnUpdateAllStock" pref="37" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -1222,15 +1222,15 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout"/>
             </Container>
-            <Component class="javax.swing.JButton" name="btnUpdateAllStork">
+            <Component class="javax.swing.JButton" name="btnUpdateAllStock">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="12" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="UPDATE ALL STORK"/>
+                <Property name="text" type="java.lang.String" value="UPDATE ALL STOCK"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUpdateAllStorkActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUpdateAllStockActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

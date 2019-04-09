@@ -6,12 +6,13 @@
 package FrontEnd;
 
 import BackEnd.DatabaseConnection;
-import BackEnd.Order;
+import BackEnd.Stock;
+import BackEnd.TakeOrder;
 import java.awt.Color;
 import java.sql.SQLException;
 import java.sql.SQLSyntaxErrorException;
-import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
@@ -37,7 +38,7 @@ public class Restaurant extends javax.swing.JFrame {
      * Array that will store all the selected menu item/s. An item can only be
      * selected(True) or not selected(False) as I am using grouped radio buttons
      */
-    public static Order[] selectedItem = new Order[12];
+    public static TakeOrder[] selectedItem = new TakeOrder[12];
     
     
     // Creates new form Restaurant
@@ -48,7 +49,7 @@ public class Restaurant extends javax.swing.JFrame {
         lblLoginUser.setText(this.username);
         pnlOrderMenu.setVisible(true);
         pnlOrderBoard.setVisible(false);
-        pnlStorkReport.setVisible(false);
+        pnlStockReport.setVisible(false);
     }
 
     /**
@@ -64,7 +65,7 @@ public class Restaurant extends javax.swing.JFrame {
         lblMinimiseForm = new javax.swing.JLabel();
         lblCloseForm = new javax.swing.JLabel();
         pnlLeftSide = new javax.swing.JPanel();
-        btnStorkReport = new javax.swing.JPanel();
+        btnStockReport = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         btnOrderMenu = new javax.swing.JPanel();
@@ -118,10 +119,10 @@ public class Restaurant extends javax.swing.JFrame {
         jPanel10 = new javax.swing.JPanel();
         jScrollPane8 = new javax.swing.JScrollPane();
         tblOrderWithIssue = new javax.swing.JTable();
-        pnlStorkReport = new javax.swing.JPanel();
+        pnlStockReport = new javax.swing.JPanel();
         pnlTwo = new javax.swing.JPanel();
         pnlOne = new javax.swing.JPanel();
-        btnUpdateAllStork = new javax.swing.JButton();
+        btnUpdateAllStock = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -158,11 +159,11 @@ public class Restaurant extends javax.swing.JFrame {
         pnlLeftSide.setBackground(new java.awt.Color(51, 204, 255));
         pnlLeftSide.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnStorkReport.setBackground(new java.awt.Color(51, 204, 255));
-        btnStorkReport.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        btnStorkReport.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnStockReport.setBackground(new java.awt.Color(51, 204, 255));
+        btnStockReport.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnStockReport.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnStorkReportMouseClicked(evt);
+                btnStockReportMouseClicked(evt);
             }
         });
 
@@ -170,33 +171,33 @@ public class Restaurant extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Trebuchet MS", 1, 25)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 102, 255));
-        jLabel4.setText("STORK/REPORT");
+        jLabel4.setText("STOCK/REPORT");
 
-        javax.swing.GroupLayout btnStorkReportLayout = new javax.swing.GroupLayout(btnStorkReport);
-        btnStorkReport.setLayout(btnStorkReportLayout);
-        btnStorkReportLayout.setHorizontalGroup(
-            btnStorkReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnStorkReportLayout.createSequentialGroup()
+        javax.swing.GroupLayout btnStockReportLayout = new javax.swing.GroupLayout(btnStockReport);
+        btnStockReport.setLayout(btnStockReportLayout);
+        btnStockReportLayout.setHorizontalGroup(
+            btnStockReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnStockReportLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4)
                 .addContainerGap())
         );
-        btnStorkReportLayout.setVerticalGroup(
-            btnStorkReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnStorkReportLayout.createSequentialGroup()
+        btnStockReportLayout.setVerticalGroup(
+            btnStockReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnStockReportLayout.createSequentialGroup()
                 .addContainerGap(17, Short.MAX_VALUE)
-                .addGroup(btnStorkReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnStorkReportLayout.createSequentialGroup()
+                .addGroup(btnStockReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnStockReportLayout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnStorkReportLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnStockReportLayout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addGap(21, 21, 21))))
         );
 
-        pnlLeftSide.add(btnStorkReport, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 270, 80));
+        pnlLeftSide.add(btnStockReport, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 270, 80));
 
         btnOrderMenu.setBackground(new java.awt.Color(204, 255, 204));
         btnOrderMenu.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -678,39 +679,39 @@ public class Restaurant extends javax.swing.JFrame {
         pnlOne.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 255), 2, true));
         pnlOne.setLayout(new javax.swing.BoxLayout(pnlOne, javax.swing.BoxLayout.LINE_AXIS));
 
-        btnUpdateAllStork.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnUpdateAllStork.setText("UPDATE ALL STORK");
-        btnUpdateAllStork.addActionListener(new java.awt.event.ActionListener() {
+        btnUpdateAllStock.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnUpdateAllStock.setText("UPDATE ALL STOCK");
+        btnUpdateAllStock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdateAllStorkActionPerformed(evt);
+                btnUpdateAllStockActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout pnlStorkReportLayout = new javax.swing.GroupLayout(pnlStorkReport);
-        pnlStorkReport.setLayout(pnlStorkReportLayout);
-        pnlStorkReportLayout.setHorizontalGroup(
-            pnlStorkReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlStorkReportLayout.createSequentialGroup()
+        javax.swing.GroupLayout pnlStockReportLayout = new javax.swing.GroupLayout(pnlStockReport);
+        pnlStockReport.setLayout(pnlStockReportLayout);
+        pnlStockReportLayout.setHorizontalGroup(
+            pnlStockReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlStockReportLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnlStorkReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlStockReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnlTwo, javax.swing.GroupLayout.DEFAULT_SIZE, 710, Short.MAX_VALUE)
                     .addComponent(pnlOne, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnUpdateAllStork, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnUpdateAllStock, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
-        pnlStorkReportLayout.setVerticalGroup(
-            pnlStorkReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlStorkReportLayout.createSequentialGroup()
+        pnlStockReportLayout.setVerticalGroup(
+            pnlStockReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlStockReportLayout.createSequentialGroup()
                 .addGap(6, 6, 6)
                 .addComponent(pnlOne, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pnlTwo, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnUpdateAllStork, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
+                .addComponent(btnUpdateAllStock, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        pnlMain.add(pnlStorkReport, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 50, 730, 550));
+        pnlMain.add(pnlStockReport, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 50, 730, 550));
         pnlMain.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 45, 730, 10));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -742,66 +743,66 @@ public class Restaurant extends javax.swing.JFrame {
         // Change color once selected
         setColour(btnOrderMenu);
         resetColour(btnOrderBoard);
-        resetColour(btnStorkReport);
+        resetColour(btnStockReport);
         
         pnlOrderMenu.setVisible(true);
         pnlOrderBoard.setVisible(false);
-        pnlStorkReport.setVisible(false);
+        pnlStockReport.setVisible(false);
     }//GEN-LAST:event_btnOrderMenuMouseClicked
 
     private void btnOrderBoardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOrderBoardMouseClicked
         // Change color once selected
         setColour(btnOrderBoard);
         resetColour(btnOrderMenu);
-        resetColour(btnStorkReport);
+        resetColour(btnStockReport);
         
         pnlOrderMenu.setVisible(false);
         pnlOrderBoard.setVisible(true);
-        pnlStorkReport.setVisible(false);
+        pnlStockReport.setVisible(false);
     }//GEN-LAST:event_btnOrderBoardMouseClicked
 
-    private void btnStorkReportMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnStorkReportMouseClicked
+    private void btnStockReportMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnStockReportMouseClicked
         // Change color once selected
-        setColour(btnStorkReport);
+        setColour(btnStockReport);
         resetColour(btnOrderMenu);
         resetColour(btnOrderBoard);
-        
+
         pnlOrderMenu.setVisible(false);
         pnlOrderBoard.setVisible(false);
-        pnlStorkReport.setVisible(true);
+        pnlStockReport.setVisible(true);
         
-        String itemName[] = {"White cheese", "Parmesan cheese", "Cheese", "Beef", "Beef patty",
-                    "Chicken breast", "Chicken patty", "Chicken strips", "Calamari", "Blue point oyster", "Shrimp",
-                    "Crawfish", "Garlic bread", "Crouton", "Green leaf lettuce", "Red leaf lettuce", "Lemon",
-                    "Romaine lettuce", "Gherkins", "Caesar dressing", "Cucumber", "Carrot", "Red onion",
-                    "White onion", "Roma tomatoes", "Black-eyed peas", "Black pepper", "canola oil", "Flour"};
-        
-        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        for(int i = 0; i < 15; i++){
-            dataset.setValue(Math.random(), "Used stock (%)", itemName[i]);
+        try {
+            ArrayList<Stock> stockData = DatabaseConnection.selectAllStock();
+
+            DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+            for (int i = 0; i < stockData.size() - 15; i++) {
+                dataset.setValue(stockData.get(i).getUsage(), "Used stock (%)", stockData.get(i).getItemName());
+            }
+            JFreeChart jchart = ChartFactory.createBarChart("Stock report", "Product", "Stock used(%)", dataset, PlotOrientation.VERTICAL, true, true, false);
+
+            DefaultCategoryDataset dataset1 = new DefaultCategoryDataset();
+            for (int a = 14; a < stockData.size(); a++) {
+                dataset1.setValue(stockData.get(a).getUsage(), "Used stock (%)", stockData.get(a).getItemName());
+            }
+            JFreeChart jchart1 = ChartFactory.createBarChart("Stock report", "Product", "Stock used(%)", dataset1, PlotOrientation.VERTICAL, true, true, false);
+
+            CategoryPlot plot = jchart.getCategoryPlot();
+            CategoryPlot plot1 = jchart.getCategoryPlot();
+            plot.setRangeGridlinePaint(Color.BLUE);
+            plot1.setRangeGridlinePaint(Color.BLUE);
+            ChartPanel chartPanel = new ChartPanel(jchart);
+            ChartPanel chartPanel1 = new ChartPanel(jchart1);
+
+            pnlOne.removeAll();
+            pnlTwo.removeAll();
+            pnlOne.add(chartPanel);
+            pnlTwo.add(chartPanel1);
+            pnlOne.updateUI();
+            pnlTwo.updateUI();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
         }
-        JFreeChart jchart = ChartFactory.createBarChart("Stock report", "Product", "Stock used(%)", dataset, PlotOrientation.VERTICAL, true, true, false);
-        
-        DefaultCategoryDataset dataset1 = new DefaultCategoryDataset();
-        for(int a = 14; a < itemName.length; a++){
-            dataset1.setValue(Math.random(), "Used stock (%)", itemName[a]);
-        }
-        JFreeChart jchart1 = ChartFactory.createBarChart("Stock report", "Product", "Stock used(%)", dataset1, PlotOrientation.VERTICAL, true, true, false);
-        
-        CategoryPlot plot = jchart.getCategoryPlot();
-        CategoryPlot plot1 = jchart.getCategoryPlot();
-        plot.setRangeGridlinePaint(Color.BLUE);
-        plot1.setRangeGridlinePaint(Color.BLUE);
-        ChartPanel chartPanel = new ChartPanel(jchart);
-        ChartPanel chartPanel1 = new ChartPanel(jchart);
-        
-        pnlOne.removeAll();
-        pnlTwo.removeAll();
-        pnlOne.add(chartPanel);
-        pnlTwo.add(chartPanel1);
-        pnlOne.updateUI();
-        pnlTwo.updateUI();
-    }//GEN-LAST:event_btnStorkReportMouseClicked
+    }//GEN-LAST:event_btnStockReportMouseClicked
 
     private void rbtSteakMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtSteakMenu1ActionPerformed
         // check if the array index has not been initialised
@@ -862,32 +863,41 @@ public class Restaurant extends javax.swing.JFrame {
         String date = formatter.format(dt);
         Calendar c = Calendar.getInstance();
         try {
-            //check if there is any comment in the txtOrderComment text box.
-            if (orderComment.length() > 0) {
-                for (int a = 0; a < selectedItem.length; a++) {
-                    if (selectedItem[a] == null) {
-                        continue;
+            /**
+             * This condition will check if the combobox has any items(tables) left
+             * if there is nothing that means all the tables are occupied.
+             * There will be an error messsage saying all tables are occupied
+             */
+            if(cmbTable.getItemCount() != 0){
+                //check if there is any comment in the txtOrderComment text box.
+                if (orderComment.length() > 0) {
+                    for (int a = 0; a < selectedItem.length; a++) {
+                        if (selectedItem[a] == null) {
+                            continue;
+                        }
+                        if (selectedItem[a].isSelectedRadioButtonItem()) {
+                            updateStockForSelectedMenuName(a);
+                        }
+                        DatabaseConnection.insertOrderDetails(orderComment, selectedItem[a].getOrder_name(), selectedTable, waiterName, "New", Double.parseDouble(String.format( "%.2f",  1.0 + (Math.random() * (2000.00 - 1.0)))), date);
                     }
-                    if (selectedItem[a].isSelectedRadioButtonItem()) {
-                        updateStockForSelectedMenuName(a);
+                    DatabaseConnection.insertTableDetails("Occupied", selectedTable, waiterName);
+                    cmbTable.removeItemAt(cmbTable.getSelectedIndex()); // removing the table in the list since it is occupied
+                } else {// If there is no comment in the txtOrderComment text box
+                    orderComment = "No special comment";
+                    for (int a = 0; a < selectedItem.length; a++) {
+                        if (selectedItem[a] == null) {
+                            continue;
+                        }
+                        if (selectedItem[a].isSelectedRadioButtonItem()) {
+                            updateStockForSelectedMenuName(a);
+                        }
+                        DatabaseConnection.insertOrderDetails(orderComment, selectedItem[a].getOrder_name(), selectedTable, waiterName, "New", Double.parseDouble(String.format( "%.2f",  1.0 + (Math.random() * (2000.00 - 1.0)))), date);
                     }
-                    DatabaseConnection.insertOrderDetails(orderComment, selectedItem[a].getOrder_name(), selectedTable, waiterName, "New", Double.parseDouble(String.format( "%.2f",  1.0 + (Math.random() * (2000.00 - 1.0)))), date);
+                    DatabaseConnection.insertTableDetails("Occupied", selectedTable, waiterName);
+                    cmbTable.removeItemAt(cmbTable.getSelectedIndex()); // removing the table in the list since it is occupied
                 }
-                DatabaseConnection.insertTableDetails("Occupied", selectedTable, waiterName);
-                cmbTable.removeItemAt(cmbTable.getSelectedIndex()); // removing the table in the list since it is occupied
-            } else {// If there is no comment in the txtOrderComment text box
-                orderComment = "No special comment";
-                for (int a = 0; a < selectedItem.length; a++) {
-                    if (selectedItem[a] == null) {
-                        continue;
-                    }
-                    if (selectedItem[a].isSelectedRadioButtonItem()) {
-                        updateStockForSelectedMenuName(a);
-                    }
-                    DatabaseConnection.insertOrderDetails(orderComment, selectedItem[a].getOrder_name(), selectedTable, waiterName, "New", Double.parseDouble(String.format( "%.2f",  1.0 + (Math.random() * (2000.00 - 1.0)))), date);
-                }
-                DatabaseConnection.insertTableDetails("Occupied", selectedTable, waiterName);
-                cmbTable.removeItemAt(cmbTable.getSelectedIndex()); // removing the table in the list since it is occupied
+            }else{
+                JOptionPane.showMessageDialog(null,"Apologies!!\nAll tables are fully occupied.\nPlease wait for the next empty table", "Warning", JOptionPane.ERROR_MESSAGE);
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -910,9 +920,9 @@ public class Restaurant extends javax.swing.JFrame {
         // TODO add your handling code here:
         int arrayIndex = 8;
         if (rbtSeafoodMenu2.isSelected()){
-            selectedItem[arrayIndex] = new Order(rbtSeafoodMenu2.isSelected(), rbtSeafoodMenu2.getText()+ " with Garlic bread");
+            selectedItem[arrayIndex] = new TakeOrder(rbtSeafoodMenu2.isSelected(), rbtSeafoodMenu2.getText()+ " with Garlic bread");
         }else{
-            selectedItem[arrayIndex] = new Order(rbtSeafoodMenu2.isSelected(), rbtSeafoodMenu2.getText()+" with Garlic bread");
+            selectedItem[arrayIndex] = new TakeOrder(rbtSeafoodMenu2.isSelected(), rbtSeafoodMenu2.getText()+" with Garlic bread");
         }
     }//GEN-LAST:event_rbtSeafoodMenu2ActionPerformed
 
@@ -922,9 +932,9 @@ public class Restaurant extends javax.swing.JFrame {
         getSelectedItem(arrayIndex, rbtSaladMenu2);
     }//GEN-LAST:event_rbtSaladMenu2ActionPerformed
 
-    private void btnUpdateAllStorkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateAllStorkActionPerformed
+    private void btnUpdateAllStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateAllStockActionPerformed
         // Update all stock:
-    }//GEN-LAST:event_btnUpdateAllStorkActionPerformed
+    }//GEN-LAST:event_btnUpdateAllStockActionPerformed
 
     void setColour(JPanel panel){
         panel.setBackground(new Color(204,255,204));
@@ -936,9 +946,9 @@ public class Restaurant extends javax.swing.JFrame {
     
     public void getSelectedItem(int arrayIndex, JRadioButton rbtItemSelected){
         if (rbtItemSelected.isSelected()){
-            selectedItem[arrayIndex] = new Order(rbtItemSelected.isSelected(), rbtItemSelected.getText());
+            selectedItem[arrayIndex] = new TakeOrder(rbtItemSelected.isSelected(), rbtItemSelected.getText());
         }else{
-            selectedItem[arrayIndex] = new Order(rbtItemSelected.isSelected(), rbtItemSelected.getText());
+            selectedItem[arrayIndex] = new TakeOrder(rbtItemSelected.isSelected(), rbtItemSelected.getText());
         }
     }
     
@@ -1016,44 +1026,44 @@ public class Restaurant extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Restaurant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Restaurant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Restaurant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Restaurant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Restaurant("Jacob", "Waiter").setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(Restaurant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(Restaurant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(Restaurant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(Restaurant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new Restaurant("Jacob", "Waiter").setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel btnOrderBoard;
     private javax.swing.JPanel btnOrderMenu;
     private javax.swing.JButton btnPlaceOrder;
-    private javax.swing.JPanel btnStorkReport;
-    private javax.swing.JButton btnUpdateAllStork;
+    private javax.swing.JPanel btnStockReport;
+    private javax.swing.JButton btnUpdateAllStock;
     private javax.swing.JComboBox<String> cmbTable;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1094,7 +1104,7 @@ public class Restaurant extends javax.swing.JFrame {
     private javax.swing.JPanel pnlOne;
     private javax.swing.JPanel pnlOrderBoard;
     private javax.swing.JPanel pnlOrderMenu;
-    private javax.swing.JPanel pnlStorkReport;
+    private javax.swing.JPanel pnlStockReport;
     private javax.swing.JPanel pnlTwo;
     private javax.swing.JRadioButton rbtBurgerMenu0;
     private javax.swing.JRadioButton rbtBurgerMenu1;

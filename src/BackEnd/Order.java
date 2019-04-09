@@ -7,26 +7,46 @@ package BackEnd;
 
 /**
  *
- * @author banelemlamleli
+ * @author Shaun
  */
 public class Order {
-    private boolean selectedRadioButtonItem;
+    private int order_id;
+    private String comment;
     private String order_name;
+    private String table_name;
+    private String waiter_name;
+    private String order_status;
+    private String order_date;
+    private double order_bill;
 
     public Order() {
     }
 
-    public Order(boolean selectedRadioButtonItem, String order_name) {
-        this.selectedRadioButtonItem = selectedRadioButtonItem;
+    public Order(int order_id, String comment, String order_name, String table_name, String waiter_name, String order_status, String order_date, double order_bill) {
+        this.order_id = order_id;
+        this.comment = comment;
         this.order_name = order_name;
+        this.table_name = table_name;
+        this.waiter_name = waiter_name;
+        this.order_status = order_status;
+        this.order_date = order_date;
+        this.order_bill = order_bill;
     }
 
-    public boolean isSelectedRadioButtonItem() {
-        return selectedRadioButtonItem;
+    public int getOrder_id() {
+        return order_id;
     }
 
-    public void setSelectedRadioButtonItem(boolean selectedRadioButtonItem) {
-        this.selectedRadioButtonItem = selectedRadioButtonItem;
+    public void setOrder_id(int order_id) {
+        this.order_id = order_id;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 
     public String getOrder_name() {
@@ -37,8 +57,45 @@ public class Order {
         this.order_name = order_name;
     }
 
-    @Override
-    public String toString() {
-        return "Order{" + "selectedRadioButtonItem=" + selectedRadioButtonItem + ", order_name=" + order_name + '}';
+    public String getTable_name() {
+        return table_name;
     }
+
+    public void setTable_name(String table_name) {
+        this.table_name = table_name;
+    }
+
+    public String getWaiter_name() {
+        return waiter_name;
+    }
+
+    public void setWaiter_name(String waiter_name) {
+        this.waiter_name = waiter_name;
+    }
+
+    public String getOrder_status() {
+        return order_status;
+    }
+
+    public void setOrder_status(String order_status) {
+        this.order_status = order_status;
+    }
+
+    public String getOrder_date() {
+        return order_date;
+    }
+
+    public void setOrder_date(String order_date) {
+        this.order_date = order_date;
+    }
+
+    public double getOrder_bill() {
+        return order_bill;
+    }
+
+    public void setOrder_bill(double order_bill) {
+        this.order_bill = order_bill;
+    }
+    
+    
 }

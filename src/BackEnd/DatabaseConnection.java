@@ -25,7 +25,7 @@ public class DatabaseConnection {
      */
     public static void connection() throws SQLException{
         try{
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/restaurant", "root", "C!ph3r01");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/restaurant", "root", "B!n@ryM@n01");
             System.out.println("Database connection successfully established");
             /**
              * The purpose of this selection is to check if the stock table is
@@ -292,6 +292,120 @@ public class DatabaseConnection {
                 prepStatement.close();
             }
         }        
+    }
+    
+    /**
+     * The below method will read all the data in the stock table and record
+     * the response in an ArrayList object of type Stock 
+     * @throws java.sql.SQLException
+     */
+    public static ArrayList<Stock> selectAllStock() throws SQLException{
+        ArrayList<Stock> stock = new ArrayList<>();
+        try{
+            // creating the statement
+            statement = connection.createStatement();
+            // execute the sql query
+            resultset=  statement.executeQuery("SELECT * FROM restaurant.stock");
+            // processing the results to very the entered login details
+            while(resultset.next()){
+                stock.add(new Stock(resultset.getString("item_name"), resultset.getInt("usage")));
+            }
+            System.out.println("All stock data read successfully");
+        }catch(SQLSyntaxErrorException see){
+            see.printStackTrace();
+        }catch(SQLException ex){
+            ex.printStackTrace();
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            if(resultset != null){
+                resultset.close();
+            }
+            if(statement != null){
+                statement.close();
+            }
+        }
+        return stock;
+    }
+    
+    /**
+     * The below method will read all the data in the order table and record
+     * the response in an ArrayList object of type Order 
+     * @throws java.sql.SQLException
+     */
+    public static ArrayList<Order> selectAllOrders() throws SQLException{
+        ArrayList<Order> order = new ArrayList<>();
+        try{
+            // creating the statement
+            statement = connection.createStatement();
+            // execute the sql query
+            resultset=  statement.executeQuery("SELECT * FROM restaurant.order");
+            // processing the results to very the entered login details
+            while(resultset.next()){
+                int order_id = resultset.getInt("order_id");
+                String comment = resultset.getString("comment");
+                String order_name = resultset.getString("order_name");
+                String table_name = resultset.getString("table_name");
+                String waiter_name = resultset.getString("waiter_name");
+                String order_status = resultset.getString("order_status");
+                String order_date = resultset.getString("order_date");
+                double order_bill = resultset.getDouble("order_bill");
+                order.add(new Order(order_id, comment, order_name, table_name, waiter_name, order_status, order_date, order_bill));
+            }
+            System.out.println("All stock data read successfully");
+        }catch(SQLSyntaxErrorException see){
+            see.printStackTrace();
+        }catch(SQLException ex){
+            ex.printStackTrace();
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            if(resultset != null){
+                resultset.close();
+            }
+            if(statement != null){
+                statement.close();
+            }
+        }
+        return order;
+    }
+    
+    /**
+     * The below method will read all the data in the 'table' table and record
+     * the response in an ArrayList object of type Table 
+     * @throws java.sql.SQLException
+     */
+    public static ArrayList<Table> selectAllTables() throws SQLException{
+        ArrayList<Table> table = new ArrayList<>();
+        try{
+            // creating the statement
+            statement = connection.createStatement();
+            // execute the sql query
+            resultset=  statement.executeQuery("SELECT * FROM restaurant.order");
+            // processing the results to very the entered login details
+            while(resultset.next()){
+                int table_id = resultset.getInt("table_id");
+                String table_status = resultset.getString("table_status");
+                String table_name = resultset.getString("table_name");
+                String waiter_name = resultset.getString("waiter_name");
+                table.add(new Table(table_id, table_status, table_name, waiter_name));
+            }
+            System.out.println("All stock data read successfully");
+        }catch(SQLSyntaxErrorException see){
+            see.printStackTrace();
+        }catch(SQLException ex){
+            ex.printStackTrace();
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            if(resultset != null){
+                resultset.close();
+            }
+            if(statement != null){
+                statement.close();
+            }
+        }
+        return table;
     }
     
 //    public static void main(String[]args) throws SQLException{
