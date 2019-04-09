@@ -11,7 +11,6 @@ package BackEnd;
  */
 import java.io.*;
 import java.sql.*;
-import java.text.SimpleDateFormat;
 import java.util.*;
 public class DatabaseConnection {
     public static Statement statement = null;
@@ -296,6 +295,7 @@ public class DatabaseConnection {
     }
     
 //    public static void main(String[]args) throws SQLException{
+//    testing date
 //        java.util.Date date = new java.util.Date();
 //        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 //        System.out.println(formatter.format(date));
