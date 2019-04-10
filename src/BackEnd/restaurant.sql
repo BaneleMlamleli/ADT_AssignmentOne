@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `restaurant`.`order` (
   `order_name` VARCHAR(45) NULL DEFAULT NULL COMMENT 'This refers to the actual name of the order that is in the menu. E.g. Steak and Chips or Grilled chicken salad',
   `table_name` VARCHAR(45) NULL DEFAULT NULL,
   `waiter_name` VARCHAR(45) NULL DEFAULT NULL,
-  `order_status` VARCHAR(45) NULL DEFAULT NULL,
+  `order_status` VARCHAR(45) NULL DEFAULT NULL COMMENT 'Status: Collect, In-progress (New), Issue',
   `order_bill` DOUBLE NOT NULL,
   `order_date` VARCHAR(45) NULL DEFAULT NULL,
   PRIMARY KEY (`order_id`))
@@ -63,7 +63,7 @@ DROP TABLE IF EXISTS `restaurant`.`table`;
 
 CREATE TABLE IF NOT EXISTS `restaurant`.`table` (
   `table_id` INT(11) NOT NULL AUTO_INCREMENT,
-  `table_status` VARCHAR(45) NULL DEFAULT NULL,
+  `table_status` VARCHAR(45) NULL DEFAULT NULL COMMENT 'status: occupied, dirty, clean',
   `table_name` VARCHAR(45) NULL DEFAULT NULL,
   `waiter_name` VARCHAR(45) NULL DEFAULT NULL,
   PRIMARY KEY (`table_id`))
