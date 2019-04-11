@@ -56,6 +56,9 @@ public class Table {
     public void setWaiter_name(String waiter_name) {
         this.waiter_name = waiter_name;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "Table{" + "table_id=" + table_id + ", table_status=" + table_status + ", table_name=" + table_name + ", waiter_name=" + waiter_name + '}';
+    }
 }

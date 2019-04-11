@@ -783,10 +783,12 @@ public class Restaurant extends javax.swing.JFrame {
                 String order_name = orderData.get(a).getOrder_name();
                 String table_name = orderData.get(a).getTable_name();
                 String waiter_name = orderData.get(a).getWaiter_name();
-                //String order_status = orderData.get(a).getOrder_status();
-                //String order_date = orderData.get(a).getOrder_date();
+                String order_status = orderData.get(a).getOrder_status();
+                String order_date = orderData.get(a).getOrder_date();
                 double order_bill = orderData.get(a).getOrder_bill();
-                model.addRow(new Object[]{order_id, waiter_name, table_name, order_name, order_bill});
+                if(order_status.equalsIgnoreCase("Collect")){
+                    model.addRow(new Object[]{order_id, table_name, waiter_name, order_name, order_status, order_date, "R "+order_bill});
+                }
             }
             
         } catch (SQLException ex) {
@@ -924,7 +926,7 @@ public class Restaurant extends javax.swing.JFrame {
                         if (selectedItem[a].isSelectedRadioButtonItem()) {
                             updateStockForSelectedMenuName(a);
                         }
-                        DatabaseConnection.insertOrderDetails(orderComment, selectedItem[a].getOrder_name(), selectedTable, waiterName, "New", Double.parseDouble(String.format( "%.2f",  1.0 + (Math.random() * (2000.00 - 1.0)))), date);
+                        DatabaseConnection.insertOrderDetails(orderComment, selectedItem[a].getOrder_name(), selectedTable, waiterName, "In-progress", Double.parseDouble(String.format( "%.2f",  1.0 + (Math.random() * (2000.00 - 1.0)))), date);
                     }
                     DatabaseConnection.insertTableDetails("Occupied", selectedTable, waiterName);
                     cmbTable.removeItemAt(cmbTable.getSelectedIndex()); // removing the table in the list since it is occupied
@@ -989,8 +991,8 @@ public class Restaurant extends javax.swing.JFrame {
             tblOrderWithIssue.revalidate();
             
             ArrayList<Order> orderData = DatabaseConnection.selectAllOrders();
-            // ArrayList<Stock> stockData = DatabaseConnection.selectAllStock();
-            // ArrayList<Table> tableData = DatabaseConnection.selectAllTables();
+//            ArrayList<Stock> stockData = DatabaseConnection.selectAllStock();
+//            ArrayList<Table> tableData = DatabaseConnection.selectAllTables();
             
             // Display all orders that must be collected in order to be served
             for(int a = 0; a < orderData.size(); a++){
@@ -1003,7 +1005,7 @@ public class Restaurant extends javax.swing.JFrame {
                 String order_date = orderData.get(a).getOrder_date();
                 double order_bill = orderData.get(a).getOrder_bill();
                 if(order_status.equalsIgnoreCase("Collect")){
-                    collectOrderModel.addRow(new Object[]{order_id, waiter_name, table_name, order_name, order_status, order_date, order_bill});
+                    collectOrderModel.addRow(new Object[]{order_id, waiter_name, table_name, order_name, order_status, "R "+order_date, order_bill});
                 }
             }
             
@@ -1017,7 +1019,7 @@ public class Restaurant extends javax.swing.JFrame {
                 String order_status = orderData.get(a).getOrder_status();
                 String order_date = orderData.get(a).getOrder_date();
                 double order_bill = orderData.get(a).getOrder_bill();
-                inprogressOrderModel.addRow(new Object[]{order_id, waiter_name, table_name, order_name, order_status, order_date, order_bill});
+                inprogressOrderModel.addRow(new Object[]{order_id, waiter_name, table_name, order_name, order_status, order_date, "R "+order_bill});
             }
             
             // Display all orders with issues/problems
@@ -1031,7 +1033,7 @@ public class Restaurant extends javax.swing.JFrame {
                 String order_date = orderData.get(a).getOrder_date();
                 double order_bill = orderData.get(a).getOrder_bill();
                 if(order_status.equalsIgnoreCase("Issue")){
-                    collectOrderModel.addRow(new Object[]{order_id, waiter_name, table_name, order_name, order_status, order_date, order_bill});
+                    collectOrderModel.addRow(new Object[]{order_id, waiter_name, table_name, order_name, order_status, order_date, "R "+order_bill});
                 }
             }
             
@@ -1130,37 +1132,37 @@ public class Restaurant extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Restaurant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Restaurant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Restaurant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Restaurant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Restaurant("Jacob", "Waiter").setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(Restaurant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(Restaurant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(Restaurant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(Restaurant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new Restaurant("Jacob", "Waiter").setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel btnOrderBoard;

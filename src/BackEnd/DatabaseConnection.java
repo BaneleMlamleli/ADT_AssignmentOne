@@ -297,6 +297,7 @@ public class DatabaseConnection {
     /**
      * The below method will read all the data in the stock table and record
      * the response in an ArrayList object of type Stock 
+     * @return 
      * @throws java.sql.SQLException
      */
     public static ArrayList<Stock> selectAllStock() throws SQLException{
@@ -310,7 +311,7 @@ public class DatabaseConnection {
             while(resultset.next()){
                 stock.add(new Stock(resultset.getString("item_name"), resultset.getInt("usage")));
             }
-            System.out.println("All stock data read successfully");
+            System.out.println("All Stock data read successfully");
         }catch(SQLSyntaxErrorException see){
             see.printStackTrace();
         }catch(SQLException ex){
@@ -331,6 +332,7 @@ public class DatabaseConnection {
     /**
      * The below method will read all the data in the order table and record
      * the response in an ArrayList object of type Order 
+     * @return 
      * @throws java.sql.SQLException
      */
     public static ArrayList<Order> selectAllOrders() throws SQLException{
@@ -352,7 +354,7 @@ public class DatabaseConnection {
                 double order_bill = resultset.getDouble("order_bill");
                 order.add(new Order(order_id, comment, order_name, table_name, waiter_name, order_status, order_date, order_bill));
             }
-            System.out.println("All stock data read successfully");
+            System.out.println("All Order data read successfully");
         }catch(SQLSyntaxErrorException see){
             see.printStackTrace();
         }catch(SQLException ex){
@@ -372,7 +374,8 @@ public class DatabaseConnection {
     
     /**
      * The below method will read all the data in the 'table' table and record
-     * the response in an ArrayList object of type Table 
+     * the response in an ArrayList object of type Table
+     * @return
      * @throws java.sql.SQLException
      */
     public static ArrayList<Table> selectAllTables() throws SQLException{
@@ -381,7 +384,7 @@ public class DatabaseConnection {
             // creating the statement
             statement = connection.createStatement();
             // execute the sql query
-            resultset=  statement.executeQuery("SELECT * FROM restaurant.order");
+            resultset=  statement.executeQuery("SELECT * FROM restaurant.table");
             // processing the results to very the entered login details
             while(resultset.next()){
                 int table_id = resultset.getInt("table_id");
@@ -390,7 +393,7 @@ public class DatabaseConnection {
                 String waiter_name = resultset.getString("waiter_name");
                 table.add(new Table(table_id, table_status, table_name, waiter_name));
             }
-            System.out.println("All stock data read successfully");
+            System.out.println("All Table data read successfully");
         }catch(SQLSyntaxErrorException see){
             see.printStackTrace();
         }catch(SQLException ex){

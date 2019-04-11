@@ -36,7 +36,9 @@ public class Stock {
     public void setUsage(int usage) {
         this.usage = usage;
     }
-    
-    
-    
+
+    @Override
+    public String toString() {
+        return "Stock{" + "itemName=" + itemName + ", usage=" + usage + '}';
+    }
 }

@@ -96,6 +96,9 @@ public class Order {
     public void setOrder_bill(double order_bill) {
         this.order_bill = order_bill;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "Order{" + "order_id=" + order_id + ", comment=" + comment + ", order_name=" + order_name + ", table_name=" + table_name + ", waiter_name=" + waiter_name + ", order_status=" + order_status + ", order_date=" + order_date + ", order_bill=" + order_bill + '}';
+    }    
 }
