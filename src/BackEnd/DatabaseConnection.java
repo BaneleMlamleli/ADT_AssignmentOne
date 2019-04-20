@@ -21,9 +21,8 @@ public class DatabaseConnection {
     /**
      * This method will connect to the local MySQL database
      * It will also insert the individual stock items into the stock database table
-     * @throws java.sql.SQLException
      */
-    public static void connection() throws SQLException{
+    public static void connection(){
         try{
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/restaurant", "root", "B!n@ryM@n01");
             System.out.println("Database connection successfully established");
@@ -46,32 +45,23 @@ public class DatabaseConnection {
                     "Romaine lettuce", "Gherkins", "Caesar dressing", "Cucumber", "Carrot", "Red onion",
                     "White onion", "Roma tomatoes", "Black-eyed peas", "Black pepper", "canola oil", "Flour"};
 
-                for (int a = 0; a < itemName.length; a++) {
+                for (String itemName1 : itemName) {
                     // create a prepared statement
                     prepStatement = connection.prepareStatement("INSERT INTO restaurant.stock (restaurant.stock.item_name, restaurant.stock.usage)\n" +
                             "VALUES (?, ?);");
-
                     // Execute SQL query
-                    prepStatement.setString(1, itemName[a]);
+                    prepStatement.setString(1, itemName1);
                     prepStatement.setInt(2, 0);
                     prepStatement.execute();
                 }
                 System.out.println("Default stock items have been inserted into the stock database table");
             }
         }catch(SQLSyntaxErrorException see){
-            see.printStackTrace();
+            see.getMessage();
         }catch(SQLException ex){
-            ex.printStackTrace();
+            ex.getMessage();
         }finally{
-            if(resultset != null){
-                resultset.close();
-            }
-            if(statement != null){
-                statement.close();
-            }
-            if(prepStatement != null){
-                prepStatement.close();
-            }
+            closeStatement();
         }
     }
     
@@ -95,9 +85,8 @@ public class DatabaseConnection {
      * I will use the Variable Arguments (Varargs) as there maybe an arbitrary number of values in some methods
      * and I am actually lazy to type all of the arguments in this method.
      * @param newUser
-     * @throws java.sql.SQLException
      */
-    public static void registerUser(String... newUser) throws SQLException{
+    public static void registerUser(String... newUser){
         try{
             prepStatement = connection.prepareStatement("INSERT INTO restaurant.user (name, surname, title, username, password) VALUES(?, ?, ?, ?, ?)");
             prepStatement.setString(1, newUser[0]);
@@ -108,21 +97,13 @@ public class DatabaseConnection {
             prepStatement.execute();
             System.out.println(newUser[0]+" has been registered successfully");
         }catch(SQLSyntaxErrorException see){
-            see.printStackTrace();
+            see.getMessage();
         }catch(SQLException ex){
-            ex.printStackTrace();
+            ex.getMessage();
         }catch(Exception e){
-            e.printStackTrace();
+            e.getMessage();
         }finally{
-            if(resultset != null){
-                resultset.close();
-            }
-            if(statement != null){
-                statement.close();
-            }
-            if(prepStatement != null){
-                prepStatement.close();
-            }
+            closeStatement();
         }
     }
     
@@ -134,7 +115,7 @@ public class DatabaseConnection {
      * @return 
      * @throws java.sql.SQLException 
      */
-    public static boolean verifyUser(String username, String password, String title) throws SQLException{
+    public static boolean verifyUser(String username, String password, String title){
         boolean verify = false;
         try{
             // creating the statement
@@ -149,18 +130,13 @@ public class DatabaseConnection {
             }
             System.out.println("User verification executed");
         }catch(SQLSyntaxErrorException see){
-            see.printStackTrace();
+            see.getMessage();
         }catch(SQLException ex){
-            ex.printStackTrace();
+            ex.getMessage();
         }catch(Exception e){
-            e.printStackTrace();
+            e.getMessage();
         }finally{
-            if(resultset != null){
-                resultset.close();
-            }
-            if(statement != null){
-                statement.close();
-            }
+            closeStatement();
         }
         return verify;
     }
@@ -170,7 +146,7 @@ public class DatabaseConnection {
      * @return 
      * @throws java.sql.SQLException 
      */
-    public static int howManyUsers() throws SQLException{
+    public static int howManyUsers(){
         int totalUsers = 0;
         try{
             // creating the statement
@@ -183,23 +159,18 @@ public class DatabaseConnection {
             }
             System.out.println("total user calculation executed");
         }catch(SQLSyntaxErrorException see){
-            see.printStackTrace();
+            see.getMessage();
         }catch(SQLException ex){
-            ex.printStackTrace();
+            ex.getMessage();
         }catch(Exception e){
-            e.printStackTrace();
+            e.getMessage();
         }finally{
-            if(resultset != null){
-                resultset.close();
-            }
-            if(statement != null){
-                statement.close();
-            }
+            closeStatement();
         }
         return totalUsers;
     }
     
-    public static void updateStock(String itemMenu[]) throws SQLException{
+    public static void updateStock(String itemMenu[]){
         try{
             // creating the statement
             statement = connection.createStatement();
@@ -218,25 +189,15 @@ public class DatabaseConnection {
             }
             System.out.println("stock update executed");
         }catch(SQLSyntaxErrorException see){
-            see.printStackTrace();
+            see.getMessage();
         }catch(SQLException ex){
-            ex.printStackTrace();
+            ex.getMessage();
         }catch(Exception e){
-            e.printStackTrace();
-        }finally{
-            if(resultset != null){
-                resultset.close();
-            }
-            if(statement != null){
-                statement.close();
-            }
-            if(prepStatement != null){
-                prepStatement.close();
-            }
+            e.getMessage();
         }
     }
     
-    public static void insertTableDetails(String tableStatus, String selectedTable, String waiterName) throws SQLException{
+    public static void insertTableDetails(String tableStatus, String selectedTable, String waiterName){
         try{
             prepStatement = connection.prepareStatement("INSERT INTO restaurant.table (table_status, table_name, waiter_name) VALUES(?, ?, ?)");
             prepStatement.setString(1, tableStatus);
@@ -245,25 +206,17 @@ public class DatabaseConnection {
             prepStatement.execute();
             System.out.println(selectedTable+" order details inserted successfully");
         }catch(SQLSyntaxErrorException see){
-            see.printStackTrace();
+            see.getMessage();
         }catch(SQLException ex){
-            ex.printStackTrace();
+            ex.getMessage();
         }catch(Exception e){
-            e.printStackTrace();
+            e.getMessage();
         }finally{
-            if(resultset != null){
-                resultset.close();
-            }
-            if(statement != null){
-                statement.close();
-            }
-            if(prepStatement != null){
-                prepStatement.close();
-            }
+            closeStatement();
         }
     }
     
-    public static void insertOrderDetails(String orderComment, String order_name, String selectedTable, String waiterName, String orderStatus, double bill, String date) throws SQLException{
+    public static void insertOrderDetails(String orderComment, String order_name, String selectedTable, String waiterName, String orderStatus, double bill, String date){
         try{
             prepStatement = connection.prepareStatement("INSERT INTO restaurant.order (comment, order_name, table_name, waiter_name, order_status, order_bill, order_date) VALUES(?, ?, ?, ?, ?, ?, ?)");
             prepStatement.setString(1, orderComment);
@@ -276,22 +229,14 @@ public class DatabaseConnection {
             prepStatement.execute();
             System.out.println("Order has been placed successfully");
         }catch(SQLSyntaxErrorException see){
-            see.printStackTrace();
+            see.getMessage();
         }catch(SQLException ex){
-            ex.printStackTrace();
+            ex.getMessage();
         }catch(Exception e){
-            e.printStackTrace();
+            e.getMessage();
         }finally{
-            if(resultset != null){
-                resultset.close();
-            }
-            if(statement != null){
-                statement.close();
-            }
-            if(prepStatement != null){
-                prepStatement.close();
-            }
-        }        
+            closeStatement();
+        }       
     }
     
     /**
@@ -300,7 +245,7 @@ public class DatabaseConnection {
      * @return 
      * @throws java.sql.SQLException
      */
-    public static ArrayList<Stock> selectAllStock() throws SQLException{
+    public static ArrayList<Stock> selectAllStock(){
         ArrayList<Stock> stock = new ArrayList<>();
         try{
             // creating the statement
@@ -313,18 +258,13 @@ public class DatabaseConnection {
             }
             System.out.println("All Stock data read successfully");
         }catch(SQLSyntaxErrorException see){
-            see.printStackTrace();
+            see.getMessage();
         }catch(SQLException ex){
-            ex.printStackTrace();
+            ex.getMessage();
         }catch(Exception e){
-            e.printStackTrace();
+            e.getMessage();
         }finally{
-            if(resultset != null){
-                resultset.close();
-            }
-            if(statement != null){
-                statement.close();
-            }
+            closeStatement();
         }
         return stock;
     }
@@ -335,7 +275,7 @@ public class DatabaseConnection {
      * @return 
      * @throws java.sql.SQLException
      */
-    public static ArrayList<Order> selectAllOrders() throws SQLException{
+    public static ArrayList<Order> selectAllOrders(){
         ArrayList<Order> order = new ArrayList<>();
         try{
             // creating the statement
@@ -356,18 +296,13 @@ public class DatabaseConnection {
             }
             System.out.println("All Order data read successfully");
         }catch(SQLSyntaxErrorException see){
-            see.printStackTrace();
+            see.getMessage();
         }catch(SQLException ex){
-            ex.printStackTrace();
+            ex.getMessage();
         }catch(Exception e){
-            e.printStackTrace();
+            e.getMessage();
         }finally{
-            if(resultset != null){
-                resultset.close();
-            }
-            if(statement != null){
-                statement.close();
-            }
+            closeStatement();
         }
         return order;
     }
@@ -376,9 +311,8 @@ public class DatabaseConnection {
      * The below method will read all the data in the 'table' table and record
      * the response in an ArrayList object of type Table
      * @return
-     * @throws java.sql.SQLException
      */
-    public static ArrayList<Table> selectAllTables() throws SQLException{
+    public static ArrayList<Table> selectAllTables(){
         ArrayList<Table> table = new ArrayList<>();
         try{
             // creating the statement
@@ -395,20 +329,46 @@ public class DatabaseConnection {
             }
             System.out.println("All Table data read successfully");
         }catch(SQLSyntaxErrorException see){
-            see.printStackTrace();
+            see.getMessage();
         }catch(SQLException ex){
-            ex.printStackTrace();
+            ex.getMessage();
         }catch(Exception e){
-            e.printStackTrace();
+            e.getMessage();
         }finally{
-            if(resultset != null){
-                resultset.close();
-            }
-            if(statement != null){
-                statement.close();
-            }
+            closeStatement();
         }
         return table;
+    }
+    
+    /**
+     * The below method will reset the stock table to zero
+     */
+    public static void resetStock(){
+        try{
+            prepStatement = connection.prepareStatement("UPDATE restaurant.stock SET restaurant.stock.usage = ? WHERE restaurant.stock.usage > 0");
+            prepStatement.setInt(1, 0);
+            prepStatement.executeUpdate();            
+            closeStatement();
+            System.out.println("Stock Table updated successfully");
+        }catch(SQLSyntaxErrorException see){
+            see.getMessage();
+        }catch(SQLException ex){
+            ex.getMessage();
+        }catch(Exception e){
+            e.getMessage();
+        }finally{
+            closeStatement();
+        }
+    }
+    
+    public static void closeStatement(){
+        try {
+            resultset.close();
+            statement.close();
+            prepStatement.close();
+        } catch (SQLException | NullPointerException ex) {
+            ex.getMessage();
+        }    
     }
     
 //    public static void main(String[]args) throws SQLException{

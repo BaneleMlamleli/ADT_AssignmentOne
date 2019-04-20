@@ -8,17 +8,12 @@ package FrontEnd;
 import BackEnd.DatabaseConnection;
 import BackEnd.Order;
 import BackEnd.Stock;
-import BackEnd.Table;
 import BackEnd.TakeOrder;
 import java.awt.Color;
-import java.sql.SQLException;
-import java.sql.SQLSyntaxErrorException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
@@ -760,39 +755,31 @@ public class Restaurant extends javax.swing.JFrame {
     }//GEN-LAST:event_btnOrderMenuMouseClicked
 
     private void btnOrderBoardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOrderBoardMouseClicked
-        try {
-            // Change color once selected
-            setColour(btnOrderBoard);
-            resetColour(btnOrderMenu);
-            resetColour(btnStockReport);
-            
-            pnlOrderMenu.setVisible(false);
-            pnlOrderBoard.setVisible(true);
-            pnlStockReport.setVisible(false);
-            
-            DefaultTableModel model = (DefaultTableModel) tblCollectionOrder.getModel();
-            //The below code will clear the table everytime new information is displayed
-            model.getDataVector().removeAllElements();
-            model.fireTableDataChanged();
-            tblCollectionOrder.revalidate();
-            
-            ArrayList<Order> orderData = DatabaseConnection.selectAllOrders();
-            for(int a = 0; a < orderData.size(); a++){
-                int order_id = orderData.get(a).getOrder_id();
-                //String comment = orderData.get(a).getComment();
-                String order_name = orderData.get(a).getOrder_name();
-                String table_name = orderData.get(a).getTable_name();
-                String waiter_name = orderData.get(a).getWaiter_name();
-                String order_status = orderData.get(a).getOrder_status();
-                String order_date = orderData.get(a).getOrder_date();
-                double order_bill = orderData.get(a).getOrder_bill();
-                if(order_status.equalsIgnoreCase("Collect")){
-                    model.addRow(new Object[]{order_id, table_name, waiter_name, order_name, order_status, order_date, "R "+order_bill});
-                }
+        // Change color once selected
+        setColour(btnOrderBoard);
+        resetColour(btnOrderMenu);
+        resetColour(btnStockReport);
+        pnlOrderMenu.setVisible(false);
+        pnlOrderBoard.setVisible(true);
+        pnlStockReport.setVisible(false);
+        DefaultTableModel model = (DefaultTableModel) tblCollectionOrder.getModel();
+        //The below code will clear the table everytime new information is displayed
+        model.getDataVector().removeAllElements();
+        model.fireTableDataChanged();
+        tblCollectionOrder.revalidate();
+        ArrayList<Order> orderData = DatabaseConnection.selectAllOrders();
+        for(int a = 0; a < orderData.size(); a++){
+            int order_id = orderData.get(a).getOrder_id();
+            //String comment = orderData.get(a).getComment();
+            String order_name = orderData.get(a).getOrder_name();
+            String table_name = orderData.get(a).getTable_name();
+            String waiter_name = orderData.get(a).getWaiter_name();
+            String order_status = orderData.get(a).getOrder_status();
+            String order_date = orderData.get(a).getOrder_date();
+            double order_bill = orderData.get(a).getOrder_bill();
+            if(order_status.equalsIgnoreCase("Collect")){
+                model.addRow(new Object[]{order_id, table_name, waiter_name, order_name, order_status, order_date, "R "+order_bill});
             }
-            
-        } catch (SQLException ex) {
-            ex.printStackTrace();
         }
     }//GEN-LAST:event_btnOrderBoardMouseClicked
 
@@ -802,41 +789,7 @@ public class Restaurant extends javax.swing.JFrame {
         resetColour(btnOrderMenu);
         resetColour(btnOrderBoard);
 
-        pnlOrderMenu.setVisible(false);
-        pnlOrderBoard.setVisible(false);
-        pnlStockReport.setVisible(true);
-        
-        try {
-            ArrayList<Stock> stockData = DatabaseConnection.selectAllStock();
-
-            DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-            for (int i = 0; i < stockData.size() - 15; i++) {
-                dataset.setValue(stockData.get(i).getUsage(), "Used stock (%)", stockData.get(i).getItemName());
-            }
-            JFreeChart jchart = ChartFactory.createBarChart("Stock report", "Product", "Stock used(%)", dataset, PlotOrientation.VERTICAL, true, true, false);
-
-            DefaultCategoryDataset dataset1 = new DefaultCategoryDataset();
-            for (int a = 14; a < stockData.size(); a++) {
-                dataset1.setValue(stockData.get(a).getUsage(), "Used stock (%)", stockData.get(a).getItemName());
-            }
-            JFreeChart jchart1 = ChartFactory.createBarChart("Stock report", "Product", "Stock used(%)", dataset1, PlotOrientation.VERTICAL, true, true, false);
-
-            CategoryPlot plot = jchart.getCategoryPlot();
-            CategoryPlot plot1 = jchart.getCategoryPlot();
-            plot.setRangeGridlinePaint(Color.BLUE);
-            plot1.setRangeGridlinePaint(Color.BLUE);
-            ChartPanel chartPanel = new ChartPanel(jchart);
-            ChartPanel chartPanel1 = new ChartPanel(jchart1);
-
-            pnlOne.removeAll();
-            pnlTwo.removeAll();
-            pnlOne.add(chartPanel);
-            pnlTwo.add(chartPanel1);
-            pnlOne.updateUI();
-            pnlTwo.updateUI();
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
+        displayStockData();
     }//GEN-LAST:event_btnStockReportMouseClicked
 
     private void rbtSteakMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtSteakMenu1ActionPerformed
@@ -897,45 +850,41 @@ public class Restaurant extends javax.swing.JFrame {
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String date = formatter.format(dt);
         Calendar c = Calendar.getInstance();
-        try {
-            /**
-             * This condition will check if the combobox has any items(tables) left
-             * if there is nothing that means all the tables are occupied.
-             * There will be an error messsage saying all tables are occupied
-             */
-            if(cmbTable.getItemCount() != 0){
-                //check if there is any comment in the txtOrderComment text box.
-                if (orderComment.length() > 0) {
-                    for (int a = 0; a < selectedItem.length; a++) {
-                        if (selectedItem[a] == null) {
-                            continue;
-                        }
-                        if (selectedItem[a].isSelectedRadioButtonItem()) {
-                            updateStockForSelectedMenuName(a);
-                        }
-                        DatabaseConnection.insertOrderDetails(orderComment, selectedItem[a].getOrder_name(), selectedTable, waiterName, "New", Double.parseDouble(String.format( "%.2f",  1.0 + (Math.random() * (2000.00 - 1.0)))), date);
+        /**
+         * This condition will check if the combobox has any items(tables) left
+         * if there is nothing that means all the tables are occupied.
+         * There will be an error messsage saying all tables are occupied
+         */
+        if(cmbTable.getItemCount() != 0){
+            //check if there is any comment in the txtOrderComment text box.
+            if (orderComment.length() > 0) {
+                for (int a = 0; a < selectedItem.length; a++) {
+                    if (selectedItem[a] == null) {
+                        continue;
                     }
-                    DatabaseConnection.insertTableDetails("Occupied", selectedTable, waiterName);
-                    cmbTable.removeItemAt(cmbTable.getSelectedIndex()); // removing the table in the list since it is occupied
-                } else {// If there is no comment in the txtOrderComment text box
-                    orderComment = "No special comment";
-                    for (int a = 0; a < selectedItem.length; a++) {
-                        if (selectedItem[a] == null) {
-                            continue;
-                        }
-                        if (selectedItem[a].isSelectedRadioButtonItem()) {
-                            updateStockForSelectedMenuName(a);
-                        }
-                        DatabaseConnection.insertOrderDetails(orderComment, selectedItem[a].getOrder_name(), selectedTable, waiterName, "In-progress", Double.parseDouble(String.format( "%.2f",  1.0 + (Math.random() * (2000.00 - 1.0)))), date);
+                    if (selectedItem[a].isSelectedRadioButtonItem()) {
+                        updateStockForSelectedMenuName(a);
                     }
-                    DatabaseConnection.insertTableDetails("Occupied", selectedTable, waiterName);
-                    cmbTable.removeItemAt(cmbTable.getSelectedIndex()); // removing the table in the list since it is occupied
+                    DatabaseConnection.insertOrderDetails(orderComment, selectedItem[a].getOrder_name(), selectedTable, waiterName, "New", Double.parseDouble(String.format( "%.2f",  1.0 + (Math.random() * (2000.00 - 1.0)))), date);
                 }
-            }else{
-                JOptionPane.showMessageDialog(null,"Apologies!!\nAll tables are fully occupied.\nPlease wait for the next empty table", "Warning", JOptionPane.ERROR_MESSAGE);
+                DatabaseConnection.insertTableDetails("Occupied", selectedTable, waiterName);
+                cmbTable.removeItemAt(cmbTable.getSelectedIndex()); // removing the table in the list since it is occupied
+            } else {// If there is no comment in the txtOrderComment text box
+                orderComment = "No special comment";
+                for (int a = 0; a < selectedItem.length; a++) {
+                    if (selectedItem[a] == null) {
+                        continue;
+                    }
+                    if (selectedItem[a].isSelectedRadioButtonItem()) {
+                        updateStockForSelectedMenuName(a);
+                    }
+                    DatabaseConnection.insertOrderDetails(orderComment, selectedItem[a].getOrder_name(), selectedTable, waiterName, "In-progress", Double.parseDouble(String.format( "%.2f",  1.0 + (Math.random() * (2000.00 - 1.0)))), date);
+                }
+                DatabaseConnection.insertTableDetails("Occupied", selectedTable, waiterName);
+                cmbTable.removeItemAt(cmbTable.getSelectedIndex()); // removing the table in the list since it is occupied
             }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
+        }else{
+            JOptionPane.showMessageDialog(null,"Apologies!!\nAll tables are fully occupied.\nPlease wait for the next empty table", "Warning", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnPlaceOrderActionPerformed
 
@@ -969,77 +918,68 @@ public class Restaurant extends javax.swing.JFrame {
 
     private void btnUpdateAllStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateAllStockActionPerformed
         // Update all stock:
+        DatabaseConnection.resetStock();
+        displayStockData();
     }//GEN-LAST:event_btnUpdateAllStockActionPerformed
 
     private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
-        // TODO add your handling code here:
-        try {
-            // Defining each table's model
-            DefaultTableModel collectOrderModel = (DefaultTableModel) tblCollectionOrder.getModel();
-            DefaultTableModel inprogressOrderModel = (DefaultTableModel) tblInprogressOrder.getModel();
-            DefaultTableModel orderWithIssueModel = (DefaultTableModel) tblOrderWithIssue.getModel();
-            
-            //The below code will clear the table everytime new information is displayed
-            collectOrderModel.getDataVector().removeAllElements();
-            inprogressOrderModel.getDataVector().removeAllElements();
-            orderWithIssueModel.getDataVector().removeAllElements();
-            collectOrderModel.fireTableDataChanged();
-            inprogressOrderModel.fireTableDataChanged();
-            orderWithIssueModel.fireTableDataChanged();
-            tblCollectionOrder.revalidate();
-            tblInprogressOrder.revalidate();
-            tblOrderWithIssue.revalidate();
-            
-            ArrayList<Order> orderData = DatabaseConnection.selectAllOrders();
+        // Defining each table's model
+        DefaultTableModel collectOrderModel = (DefaultTableModel) tblCollectionOrder.getModel();
+        DefaultTableModel inprogressOrderModel = (DefaultTableModel) tblInprogressOrder.getModel();
+        DefaultTableModel orderWithIssueModel = (DefaultTableModel) tblOrderWithIssue.getModel();
+        //The below code will clear the table everytime new information is displayed
+        collectOrderModel.getDataVector().removeAllElements();
+        inprogressOrderModel.getDataVector().removeAllElements();
+        orderWithIssueModel.getDataVector().removeAllElements();
+        collectOrderModel.fireTableDataChanged();
+        inprogressOrderModel.fireTableDataChanged();
+        orderWithIssueModel.fireTableDataChanged();
+        tblCollectionOrder.revalidate();
+        tblInprogressOrder.revalidate();
+        tblOrderWithIssue.revalidate();
+        ArrayList<Order> orderData = DatabaseConnection.selectAllOrders();
 //            ArrayList<Stock> stockData = DatabaseConnection.selectAllStock();
 //            ArrayList<Table> tableData = DatabaseConnection.selectAllTables();
-            
-            // Display all orders that must be collected in order to be served
-            for(int a = 0; a < orderData.size(); a++){
-                int order_id = orderData.get(a).getOrder_id();
-                //String comment = orderData.get(a).getComment();
-                String order_name = orderData.get(a).getOrder_name();
-                String table_name = orderData.get(a).getTable_name();
-                String waiter_name = orderData.get(a).getWaiter_name();
-                String order_status = orderData.get(a).getOrder_status();
-                String order_date = orderData.get(a).getOrder_date();
-                double order_bill = orderData.get(a).getOrder_bill();
-                if(order_status.equalsIgnoreCase("Collect")){
-                    collectOrderModel.addRow(new Object[]{order_id, waiter_name, table_name, order_name, order_status, "R "+order_date, order_bill});
-                }
-            }
-            
-            // Display all the orders
-            for(int a = 0; a < orderData.size(); a++){
-                int order_id = orderData.get(a).getOrder_id();
-                //String comment = orderData.get(a).getComment();
-                String order_name = orderData.get(a).getOrder_name();
-                String table_name = orderData.get(a).getTable_name();
-                String waiter_name = orderData.get(a).getWaiter_name();
-                String order_status = orderData.get(a).getOrder_status();
-                String order_date = orderData.get(a).getOrder_date();
-                double order_bill = orderData.get(a).getOrder_bill();
-                inprogressOrderModel.addRow(new Object[]{order_id, waiter_name, table_name, order_name, order_status, order_date, "R "+order_bill});
-            }
-            
-            // Display all orders with issues/problems
-            for(int a = 0; a < orderData.size(); a++){
-                int order_id = orderData.get(a).getOrder_id();
-                //String comment = orderData.get(a).getComment();
-                String order_name = orderData.get(a).getOrder_name();
-                String table_name = orderData.get(a).getTable_name();
-                String waiter_name = orderData.get(a).getWaiter_name();
-                String order_status = orderData.get(a).getOrder_status();
-                String order_date = orderData.get(a).getOrder_date();
-                double order_bill = orderData.get(a).getOrder_bill();
-                if(order_status.equalsIgnoreCase("Issue")){
-                    collectOrderModel.addRow(new Object[]{order_id, waiter_name, table_name, order_name, order_status, order_date, "R "+order_bill});
-                }
-            }
-            
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
+// Display all orders that must be collected in order to be served
+for(int a = 0; a < orderData.size(); a++){
+    int order_id = orderData.get(a).getOrder_id();
+    //String comment = orderData.get(a).getComment();
+    String order_name = orderData.get(a).getOrder_name();
+    String table_name = orderData.get(a).getTable_name();
+    String waiter_name = orderData.get(a).getWaiter_name();
+    String order_status = orderData.get(a).getOrder_status();
+    String order_date = orderData.get(a).getOrder_date();
+    double order_bill = orderData.get(a).getOrder_bill();
+    if(order_status.equalsIgnoreCase("Collect")){
+        collectOrderModel.addRow(new Object[]{order_id, waiter_name, table_name, order_name, order_status, "R "+order_date, order_bill});
+    }
+}
+// Display all the orders
+for(int a = 0; a < orderData.size(); a++){
+    int order_id = orderData.get(a).getOrder_id();
+    //String comment = orderData.get(a).getComment();
+    String order_name = orderData.get(a).getOrder_name();
+    String table_name = orderData.get(a).getTable_name();
+    String waiter_name = orderData.get(a).getWaiter_name();
+    String order_status = orderData.get(a).getOrder_status();
+    String order_date = orderData.get(a).getOrder_date();
+    double order_bill = orderData.get(a).getOrder_bill();
+    inprogressOrderModel.addRow(new Object[]{order_id, waiter_name, table_name, order_name, order_status, order_date, "R "+order_bill});
+}
+// Display all orders with issues/problems
+for(int a = 0; a < orderData.size(); a++){
+    int order_id = orderData.get(a).getOrder_id();
+    //String comment = orderData.get(a).getComment();
+    String order_name = orderData.get(a).getOrder_name();
+    String table_name = orderData.get(a).getTable_name();
+    String waiter_name = orderData.get(a).getWaiter_name();
+    String order_status = orderData.get(a).getOrder_status();
+    String order_date = orderData.get(a).getOrder_date();
+    double order_bill = orderData.get(a).getOrder_bill();
+    if(order_status.equalsIgnoreCase("Issue")){
+        collectOrderModel.addRow(new Object[]{order_id, waiter_name, table_name, order_name, order_status, order_date, "R "+order_bill});
+    }
+}
     }//GEN-LAST:event_jTabbedPane1MouseClicked
 
     void setColour(JPanel panel){
@@ -1059,74 +999,96 @@ public class Restaurant extends javax.swing.JFrame {
     }
     
     public void updateStockForSelectedMenuName(int a){
-        try {
-            switch (a) {
-                case 0:
-                    // These are all the items that make up the 'Big steak salad' food
-                    String bigSteakSalad[] = {"Beef", "Roma tomatoes", "Lettuce", "Black pepper", "Red onion", "White cheese"};
-                    DatabaseConnection.updateStock(bigSteakSalad);
-                    break;
-                case 1:
-                    // These are all the items that make up the 'Steak and chips' food
-                    String steakAndChips[] = {"Beef", "Potatoes"};
-                    DatabaseConnection.updateStock(steakAndChips);
-                    break;
-                case 2:
+        switch (a) {
+            case 0:
+                // These are all the items that make up the 'Big steak salad' food
+                String bigSteakSalad[] = {"Beef", "Roma tomatoes", "Lettuce", "Black pepper", "Red onion", "White cheese"};
+                DatabaseConnection.updateStock(bigSteakSalad);
+                break;
+            case 1:
+                // These are all the items that make up the 'Steak and chips' food
+                String steakAndChips[] = {"Beef", "Potatoes"};
+                DatabaseConnection.updateStock(steakAndChips);
+                break;
+            case 2:
 
-                    break;
-                case 3:
-                    // These are all the items that make up the 'Cheese burger' food
-                    String cheeseBurger[] = {"Cheese", "Beef patty", "Lettuce", "Tomatoe", "Onion"};
-                    DatabaseConnection.updateStock(cheeseBurger);
-                    break;
-                case 4:
-                    // These are all the items that make up the 'Chicken burger' food
-                    String chickenBurger[] = {"Chicken patty", "Lettuce", "Tomatoe", "Onion"};
-                    DatabaseConnection.updateStock(chickenBurger);
-                    break;
-                case 5:
-                    // These are all the items that make up the 'Beef burger' food
-                    String beefBurger[] = {"Beef patty", "Lettuce", "Tomatoe", "Onion"};
-                    DatabaseConnection.updateStock(beefBurger);
-                    break;
-                case 6:
-                    // These are all the items that make up the 'Fried Calamari' food
-                    String friedCalamari[] = {"Calamari", "Canola oil", "Flour"};
-                    DatabaseConnection.updateStock(friedCalamari);
-                    break;
-                case 7:
-                    // These are all the items that make up the 'Blue point Oysters' food
-                    String bluePointOysters[] = {"Blue point Oysters", "Lemon"};
-                    DatabaseConnection.updateStock(bluePointOysters);
-                    break;
-                case 8:
-                    // These are all the items that make up the 'Shrimp & Crawfish fondeaux with Garlic break' food
-                    String shrimpAndCrawfishFondeauxWithGarlicBread[] = {"Shrimp", "Crawfish", "Garlic bread"};
-                    DatabaseConnection.updateStock(shrimpAndCrawfishFondeauxWithGarlicBread);
-                    break;
-                case 9:
-                    // These are all the items that make up the 'Ceaser salad' food
-                    String ceaserSalad[] = {"Parmesan cheese", "Croutons", "Romaine lettuce", "Caesar dressing"};
-                    DatabaseConnection.updateStock(ceaserSalad);
-                    break;
-                case 10:
-                    // These are all the items that make up the 'Grilled chicken salad' food
-                    String grilledChickenSalad[] = {"Green leaf lettuce", "Red leaf lettuce", "Roma tomatoes", "Red onion", "Carrot", "Crouton", "Cucumber", "Chicken breast"};
-                    DatabaseConnection.updateStock(grilledChickenSalad);
-                    break;
-                case 11:
-                    // These are all the items that make up the 'Garden salad' food
-                    String gardenSalad[] = {"Green leaf lettuce", "Red leaf lettuce", "Romaine lettuce", "Red onion", "Crouton", "Cucumber", "Roma tomatoes"};
-                    DatabaseConnection.updateStock(gardenSalad);
-                    break;
-            }
-        } catch (SQLSyntaxErrorException see) {
-            see.printStackTrace();
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
+                break;
+            case 3:
+                // These are all the items that make up the 'Cheese burger' food
+                String cheeseBurger[] = {"Cheese", "Beef patty", "Lettuce", "Tomatoe", "Onion"};
+                DatabaseConnection.updateStock(cheeseBurger);
+                break;
+            case 4:
+                // These are all the items that make up the 'Chicken burger' food
+                String chickenBurger[] = {"Chicken patty", "Lettuce", "Tomatoe", "Onion"};
+                DatabaseConnection.updateStock(chickenBurger);
+                break;
+            case 5:
+                // These are all the items that make up the 'Beef burger' food
+                String beefBurger[] = {"Beef patty", "Lettuce", "Tomatoe", "Onion"};
+                DatabaseConnection.updateStock(beefBurger);
+                break;
+            case 6:
+                // These are all the items that make up the 'Fried Calamari' food
+                String friedCalamari[] = {"Calamari", "Canola oil", "Flour"};
+                DatabaseConnection.updateStock(friedCalamari);
+                break;
+            case 7:
+                // These are all the items that make up the 'Blue point Oysters' food
+                String bluePointOysters[] = {"Blue point Oysters", "Lemon"};
+                DatabaseConnection.updateStock(bluePointOysters);
+                break;
+            case 8:
+                // These are all the items that make up the 'Shrimp & Crawfish fondeaux with Garlic break' food
+                String shrimpAndCrawfishFondeauxWithGarlicBread[] = {"Shrimp", "Crawfish", "Garlic bread"};
+                DatabaseConnection.updateStock(shrimpAndCrawfishFondeauxWithGarlicBread);
+                break;
+            case 9:
+                // These are all the items that make up the 'Ceaser salad' food
+                String ceaserSalad[] = {"Parmesan cheese", "Croutons", "Romaine lettuce", "Caesar dressing"};
+                DatabaseConnection.updateStock(ceaserSalad);
+                break;
+            case 10:
+                // These are all the items that make up the 'Grilled chicken salad' food
+                String grilledChickenSalad[] = {"Green leaf lettuce", "Red leaf lettuce", "Roma tomatoes", "Red onion", "Carrot", "Crouton", "Cucumber", "Chicken breast"};
+                DatabaseConnection.updateStock(grilledChickenSalad);
+                break;
+            case 11:
+                // These are all the items that make up the 'Garden salad' food
+                String gardenSalad[] = {"Green leaf lettuce", "Red leaf lettuce", "Romaine lettuce", "Red onion", "Crouton", "Cucumber", "Roma tomatoes"};
+                DatabaseConnection.updateStock(gardenSalad);
+                break;
         }
+    }
+    
+    public void displayStockData(){
+        pnlOrderMenu.setVisible(false);
+        pnlOrderBoard.setVisible(false);
+        pnlStockReport.setVisible(true);
+        
+        ArrayList<Stock> stockData = DatabaseConnection.selectAllStock();
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        for (int i = 0; i < stockData.size() - 15; i++) {
+            dataset.setValue(stockData.get(i).getUsage(), "Used stock (%)", stockData.get(i).getItemName());
+        }
+        JFreeChart jchart = ChartFactory.createBarChart("Stock report", "Product", "Stock used(%)", dataset, PlotOrientation.VERTICAL, true, true, false);
+        DefaultCategoryDataset dataset1 = new DefaultCategoryDataset();
+        for (int a = 14; a < stockData.size(); a++) {
+            dataset1.setValue(stockData.get(a).getUsage(), "Used stock (%)", stockData.get(a).getItemName());
+        }
+        JFreeChart jchart1 = ChartFactory.createBarChart("Stock report", "Product", "Stock used(%)", dataset1, PlotOrientation.VERTICAL, true, true, false);
+        CategoryPlot plot = jchart.getCategoryPlot();
+        CategoryPlot plot1 = jchart.getCategoryPlot();
+        plot.setRangeGridlinePaint(Color.BLUE);
+        plot1.setRangeGridlinePaint(Color.BLUE);
+        ChartPanel chartPanel = new ChartPanel(jchart);
+        ChartPanel chartPanel1 = new ChartPanel(jchart1);
+        pnlOne.removeAll();
+        pnlTwo.removeAll();
+        pnlOne.add(chartPanel);
+        pnlTwo.add(chartPanel1);
+        pnlOne.updateUI();
+        pnlTwo.updateUI();
     }
     
     /**
