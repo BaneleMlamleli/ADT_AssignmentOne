@@ -17,6 +17,7 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 import org.jfree.chart.*;
 import org.jfree.chart.plot.*;
@@ -1101,12 +1102,24 @@ for(int a = 0; a < orderData.size(); a++){
 //         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
 //         */
 //        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
+////            "javax.swing.plaf.metal.MetalLookAndFeel"
+////            "com.sun.java.swing.plaf.motif.MotifLookAndFeel"
+////            "com.sun.java.swing.plaf.windows.WindowsLookAndFeel"
+////            "com.sun.java.swing.plaf.windows.WindowsClassicLookAndFeel"
+////            "javax.swing.plaf.metal.MetalLookAndFeel"
+////            "com.sun.java.swing.plaf.nimbus.NimbusLokkAndFeel"
+////            "com.sun.java.swing.plaf.windows.WindowsLookAndFeel"
+////            "com.seaglasslookandfeel.SeaGlassLookAndFeel"
+////            
+////            "com.birosoft.liquid.LiquidLookAndFeel"
+//            String className = "com.alee.laf.WebLookAndFeel";
+//            UIManager.setLookAndFeel(className);
+////            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+////                if ("Nimbus".equals(info.getName())) {
+////                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+////                    break;
+////                }
+////            }
 //        } catch (ClassNotFoundException ex) {
 //            java.util.logging.Logger.getLogger(Restaurant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (InstantiationException ex) {

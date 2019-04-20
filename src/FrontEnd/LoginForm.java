@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 
 /**
  *
@@ -511,12 +512,25 @@ public class LoginForm extends javax.swing.JFrame {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
+//            "javax.swing.plaf.metal.MetalLookAndFeel"
+//            "com.sun.java.swing.plaf.motif.MotifLookAndFeel"
+//            "com.sun.java.swing.plaf.windows.WindowsLookAndFeel"
+//            "com.sun.java.swing.plaf.windows.WindowsClassicLookAndFeel"
+//            "javax.swing.plaf.metal.MetalLookAndFeel"
+//            "com.sun.java.swing.plaf.nimbus.NimbusLokkAndFeel"
+//            "com.sun.java.swing.plaf.windows.WindowsLookAndFeel"
+//            "com.seaglasslookandfeel.SeaGlassLookAndFeel"
+//            
+//            "com.birosoft.liquid.LiquidLookAndFeel"
+
+            String className = "com.alee.laf.WebLookAndFeel";
+            UIManager.setLookAndFeel(className);
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Metal".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(LoginForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
