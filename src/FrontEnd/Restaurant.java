@@ -126,6 +126,11 @@ public class Restaurant extends javax.swing.JFrame {
         pnlOne = new javax.swing.JPanel();
         btnUpdateAllStock = new javax.swing.JButton();
         pnlClearTable = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -288,35 +293,15 @@ public class Restaurant extends javax.swing.JFrame {
                 btnClearTableMouseClicked(evt);
             }
         });
+        btnClearTable.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/buffet.png"))); // NOI18N
+        btnClearTable.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, 54));
 
         jLabel4.setFont(new java.awt.Font("Trebuchet MS", 1, 25)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 102, 255));
         jLabel4.setText("CLEAR TABLES");
-
-        javax.swing.GroupLayout btnClearTableLayout = new javax.swing.GroupLayout(btnClearTable);
-        btnClearTable.setLayout(btnClearTableLayout);
-        btnClearTableLayout.setHorizontalGroup(
-            btnClearTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnClearTableLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel4)
-                .addContainerGap())
-        );
-        btnClearTableLayout.setVerticalGroup(
-            btnClearTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnClearTableLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jLabel4)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnClearTableLayout.createSequentialGroup()
-                .addContainerGap(12, Short.MAX_VALUE)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+        btnClearTable.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, -1, -1));
 
         pnlLeftSide.add(btnClearTable, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 440, 270, 80));
         pnlLeftSide.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 240, 17));
@@ -780,15 +765,64 @@ public class Restaurant extends javax.swing.JFrame {
 
         pnlMain.add(pnlStockReport, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 50, 730, 550));
 
+        jButton1.setBackground(new java.awt.Color(204, 255, 255));
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 51, 255));
+        jButton1.setText("Table Three");
+
+        jButton2.setBackground(new java.awt.Color(204, 255, 255));
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(0, 51, 255));
+        jButton2.setText("Table Five");
+
+        jButton3.setBackground(new java.awt.Color(204, 255, 255));
+        jButton3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(0, 51, 255));
+        jButton3.setText("Table Two");
+
+        jButton4.setBackground(new java.awt.Color(204, 255, 255));
+        jButton4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(0, 51, 255));
+        jButton4.setText("Table Four");
+
+        jButton5.setBackground(new java.awt.Color(204, 255, 255));
+        jButton5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jButton5.setForeground(new java.awt.Color(0, 51, 255));
+        jButton5.setText("Table One");
+
         javax.swing.GroupLayout pnlClearTableLayout = new javax.swing.GroupLayout(pnlClearTable);
         pnlClearTable.setLayout(pnlClearTableLayout);
         pnlClearTableLayout.setHorizontalGroup(
             pnlClearTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 730, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlClearTableLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(pnlClearTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 239, Short.MAX_VALUE)
+                .addGroup(pnlClearTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27))
+            .addGroup(pnlClearTableLayout.createSequentialGroup()
+                .addGap(250, 250, 250)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlClearTableLayout.setVerticalGroup(
             pnlClearTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 550, Short.MAX_VALUE)
+            .addGroup(pnlClearTableLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(pnlClearTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addGroup(pnlClearTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(31, 31, 31))
         );
 
         pnlMain.add(pnlClearTable, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 50, 730, 550));
@@ -1243,49 +1277,49 @@ public class Restaurant extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-////            "javax.swing.plaf.metal.MetalLookAndFeel"
-////            "com.sun.java.swing.plaf.motif.MotifLookAndFeel"
-////            "com.sun.java.swing.plaf.windows.WindowsLookAndFeel"
-////            "com.sun.java.swing.plaf.windows.WindowsClassicLookAndFeel"
-////            "javax.swing.plaf.metal.MetalLookAndFeel"
-////            "com.sun.java.swing.plaf.nimbus.NimbusLokkAndFeel"
-////            "com.sun.java.swing.plaf.windows.WindowsLookAndFeel"
-////            "com.seaglasslookandfeel.SeaGlassLookAndFeel"
-////            
-////            "com.birosoft.liquid.LiquidLookAndFeel"
-//            String className = "com.alee.laf.WebLookAndFeel";
-//            UIManager.setLookAndFeel(className);
-////            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-////                if ("Nimbus".equals(info.getName())) {
-////                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-////                    break;
-////                }
-////            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(Restaurant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(Restaurant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(Restaurant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(Restaurant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new Restaurant("Jacob", "Waiter").setVisible(true);
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+//            "javax.swing.plaf.metal.MetalLookAndFeel"
+//            "com.sun.java.swing.plaf.motif.MotifLookAndFeel"
+//            "com.sun.java.swing.plaf.windows.WindowsLookAndFeel"
+//            "com.sun.java.swing.plaf.windows.WindowsClassicLookAndFeel"
+//            "javax.swing.plaf.metal.MetalLookAndFeel"
+//            "com.sun.java.swing.plaf.nimbus.NimbusLokkAndFeel"
+//            "com.sun.java.swing.plaf.windows.WindowsLookAndFeel"
+//            "com.seaglasslookandfeel.SeaGlassLookAndFeel"
+//            
+//            "com.birosoft.liquid.LiquidLookAndFeel"
+            String className = "com.alee.laf.WebLookAndFeel";
+            UIManager.setLookAndFeel(className);
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
 //            }
-//        });
-//    }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Restaurant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Restaurant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Restaurant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Restaurant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Restaurant("Jacob", "Waiter").setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel btnClearTable;
@@ -1295,6 +1329,11 @@ public class Restaurant extends javax.swing.JFrame {
     private javax.swing.JPanel btnStockReport;
     private javax.swing.JButton btnUpdateAllStock;
     private javax.swing.JComboBox<String> cmbTable;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
