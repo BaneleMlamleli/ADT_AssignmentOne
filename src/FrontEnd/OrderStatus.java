@@ -34,12 +34,14 @@ public class OrderStatus extends javax.swing.JFrame {
     void displayData(JButton button, String ...arg){
         button.setEnabled(false);
         button.setBackground(new Color(204, 204, 204));
-        lblOrderBill.setText(arg[6]);
-        lblOrderDate.setText(arg[5]);
+        //order_id, table_name, waiter_name, order_name, order_status, comment, order_date, order_bill
+        lblOrderBill.setText(arg[7]);
+        lblOrderDate.setText(arg[6]);
         lblOrderID.setText(arg[0]);
         lblOrderName.setText(arg[3]);
         lblTableName.setText(arg[1]);
         lblWaiterName.setText(arg[2]);
+        txtCommentArea.setText(arg[5]);
     }
 
     /**

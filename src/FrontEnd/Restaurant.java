@@ -64,15 +64,18 @@ public class Restaurant extends javax.swing.JFrame {
         lblMinimiseForm = new javax.swing.JLabel();
         lblCloseForm = new javax.swing.JLabel();
         pnlLeftSide = new javax.swing.JPanel();
-        btnStockReport = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         btnOrderMenu = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         btnOrderBoard = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        btnStockReport = new javax.swing.JPanel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        btnClearTable = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel6 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -122,6 +125,7 @@ public class Restaurant extends javax.swing.JFrame {
         pnlTwo = new javax.swing.JPanel();
         pnlOne = new javax.swing.JPanel();
         btnUpdateAllStock = new javax.swing.JButton();
+        pnlClearTable = new javax.swing.JPanel();
         jSeparator3 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -157,46 +161,6 @@ public class Restaurant extends javax.swing.JFrame {
 
         pnlLeftSide.setBackground(new java.awt.Color(51, 204, 255));
         pnlLeftSide.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btnStockReport.setBackground(new java.awt.Color(51, 204, 255));
-        btnStockReport.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        btnStockReport.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnStockReportMouseClicked(evt);
-            }
-        });
-
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/bullish_48px.png"))); // NOI18N
-
-        jLabel4.setFont(new java.awt.Font("Trebuchet MS", 1, 25)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 102, 255));
-        jLabel4.setText("STORK/REPORT");
-
-        javax.swing.GroupLayout btnStockReportLayout = new javax.swing.GroupLayout(btnStockReport);
-        btnStockReport.setLayout(btnStockReportLayout);
-        btnStockReportLayout.setHorizontalGroup(
-            btnStockReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnStockReportLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel4)
-                .addContainerGap())
-        );
-        btnStockReportLayout.setVerticalGroup(
-            btnStockReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnStockReportLayout.createSequentialGroup()
-                .addContainerGap(17, Short.MAX_VALUE)
-                .addGroup(btnStockReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnStockReportLayout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnStockReportLayout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(21, 21, 21))))
-        );
-
-        pnlLeftSide.add(btnStockReport, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 270, 80));
 
         btnOrderMenu.setBackground(new java.awt.Color(204, 255, 204));
         btnOrderMenu.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -257,24 +221,104 @@ public class Restaurant extends javax.swing.JFrame {
             btnOrderBoardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnOrderBoardLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel5)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel7)
                 .addContainerGap(24, Short.MAX_VALUE))
         );
         btnOrderBoardLayout.setVerticalGroup(
             btnOrderBoardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnOrderBoardLayout.createSequentialGroup()
+            .addGroup(btnOrderBoardLayout.createSequentialGroup()
                 .addContainerGap(12, Short.MAX_VALUE)
                 .addGroup(btnOrderBoardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addGroup(btnOrderBoardLayout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(jLabel7)))
-                .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnOrderBoardLayout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addGap(21, 21, 21))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnOrderBoardLayout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addContainerGap())))
         );
 
         pnlLeftSide.add(btnOrderBoard, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 270, -1));
+
+        btnStockReport.setBackground(new java.awt.Color(51, 204, 255));
+        btnStockReport.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnStockReport.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnStockReportMouseClicked(evt);
+            }
+        });
+
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/bullish_48px.png"))); // NOI18N
+
+        jLabel16.setFont(new java.awt.Font("Trebuchet MS", 1, 25)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(0, 102, 255));
+        jLabel16.setText("STORK/REPORT");
+
+        javax.swing.GroupLayout btnStockReportLayout = new javax.swing.GroupLayout(btnStockReport);
+        btnStockReport.setLayout(btnStockReportLayout);
+        btnStockReportLayout.setHorizontalGroup(
+            btnStockReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnStockReportLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel15)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel16)
+                .addContainerGap())
+        );
+        btnStockReportLayout.setVerticalGroup(
+            btnStockReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnStockReportLayout.createSequentialGroup()
+                .addContainerGap(17, Short.MAX_VALUE)
+                .addGroup(btnStockReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnStockReportLayout.createSequentialGroup()
+                        .addComponent(jLabel15)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnStockReportLayout.createSequentialGroup()
+                        .addComponent(jLabel16)
+                        .addGap(21, 21, 21))))
+        );
+
+        pnlLeftSide.add(btnStockReport, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 270, 80));
+
+        btnClearTable.setBackground(new java.awt.Color(51, 204, 255));
+        btnClearTable.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnClearTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnClearTableMouseClicked(evt);
+            }
+        });
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/buffet.png"))); // NOI18N
+
+        jLabel4.setFont(new java.awt.Font("Trebuchet MS", 1, 25)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 102, 255));
+        jLabel4.setText("CLEAR TABLES");
+
+        javax.swing.GroupLayout btnClearTableLayout = new javax.swing.GroupLayout(btnClearTable);
+        btnClearTable.setLayout(btnClearTableLayout);
+        btnClearTableLayout.setHorizontalGroup(
+            btnClearTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnClearTableLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel4)
+                .addContainerGap())
+        );
+        btnClearTableLayout.setVerticalGroup(
+            btnClearTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnClearTableLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jLabel4)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnClearTableLayout.createSequentialGroup()
+                .addContainerGap(12, Short.MAX_VALUE)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        pnlLeftSide.add(btnClearTable, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 440, 270, 80));
         pnlLeftSide.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 240, 17));
 
         jLabel6.setFont(new java.awt.Font("Trebuchet MS", 1, 36)); // NOI18N
@@ -518,6 +562,11 @@ public class Restaurant extends javax.swing.JFrame {
         tblCollectionOrder.setGridColor(new java.awt.Color(0, 102, 255));
         tblCollectionOrder.setIntercellSpacing(new java.awt.Dimension(3, 3));
         tblCollectionOrder.setSelectionBackground(new java.awt.Color(51, 204, 255));
+        tblCollectionOrder.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblCollectionOrderMouseClicked(evt);
+            }
+        });
         jScrollPane5.setViewportView(tblCollectionOrder);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -641,6 +690,11 @@ public class Restaurant extends javax.swing.JFrame {
         tblOrderWithIssue.setGridColor(new java.awt.Color(0, 102, 255));
         tblOrderWithIssue.setIntercellSpacing(new java.awt.Dimension(3, 3));
         tblOrderWithIssue.setSelectionBackground(new java.awt.Color(51, 204, 255));
+        tblOrderWithIssue.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblOrderWithIssueMouseClicked(evt);
+            }
+        });
         jScrollPane8.setViewportView(tblOrderWithIssue);
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
@@ -725,6 +779,19 @@ public class Restaurant extends javax.swing.JFrame {
         );
 
         pnlMain.add(pnlStockReport, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 50, 730, 550));
+
+        javax.swing.GroupLayout pnlClearTableLayout = new javax.swing.GroupLayout(pnlClearTable);
+        pnlClearTable.setLayout(pnlClearTableLayout);
+        pnlClearTableLayout.setHorizontalGroup(
+            pnlClearTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 730, Short.MAX_VALUE)
+        );
+        pnlClearTableLayout.setVerticalGroup(
+            pnlClearTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 550, Short.MAX_VALUE)
+        );
+
+        pnlMain.add(pnlClearTable, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 50, 730, 550));
         pnlMain.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 45, 730, 10));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -756,21 +823,26 @@ public class Restaurant extends javax.swing.JFrame {
         // Change color once selected
         setColour(btnOrderMenu);
         resetColour(btnOrderBoard);
+        resetColour(btnClearTable);
         resetColour(btnStockReport);
         
         pnlOrderMenu.setVisible(true);
         pnlOrderBoard.setVisible(false);
         pnlStockReport.setVisible(false);
+        pnlClearTable.setVisible(false);
     }//GEN-LAST:event_btnOrderMenuMouseClicked
 
     private void btnOrderBoardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOrderBoardMouseClicked
         // Change color once selected
         setColour(btnOrderBoard);
         resetColour(btnOrderMenu);
+        resetColour(btnClearTable);
         resetColour(btnStockReport);
+        
         pnlOrderMenu.setVisible(false);
         pnlOrderBoard.setVisible(true);
         pnlStockReport.setVisible(false);
+        pnlClearTable.setVisible(false);
         DefaultTableModel model = (DefaultTableModel) tblCollectionOrder.getModel();
         //The below code will clear the table everytime new information is displayed
         model.getDataVector().removeAllElements();
@@ -792,14 +864,18 @@ public class Restaurant extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnOrderBoardMouseClicked
 
-    private void btnStockReportMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnStockReportMouseClicked
+    private void btnClearTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClearTableMouseClicked
         // Change color once selected
-        setColour(btnStockReport);
+        setColour(btnClearTable);
         resetColour(btnOrderMenu);
         resetColour(btnOrderBoard);
-
-        displayStockData();
-    }//GEN-LAST:event_btnStockReportMouseClicked
+        resetColour(btnStockReport);
+        
+        pnlOrderMenu.setVisible(false);
+        pnlOrderBoard.setVisible(false);
+        pnlStockReport.setVisible(false);
+        pnlClearTable.setVisible(true);
+    }//GEN-LAST:event_btnClearTableMouseClicked
 
     private void rbtSteakMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtSteakMenu1ActionPerformed
         // check if the array index has not been initialised
@@ -960,7 +1036,7 @@ public class Restaurant extends javax.swing.JFrame {
             String order_date = orderData.get(a).getOrder_date();
             double order_bill = orderData.get(a).getOrder_bill();
             if (order_status.equalsIgnoreCase("Collect")) {
-                collectOrderModel.addRow(new Object[]{order_id, table_name, waiter_name, order_name, order_status, "R " + order_date, order_bill});
+                collectOrderModel.addRow(new Object[]{order_id, table_name, waiter_name, order_name, order_status, order_date, "R " + order_bill});
             }
         }
 
@@ -975,7 +1051,7 @@ public class Restaurant extends javax.swing.JFrame {
             String order_date = orderData.get(a).getOrder_date();
             double order_bill = orderData.get(a).getOrder_bill();
             if (order_status.equalsIgnoreCase("In-progress")) {
-                collectOrderModel.addRow(new Object[]{order_id, table_name, waiter_name, order_name, order_status, "R " + order_date, order_bill});
+                inprogressOrderModel.addRow(new Object[]{order_id, table_name, waiter_name, order_name, order_status, order_date, "R " + order_bill});
             }
         }
         
@@ -990,7 +1066,7 @@ public class Restaurant extends javax.swing.JFrame {
             String order_date = orderData.get(a).getOrder_date();
             double order_bill = orderData.get(a).getOrder_bill();
             if (order_status.equalsIgnoreCase("Issue")) {
-                collectOrderModel.addRow(new Object[]{order_id, table_name, waiter_name, order_name, comment, order_date, "R " + order_bill});
+                orderWithIssueModel.addRow(new Object[]{order_id, table_name, waiter_name, order_name, comment, order_date, "R " + order_bill});
             }
         }
     }//GEN-LAST:event_jTabbedPane1MouseClicked
@@ -1005,9 +1081,55 @@ public class Restaurant extends javax.swing.JFrame {
         String order_status = tblInprogressModel.getValueAt(tblInprogressOrder.getSelectedRow(), 4).toString();
         String order_date = tblInprogressModel.getValueAt(tblInprogressOrder.getSelectedRow(), 5).toString();
         String order_bill = tblInprogressModel.getValueAt(tblInprogressOrder.getSelectedRow(), 6).toString();
-        //String comment = tblInprogressModel.getValueAt(tblInprogressOrder.getSelectedRow(), 0).toString();
-        new OrderStatus(order_id, table_name, waiter_name, order_name, order_status, order_date, order_bill).setVisible(true);
+        String comment = "";
+        new OrderStatus(order_id, table_name, waiter_name, order_name, order_status, comment, order_date, order_bill).setVisible(true);
+        tblInprogressOrder.remove(tblInprogressOrder.getSelectedRow());
     }//GEN-LAST:event_tblInprogressOrderMouseClicked
+
+    private void tblCollectionOrderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCollectionOrderMouseClicked
+        // TODO add your handling code here:
+        DefaultTableModel tblCollectionOrderModel = (DefaultTableModel) tblCollectionOrder.getModel();
+        String order_id = tblCollectionOrderModel.getValueAt(tblCollectionOrder.getSelectedRow(), 0).toString();
+        String table_name = tblCollectionOrderModel.getValueAt(tblCollectionOrder.getSelectedRow(), 1).toString();
+        String waiter_name = tblCollectionOrderModel.getValueAt(tblCollectionOrder.getSelectedRow(), 2).toString();
+        String order_name = tblCollectionOrderModel.getValueAt(tblCollectionOrder.getSelectedRow(), 3).toString();
+        String order_status = tblCollectionOrderModel.getValueAt(tblCollectionOrder.getSelectedRow(), 4).toString();
+        String order_date = tblCollectionOrderModel.getValueAt(tblCollectionOrder.getSelectedRow(), 5).toString();
+        String order_bill = tblCollectionOrderModel.getValueAt(tblCollectionOrder.getSelectedRow(), 6).toString();
+        String comment = "";
+        new OrderStatus(order_id, table_name, waiter_name, order_name, order_status, comment, order_date, order_bill).setVisible(true);
+        tblCollectionOrder.remove(tblCollectionOrder.getSelectedRow());
+    }//GEN-LAST:event_tblCollectionOrderMouseClicked
+
+    private void tblOrderWithIssueMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblOrderWithIssueMouseClicked
+        // TODO add your handling code here:
+        DefaultTableModel tblOrderWithIssueModel = (DefaultTableModel) tblOrderWithIssue.getModel();
+        String order_id = tblOrderWithIssueModel.getValueAt(tblOrderWithIssue.getSelectedRow(), 0).toString();
+        String table_name = tblOrderWithIssueModel.getValueAt(tblOrderWithIssue.getSelectedRow(), 1).toString();
+        String waiter_name = tblOrderWithIssueModel.getValueAt(tblOrderWithIssue.getSelectedRow(), 2).toString();
+        String order_name = tblOrderWithIssueModel.getValueAt(tblOrderWithIssue.getSelectedRow(), 3).toString();
+        String order_status = "Issue";
+        String order_date = tblOrderWithIssueModel.getValueAt(tblOrderWithIssue.getSelectedRow(), 5).toString();
+        String order_bill = tblOrderWithIssueModel.getValueAt(tblOrderWithIssue.getSelectedRow(), 6).toString();
+        String comment = tblOrderWithIssueModel.getValueAt(tblOrderWithIssue.getSelectedRow(), 4).toString();
+        new OrderStatus(order_id, table_name, waiter_name, order_name, order_status, comment, order_date, order_bill).setVisible(true);
+        tblOrderWithIssue.remove(tblOrderWithIssue.getSelectedRow());
+    }//GEN-LAST:event_tblOrderWithIssueMouseClicked
+
+    private void btnStockReportMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnStockReportMouseClicked
+        // TODO add your handling code here:
+        setColour(btnStockReport);
+        resetColour(btnOrderMenu);
+        resetColour(btnOrderBoard);
+        resetColour(btnClearTable);
+        
+        pnlOrderMenu.setVisible(false);
+        pnlOrderBoard.setVisible(false);
+        pnlStockReport.setVisible(true);
+        pnlClearTable.setVisible(false);
+
+        displayStockData();
+    }//GEN-LAST:event_btnStockReportMouseClicked
 
     void setColour(JPanel panel){
         panel.setBackground(new Color(204,255,204));
@@ -1166,6 +1288,7 @@ public class Restaurant extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel btnClearTable;
     private javax.swing.JPanel btnOrderBoard;
     private javax.swing.JPanel btnOrderMenu;
     private javax.swing.JButton btnPlaceOrder;
@@ -1178,6 +1301,8 @@ public class Restaurant extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1206,6 +1331,7 @@ public class Restaurant extends javax.swing.JFrame {
     private javax.swing.JLabel lblCloseForm;
     private javax.swing.JLabel lblLoginUser;
     private javax.swing.JLabel lblMinimiseForm;
+    private javax.swing.JPanel pnlClearTable;
     private javax.swing.JPanel pnlLeftSide;
     private javax.swing.JPanel pnlMain;
     private javax.swing.JPanel pnlOne;
