@@ -517,6 +517,7 @@ public class Restaurant extends javax.swing.JFrame {
         });
         tblCollectionOrder.setGridColor(new java.awt.Color(0, 102, 255));
         tblCollectionOrder.setIntercellSpacing(new java.awt.Dimension(3, 3));
+        tblCollectionOrder.setSelectionBackground(new java.awt.Color(51, 204, 255));
         jScrollPane5.setViewportView(tblCollectionOrder);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -575,6 +576,7 @@ public class Restaurant extends javax.swing.JFrame {
         });
         tblInprogressOrder.setGridColor(new java.awt.Color(0, 102, 255));
         tblInprogressOrder.setIntercellSpacing(new java.awt.Dimension(3, 3));
+        tblInprogressOrder.setSelectionBackground(new java.awt.Color(51, 204, 255));
         jScrollPane6.setViewportView(tblInprogressOrder);
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
@@ -613,7 +615,7 @@ public class Restaurant extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Order id", "Table number", "Waiter name", "Order name", "Order status", "Order date", "Order bill"
+                "Order id", "Table number", "Waiter name", "Order name", "Comment", "Order date", "Order bill"
             }
         ) {
             Class[] types = new Class [] {
@@ -633,6 +635,7 @@ public class Restaurant extends javax.swing.JFrame {
         });
         tblOrderWithIssue.setGridColor(new java.awt.Color(0, 102, 255));
         tblOrderWithIssue.setIntercellSpacing(new java.awt.Dimension(3, 3));
+        tblOrderWithIssue.setSelectionBackground(new java.awt.Color(51, 204, 255));
         jScrollPane8.setViewportView(tblOrderWithIssue);
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
@@ -939,48 +942,50 @@ public class Restaurant extends javax.swing.JFrame {
         tblInprogressOrder.revalidate();
         tblOrderWithIssue.revalidate();
         ArrayList<Order> orderData = DatabaseConnection.selectAllOrders();
-//            ArrayList<Stock> stockData = DatabaseConnection.selectAllStock();
-//            ArrayList<Table> tableData = DatabaseConnection.selectAllTables();
-// Display all orders that must be collected in order to be served
-for(int a = 0; a < orderData.size(); a++){
-    int order_id = orderData.get(a).getOrder_id();
-    //String comment = orderData.get(a).getComment();
-    String order_name = orderData.get(a).getOrder_name();
-    String table_name = orderData.get(a).getTable_name();
-    String waiter_name = orderData.get(a).getWaiter_name();
-    String order_status = orderData.get(a).getOrder_status();
-    String order_date = orderData.get(a).getOrder_date();
-    double order_bill = orderData.get(a).getOrder_bill();
-    if(order_status.equalsIgnoreCase("Collect")){
-        collectOrderModel.addRow(new Object[]{order_id, waiter_name, table_name, order_name, order_status, "R "+order_date, order_bill});
-    }
-}
-// Display all the orders
-for(int a = 0; a < orderData.size(); a++){
-    int order_id = orderData.get(a).getOrder_id();
-    //String comment = orderData.get(a).getComment();
-    String order_name = orderData.get(a).getOrder_name();
-    String table_name = orderData.get(a).getTable_name();
-    String waiter_name = orderData.get(a).getWaiter_name();
-    String order_status = orderData.get(a).getOrder_status();
-    String order_date = orderData.get(a).getOrder_date();
-    double order_bill = orderData.get(a).getOrder_bill();
-    inprogressOrderModel.addRow(new Object[]{order_id, waiter_name, table_name, order_name, order_status, order_date, "R "+order_bill});
-}
-// Display all orders with issues/problems
-for(int a = 0; a < orderData.size(); a++){
-    int order_id = orderData.get(a).getOrder_id();
-    //String comment = orderData.get(a).getComment();
-    String order_name = orderData.get(a).getOrder_name();
-    String table_name = orderData.get(a).getTable_name();
-    String waiter_name = orderData.get(a).getWaiter_name();
-    String order_status = orderData.get(a).getOrder_status();
-    String order_date = orderData.get(a).getOrder_date();
-    double order_bill = orderData.get(a).getOrder_bill();
-    if(order_status.equalsIgnoreCase("Issue")){
-        collectOrderModel.addRow(new Object[]{order_id, waiter_name, table_name, order_name, order_status, order_date, "R "+order_bill});
-    }
-}
+        // ArrayList<Stock> stockData = DatabaseConnection.selectAllStock();
+        // ArrayList<Table> tableData = DatabaseConnection.selectAllTables();
+        // Display all orders that must be collected in order to be served
+        for (int a = 0; a < orderData.size(); a++) {
+            int order_id = orderData.get(a).getOrder_id();
+            //String comment = orderData.get(a).getComment();
+            String order_name = orderData.get(a).getOrder_name();
+            String table_name = orderData.get(a).getTable_name();
+            String waiter_name = orderData.get(a).getWaiter_name();
+            String order_status = orderData.get(a).getOrder_status();
+            String order_date = orderData.get(a).getOrder_date();
+            double order_bill = orderData.get(a).getOrder_bill();
+            if (order_status.equalsIgnoreCase("Collect")) {
+                collectOrderModel.addRow(new Object[]{order_id, table_name, waiter_name, order_name, order_status, "R " + order_date, order_bill});
+            }
+        }
+
+        // Display all the orders
+        for (int a = 0; a < orderData.size(); a++) {
+            int order_id = orderData.get(a).getOrder_id();
+            //String comment = orderData.get(a).getComment();
+            String order_name = orderData.get(a).getOrder_name();
+            String table_name = orderData.get(a).getTable_name();
+            String waiter_name = orderData.get(a).getWaiter_name();
+            String order_status = orderData.get(a).getOrder_status();
+            String order_date = orderData.get(a).getOrder_date();
+            double order_bill = orderData.get(a).getOrder_bill();
+            inprogressOrderModel.addRow(new Object[]{order_id, table_name, waiter_name, order_name, order_status, order_date, "R " + order_bill});
+        }
+        
+        // Display all orders with issues/problems
+        for (int a = 0; a < orderData.size(); a++) {
+            int order_id = orderData.get(a).getOrder_id();
+            String comment = orderData.get(a).getComment();
+            String order_name = orderData.get(a).getOrder_name();
+            String table_name = orderData.get(a).getTable_name();
+            String waiter_name = orderData.get(a).getWaiter_name();
+            String order_status = orderData.get(a).getOrder_status();
+            String order_date = orderData.get(a).getOrder_date();
+            double order_bill = orderData.get(a).getOrder_bill();
+            if (order_status.equalsIgnoreCase("Issue")) {
+                collectOrderModel.addRow(new Object[]{order_id, table_name, waiter_name, order_name, comment, order_date, "R " + order_bill});
+            }
+        }
     }//GEN-LAST:event_jTabbedPane1MouseClicked
 
     void setColour(JPanel panel){
