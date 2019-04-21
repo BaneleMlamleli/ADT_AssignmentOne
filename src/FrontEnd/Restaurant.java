@@ -577,6 +577,11 @@ public class Restaurant extends javax.swing.JFrame {
         tblInprogressOrder.setGridColor(new java.awt.Color(0, 102, 255));
         tblInprogressOrder.setIntercellSpacing(new java.awt.Dimension(3, 3));
         tblInprogressOrder.setSelectionBackground(new java.awt.Color(51, 204, 255));
+        tblInprogressOrder.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblInprogressOrderMouseClicked(evt);
+            }
+        });
         jScrollPane6.setViewportView(tblInprogressOrder);
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
@@ -969,7 +974,9 @@ public class Restaurant extends javax.swing.JFrame {
             String order_status = orderData.get(a).getOrder_status();
             String order_date = orderData.get(a).getOrder_date();
             double order_bill = orderData.get(a).getOrder_bill();
-            inprogressOrderModel.addRow(new Object[]{order_id, table_name, waiter_name, order_name, order_status, order_date, "R " + order_bill});
+            if (order_status.equalsIgnoreCase("In-progress")) {
+                collectOrderModel.addRow(new Object[]{order_id, table_name, waiter_name, order_name, order_status, "R " + order_date, order_bill});
+            }
         }
         
         // Display all orders with issues/problems
@@ -987,6 +994,20 @@ public class Restaurant extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jTabbedPane1MouseClicked
+
+    private void tblInprogressOrderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblInprogressOrderMouseClicked
+        // TODO add your handling code here:
+        DefaultTableModel tblInprogressModel = (DefaultTableModel) tblInprogressOrder.getModel();
+        String order_id = tblInprogressModel.getValueAt(tblInprogressOrder.getSelectedRow(), 0).toString();
+        String table_name = tblInprogressModel.getValueAt(tblInprogressOrder.getSelectedRow(), 1).toString();
+        String waiter_name = tblInprogressModel.getValueAt(tblInprogressOrder.getSelectedRow(), 2).toString();
+        String order_name = tblInprogressModel.getValueAt(tblInprogressOrder.getSelectedRow(), 3).toString();
+        String order_status = tblInprogressModel.getValueAt(tblInprogressOrder.getSelectedRow(), 4).toString();
+        String order_date = tblInprogressModel.getValueAt(tblInprogressOrder.getSelectedRow(), 5).toString();
+        String order_bill = tblInprogressModel.getValueAt(tblInprogressOrder.getSelectedRow(), 6).toString();
+        //String comment = tblInprogressModel.getValueAt(tblInprogressOrder.getSelectedRow(), 0).toString();
+        new OrderStatus(order_id, table_name, waiter_name, order_name, order_status, order_date, order_bill).setVisible(true);
+    }//GEN-LAST:event_tblInprogressOrderMouseClicked
 
     void setColour(JPanel panel){
         panel.setBackground(new Color(204,255,204));
