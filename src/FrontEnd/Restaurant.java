@@ -984,7 +984,7 @@ public class Restaurant extends javax.swing.JFrame {
                     if (selectedItem[a].isSelectedRadioButtonItem()) {
                         updateStockForSelectedMenuName(a);
                     }
-                    DatabaseConnection.insertOrderDetails(orderComment, selectedItem[a].getOrder_name(), selectedTable, waiterName, "New", Double.parseDouble(String.format( "%.2f",  1.0 + (Math.random() * (2000.00 - 1.0)))), date);
+                    DatabaseConnection.insertOrderDetails(orderComment, selectedItem[a].getOrder_name(), selectedTable, waiterName, "In-progress", Double.parseDouble(String.format( "%.2f",  1.0 + (Math.random() * (2000.00 - 1.0)))), date);
                 }
                 DatabaseConnection.insertTableDetails("Occupied", selectedTable, waiterName);
                 cmbTable.removeItemAt(cmbTable.getSelectedIndex()); // removing the table in the list since it is occupied
