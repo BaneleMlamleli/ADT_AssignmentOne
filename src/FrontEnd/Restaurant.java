@@ -911,7 +911,13 @@ public class Restaurant extends javax.swing.JFrame {
         pnlClearTable.setVisible(true);
         
         // Status: Collect, In-progress (New), Issue
-        
+        for(int a = 0; a < DatabaseConnection.selectAllTables().size(); a++){
+            switch(DatabaseConnection.selectAllTables().get(a).getTable_status()){
+                case "Collect": break;
+                case "In-progress": break;
+                case "Issue": break;
+            }
+        }
     }//GEN-LAST:event_btnClearTableMouseClicked
 
     private void rbtSteakMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtSteakMenu1ActionPerformed
