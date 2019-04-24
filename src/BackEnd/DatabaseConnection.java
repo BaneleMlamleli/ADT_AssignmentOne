@@ -24,7 +24,7 @@ public class DatabaseConnection {
      */
     public static void connection(){
         try{
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/restaurant", "root", "B!n@ryM@n01");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/restaurant", "root", "C!ph3r01");
             System.out.println("Database connection successfully established");
             /**
              * The purpose of this selection is to check if the stock table is
@@ -170,6 +170,10 @@ public class DatabaseConnection {
         return totalUsers;
     }
     
+    /**
+     * The below method will update the stock depending on the used item
+     * @param itemMenu
+     */
     public static void updateStock(String itemMenu[]){
         try{
             // creating the statement
@@ -190,13 +194,17 @@ public class DatabaseConnection {
             System.out.println("stock update executed");
         }catch(SQLSyntaxErrorException see){
             see.getMessage();
-        }catch(SQLException ex){
+        }catch(SQLException | NumberFormatException ex){
             ex.getMessage();
-        }catch(Exception e){
-            e.getMessage();
         }
     }
     
+    /**
+     * Insert the table that is occupied by customer into the database
+     * @param tableStatus
+     * @param selectedTable
+     * @param waiterName
+     */
     public static void insertTableDetails(String tableStatus, String selectedTable, String waiterName){
         try{
             prepStatement = connection.prepareStatement("INSERT INTO restaurant.table (table_status, table_name, waiter_name) VALUES(?, ?, ?)");
@@ -216,6 +224,16 @@ public class DatabaseConnection {
         }
     }
     
+    /**
+     * This method will insert all the data related to each and every order into the database
+     * @param orderComment
+     * @param order_name
+     * @param selectedTable
+     * @param waiterName
+     * @param orderStatus
+     * @param bill
+     * @param date
+     */
     public static void insertOrderDetails(String orderComment, String order_name, String selectedTable, String waiterName, String orderStatus, double bill, String date){
         try{
             prepStatement = connection.prepareStatement("INSERT INTO restaurant.order (comment, order_name, table_name, waiter_name, order_status, order_bill, order_date) VALUES(?, ?, ?, ?, ?, ?, ?)");
@@ -361,6 +379,9 @@ public class DatabaseConnection {
         }
     }
     
+    /**
+     * closing all the sql queries
+     */
     public static void closeStatement(){
         try {
             resultset.close();
