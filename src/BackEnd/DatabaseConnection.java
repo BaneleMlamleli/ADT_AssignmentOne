@@ -113,7 +113,6 @@ public class DatabaseConnection {
      * @param password
      * @param title
      * @return 
-     * @throws java.sql.SQLException 
      */
     public static boolean verifyUser(String username, String password, String title){
         boolean verify = false;
@@ -144,7 +143,6 @@ public class DatabaseConnection {
     /**
      * This method will return all the amount of users that exist in the user database table
      * @return 
-     * @throws java.sql.SQLException 
      */
     public static int howManyUsers(){
         int totalUsers = 0;
@@ -260,8 +258,7 @@ public class DatabaseConnection {
     /**
      * The below method will read all the data in the stock table and record
      * the response in an ArrayList object of type Stock 
-     * @return 
-     * @throws java.sql.SQLException
+     * @return
      */
     public static ArrayList<Stock> selectAllStock(){
         ArrayList<Stock> stock = new ArrayList<>();
@@ -290,8 +287,7 @@ public class DatabaseConnection {
     /**
      * The below method will read all the data in the order table and record
      * the response in an ArrayList object of type Order 
-     * @return 
-     * @throws java.sql.SQLException
+     * @return
      */
     public static ArrayList<Order> selectAllOrders(){
         ArrayList<Order> order = new ArrayList<>();
