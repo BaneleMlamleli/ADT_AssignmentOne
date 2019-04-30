@@ -24,7 +24,7 @@ public class DatabaseConnection {
      */
     public static void connection(){
         try{
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/restaurant", "root", "B!n@ryM@n01");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/restaurant", "root", "C!ph3r01");
             System.out.println("Database connection successfully established");
             /**
              * The purpose of this selection is to check if the stock table is
@@ -113,7 +113,6 @@ public class DatabaseConnection {
      * @param password
      * @param title
      * @return 
-     * @throws java.sql.SQLException 
      */
     public static boolean verifyUser(String username, String password, String title){
         boolean verify = false;
@@ -146,7 +145,6 @@ public class DatabaseConnection {
     /**
      * This method will return all the amount of users that exist in the user database table
      * @return 
-     * @throws java.sql.SQLException 
      */
     public static int howManyUsers(){
         int totalUsers = 0;
@@ -172,6 +170,10 @@ public class DatabaseConnection {
         return totalUsers;
     }
     
+    /**
+     * The below method will update the stock depending on the used item
+     * @param itemMenu
+     */
     public static void updateStock(String itemMenu[]){
         try{
             // creating the statement
@@ -191,16 +193,18 @@ public class DatabaseConnection {
             }
             System.out.println("stock update executed");
         }catch(SQLSyntaxErrorException see){
-            System.out.println(see.getMessage());
-        }catch(SQLException ex){
-            System.out.println(ex.getMessage());
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }finally{
-            closeStatement();
+            see.getMessage();
+        }catch(SQLException | NumberFormatException ex){
+            ex.getMessage();
         }
     }
     
+    /**
+     * Insert the table that is occupied by customer into the database
+     * @param tableStatus
+     * @param selectedTable
+     * @param waiterName
+     */
     public static void insertTableDetails(String tableStatus, String selectedTable, String waiterName){
         try{
             prepStatement = connection.prepareStatement("INSERT INTO restaurant.table (table_status, table_name, waiter_name) VALUES(?, ?, ?)");
@@ -220,6 +224,16 @@ public class DatabaseConnection {
         }
     }
     
+    /**
+     * This method will insert all the data related to each and every order into the database
+     * @param orderComment
+     * @param order_name
+     * @param selectedTable
+     * @param waiterName
+     * @param orderStatus
+     * @param bill
+     * @param date
+     */
     public static void insertOrderDetails(String orderComment, String order_name, String selectedTable, String waiterName, String orderStatus, double bill, String date){
         try{
             prepStatement = connection.prepareStatement("INSERT INTO restaurant.order (comment, order_name, table_name, waiter_name, order_status, order_bill, order_date) VALUES(?, ?, ?, ?, ?, ?, ?)");
@@ -246,8 +260,7 @@ public class DatabaseConnection {
     /**
      * The below method will read all the data in the stock table and record
      * the response in an ArrayList object of type Stock 
-     * @return 
-     * @throws java.sql.SQLException
+     * @return
      */
     public static ArrayList<Stock> selectAllStock(){
         ArrayList<Stock> stock = new ArrayList<>();
@@ -277,8 +290,7 @@ public class DatabaseConnection {
     /**
      * The below method will read all the data in the order table and record
      * the response in an ArrayList object of type Order 
-     * @return 
-     * @throws java.sql.SQLException
+     * @return
      */
     public static ArrayList<Order> selectAllOrders(){
         ArrayList<Order> order = new ArrayList<>();
@@ -394,6 +406,9 @@ public class DatabaseConnection {
         }
     }
     
+    /**
+     * closing all the sql queries
+     */
     public static void closeStatement(){
         try {
             resultset.close();
