@@ -17,7 +17,6 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 import org.jfree.chart.*;
 import org.jfree.chart.plot.*;
@@ -49,6 +48,7 @@ public class Restaurant extends javax.swing.JFrame {
         pnlOrderMenu.setVisible(true);
         pnlOrderBoard.setVisible(false);
         pnlStockReport.setVisible(false);
+        pnlClearTable.setVisible(false);
     }
 
     /**
@@ -131,6 +131,13 @@ public class Restaurant extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jPanel8 = new javax.swing.JPanel();
+        jPanel13 = new javax.swing.JPanel();
+        jPanel15 = new javax.swing.JPanel();
+        jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -790,35 +797,114 @@ public class Restaurant extends javax.swing.JFrame {
         jButton5.setForeground(new java.awt.Color(0, 51, 255));
         jButton5.setText("Table One");
 
+        jLabel17.setText("Occupied:");
+
+        jLabel18.setText("Dirty:");
+
+        jLabel19.setText("Clean");
+
+        jPanel8.setBackground(new java.awt.Color(255, 153, 0));
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 50, Short.MAX_VALUE)
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 15, Short.MAX_VALUE)
+        );
+
+        jPanel13.setBackground(new java.awt.Color(255, 0, 0));
+
+        javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
+        jPanel13.setLayout(jPanel13Layout);
+        jPanel13Layout.setHorizontalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 50, Short.MAX_VALUE)
+        );
+        jPanel13Layout.setVerticalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 14, Short.MAX_VALUE)
+        );
+
+        jPanel15.setBackground(new java.awt.Color(153, 255, 153));
+
+        javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
+        jPanel15.setLayout(jPanel15Layout);
+        jPanel15Layout.setHorizontalGroup(
+            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 50, Short.MAX_VALUE)
+        );
+        jPanel15Layout.setVerticalGroup(
+            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 15, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout pnlClearTableLayout = new javax.swing.GroupLayout(pnlClearTable);
         pnlClearTable.setLayout(pnlClearTableLayout);
         pnlClearTableLayout.setHorizontalGroup(
             pnlClearTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlClearTableLayout.createSequentialGroup()
+            .addGroup(pnlClearTableLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(pnlClearTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 239, Short.MAX_VALUE)
-                .addGroup(pnlClearTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlClearTableLayout.createSequentialGroup()
+                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(pnlClearTableLayout.createSequentialGroup()
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27))
+                    .addGroup(pnlClearTableLayout.createSequentialGroup()
+                        .addComponent(jLabel17)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(114, 114, 114)
+                        .addGroup(pnlClearTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlClearTableLayout.createSequentialGroup()
+                                .addComponent(jLabel18)
+                                .addGap(18, 18, 18)
+                                .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(60, 60, 60)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel19)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
             .addGroup(pnlClearTableLayout.createSequentialGroup()
-                .addGap(250, 250, 250)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 702, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         pnlClearTableLayout.setVerticalGroup(
             pnlClearTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlClearTableLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addContainerGap()
+                .addGroup(pnlClearTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlClearTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel18)
+                        .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel17)
+                        .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlClearTableLayout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addGroup(pnlClearTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel19)
+                            .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.DEFAULT_SIZE, 9, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlClearTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
+                .addGap(18, 18, 18)
                 .addGroup(pnlClearTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
                     .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -976,7 +1062,7 @@ public class Restaurant extends javax.swing.JFrame {
          */
         if(cmbTable.getItemCount() != 0){
             //check if there is any comment in the txtOrderComment text box.
-            if (orderComment.length() > 0) {
+            if (!orderComment.isEmpty()) {
                 for (int a = 0; a < selectedItem.length; a++) {
                     if (selectedItem[a] == null) {
                         continue;
@@ -984,10 +1070,11 @@ public class Restaurant extends javax.swing.JFrame {
                     if (selectedItem[a].isSelectedRadioButtonItem()) {
                         updateStockForSelectedMenuName(a);
                     }
-                    DatabaseConnection.insertOrderDetails(orderComment, selectedItem[a].getOrder_name(), selectedTable, waiterName, "New", Double.parseDouble(String.format( "%.2f",  1.0 + (Math.random() * (2000.00 - 1.0)))), date);
+                    DatabaseConnection.insertOrderDetails(orderComment, selectedItem[a].getOrder_name(), selectedTable, waiterName, "In-progress", Double.parseDouble(String.format( "%.2f",  1.0 + (Math.random() * (2000.00 - 1.0)))), date);
                 }
                 DatabaseConnection.insertTableDetails("Occupied", selectedTable, waiterName);
                 cmbTable.removeItemAt(cmbTable.getSelectedIndex()); // removing the table in the list since it is occupied
+                JOptionPane.showMessageDialog(null, "Order has been placed successfully", "Order placed", JOptionPane.INFORMATION_MESSAGE);
             } else {// If there is no comment in the txtOrderComment text box
                 orderComment = "No special comment";
                 for (int a = 0; a < selectedItem.length; a++) {
@@ -1001,6 +1088,7 @@ public class Restaurant extends javax.swing.JFrame {
                 }
                 DatabaseConnection.insertTableDetails("Occupied", selectedTable, waiterName);
                 cmbTable.removeItemAt(cmbTable.getSelectedIndex()); // removing the table in the list since it is occupied
+                JOptionPane.showMessageDialog(null, "Order has been placed successfully", "Order placed", JOptionPane.INFORMATION_MESSAGE);
             }
         }else{
             JOptionPane.showMessageDialog(null,"Apologies!!\nAll tables are fully occupied.\nPlease wait for the next empty table", "Warning", JOptionPane.ERROR_MESSAGE);
@@ -1117,6 +1205,7 @@ public class Restaurant extends javax.swing.JFrame {
         String order_bill = tblInprogressModel.getValueAt(tblInprogressOrder.getSelectedRow(), 6).toString();
         String comment = "";
         new OrderStatus(order_id, table_name, waiter_name, order_name, order_status, comment, order_date, order_bill).setVisible(true);
+        System.out.println("tblInprogressOrder.getSelectedRow(): "+tblInprogressOrder.getSelectedRow());
         tblInprogressOrder.remove(tblInprogressOrder.getSelectedRow());
     }//GEN-LAST:event_tblInprogressOrderMouseClicked
 
@@ -1132,6 +1221,7 @@ public class Restaurant extends javax.swing.JFrame {
         String order_bill = tblCollectionOrderModel.getValueAt(tblCollectionOrder.getSelectedRow(), 6).toString();
         String comment = "";
         new OrderStatus(order_id, table_name, waiter_name, order_name, order_status, comment, order_date, order_bill).setVisible(true);
+        System.out.println("tblCollectionOrder.getSelectedRow(): "+tblCollectionOrder.getSelectedRow());
         tblCollectionOrder.remove(tblCollectionOrder.getSelectedRow());
     }//GEN-LAST:event_tblCollectionOrderMouseClicked
 
@@ -1147,6 +1237,7 @@ public class Restaurant extends javax.swing.JFrame {
         String order_bill = tblOrderWithIssueModel.getValueAt(tblOrderWithIssue.getSelectedRow(), 6).toString();
         String comment = tblOrderWithIssueModel.getValueAt(tblOrderWithIssue.getSelectedRow(), 4).toString();
         new OrderStatus(order_id, table_name, waiter_name, order_name, order_status, comment, order_date, order_bill).setVisible(true);
+        System.out.println("tblOrderWithIssue.getSelectedRow(): "+tblOrderWithIssue.getSelectedRow());
         tblOrderWithIssue.remove(tblOrderWithIssue.getSelectedRow());
     }//GEN-LAST:event_tblOrderWithIssueMouseClicked
 
@@ -1247,6 +1338,7 @@ public class Restaurant extends javax.swing.JFrame {
     public void displayStockData(){
         pnlOrderMenu.setVisible(false);
         pnlOrderBoard.setVisible(false);
+        pnlClearTable.setVisible(false);
         pnlStockReport.setVisible(true);
         
         ArrayList<Stock> stockData = DatabaseConnection.selectAllStock();
@@ -1294,10 +1386,11 @@ public class Restaurant extends javax.swing.JFrame {
 ////            "com.seaglasslookandfeel.SeaGlassLookAndFeel"
 ////            
 ////            "com.birosoft.liquid.LiquidLookAndFeel"
+//
 //            String className = "com.alee.laf.WebLookAndFeel";
 //            UIManager.setLookAndFeel(className);
 ////            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-////                if ("Nimbus".equals(info.getName())) {
+////                if ("Metal".equals(info.getName())) {
 ////                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
 ////                    break;
 ////                }
@@ -1342,6 +1435,9 @@ public class Restaurant extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1352,19 +1448,25 @@ public class Restaurant extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel jPanel14;
+    private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lblCloseForm;

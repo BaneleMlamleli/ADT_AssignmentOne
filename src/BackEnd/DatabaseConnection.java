@@ -57,9 +57,9 @@ public class DatabaseConnection {
                 System.out.println("Default stock items have been inserted into the stock database table");
             }
         }catch(SQLSyntaxErrorException see){
-            see.getMessage();
+            System.out.println(see.getMessage());
         }catch(SQLException ex){
-            ex.getMessage();
+            System.out.println(ex.getMessage());
         }finally{
             closeStatement();
         }
@@ -97,11 +97,11 @@ public class DatabaseConnection {
             prepStatement.execute();
             System.out.println(newUser[0]+" has been registered successfully");
         }catch(SQLSyntaxErrorException see){
-            see.getMessage();
+            System.out.println(see.getMessage());
         }catch(SQLException ex){
-            ex.getMessage();
+            System.out.println(ex.getMessage());
         }catch(Exception e){
-            e.getMessage();
+            System.out.println(e.getMessage());
         }finally{
             closeStatement();
         }
@@ -127,14 +127,16 @@ public class DatabaseConnection {
                 verify = ((resultset.getString("username").equals(username)) &&
                         (resultset.getString("password").equals(password)) &&
                         (resultset.getString("title").equals(title)));
+                if(verify)
+                    break;
             }
             System.out.println("User verification executed");
         }catch(SQLSyntaxErrorException see){
-            see.getMessage();
+            System.out.println(see.getMessage());
         }catch(SQLException ex){
-            ex.getMessage();
+            System.out.println(ex.getMessage());
         }catch(Exception e){
-            e.getMessage();
+            System.out.println(e.getMessage());
         }finally{
             closeStatement();
         }
@@ -152,18 +154,18 @@ public class DatabaseConnection {
             // creating the statement
             statement = connection.createStatement();
             // execute the sql query
-            resultset=  statement.executeQuery("SELECT * FROM restaurant.user");
+            resultset =  statement.executeQuery("SELECT * FROM restaurant.user");
             // processing the results to very the entered login details
             while(resultset.next()){
                 totalUsers++;
             }
             System.out.println("total user calculation executed");
         }catch(SQLSyntaxErrorException see){
-            see.getMessage();
+            System.out.println(see.getMessage());
         }catch(SQLException ex){
-            ex.getMessage();
+            System.out.println(ex.getMessage());
         }catch(Exception e){
-            e.getMessage();
+            System.out.println(e.getMessage());
         }finally{
             closeStatement();
         }
@@ -189,11 +191,13 @@ public class DatabaseConnection {
             }
             System.out.println("stock update executed");
         }catch(SQLSyntaxErrorException see){
-            see.getMessage();
+            System.out.println(see.getMessage());
         }catch(SQLException ex){
-            ex.getMessage();
+            System.out.println(ex.getMessage());
         }catch(Exception e){
-            e.getMessage();
+            System.out.println(e.getMessage());
+        }finally{
+            closeStatement();
         }
     }
     
@@ -206,11 +210,11 @@ public class DatabaseConnection {
             prepStatement.execute();
             System.out.println(selectedTable+" order details inserted successfully");
         }catch(SQLSyntaxErrorException see){
-            see.getMessage();
+            System.out.println(see.getMessage());
         }catch(SQLException ex){
-            ex.getMessage();
+            System.out.println(ex.getMessage());
         }catch(Exception e){
-            e.getMessage();
+            System.out.println(e.getMessage());
         }finally{
             closeStatement();
         }
@@ -229,11 +233,11 @@ public class DatabaseConnection {
             prepStatement.execute();
             System.out.println("Order has been placed successfully");
         }catch(SQLSyntaxErrorException see){
-            see.getMessage();
+            System.out.println(see.getMessage());
         }catch(SQLException ex){
-            ex.getMessage();
+            System.out.println(ex.getMessage());
         }catch(Exception e){
-            e.getMessage();
+            System.out.println(e.getMessage());
         }finally{
             closeStatement();
         }       
@@ -247,6 +251,7 @@ public class DatabaseConnection {
      */
     public static ArrayList<Stock> selectAllStock(){
         ArrayList<Stock> stock = new ArrayList<>();
+        stock.clear();
         try{
             // creating the statement
             statement = connection.createStatement();
@@ -258,11 +263,11 @@ public class DatabaseConnection {
             }
             System.out.println("All Stock data read successfully");
         }catch(SQLSyntaxErrorException see){
-            see.getMessage();
+            System.out.println(see.getMessage());
         }catch(SQLException ex){
-            ex.getMessage();
+            System.out.println(ex.getMessage());
         }catch(Exception e){
-            e.getMessage();
+            System.out.println(e.getMessage());
         }finally{
             closeStatement();
         }
@@ -277,6 +282,7 @@ public class DatabaseConnection {
      */
     public static ArrayList<Order> selectAllOrders(){
         ArrayList<Order> order = new ArrayList<>();
+        order.clear();
         try{
             // creating the statement
             statement = connection.createStatement();
@@ -296,11 +302,11 @@ public class DatabaseConnection {
             }
             System.out.println("All Order data read successfully");
         }catch(SQLSyntaxErrorException see){
-            see.getMessage();
+            System.out.println(see.getMessage());
         }catch(SQLException ex){
-            ex.getMessage();
+            System.out.println(ex.getMessage());
         }catch(Exception e){
-            e.getMessage();
+            System.out.println(e.getMessage());
         }finally{
             closeStatement();
         }
@@ -314,6 +320,7 @@ public class DatabaseConnection {
      */
     public static ArrayList<Table> selectAllTables(){
         ArrayList<Table> table = new ArrayList<>();
+        table.clear();
         try{
             // creating the statement
             statement = connection.createStatement();
@@ -329,11 +336,11 @@ public class DatabaseConnection {
             }
             System.out.println("All Table data read successfully");
         }catch(SQLSyntaxErrorException see){
-            see.getMessage();
+            System.out.println(see.getMessage());
         }catch(SQLException ex){
-            ex.getMessage();
+            System.out.println(ex.getMessage());
         }catch(Exception e){
-            e.getMessage();
+            System.out.println(e.getMessage());
         }finally{
             closeStatement();
         }
@@ -351,11 +358,37 @@ public class DatabaseConnection {
             closeStatement();
             System.out.println("Stock Table updated successfully");
         }catch(SQLSyntaxErrorException see){
-            see.getMessage();
+            System.out.println(see.getMessage());
         }catch(SQLException ex){
-            ex.getMessage();
+            System.out.println(ex.getMessage());
         }catch(Exception e){
-            e.getMessage();
+            System.out.println(e.getMessage());
+        }finally{
+            closeStatement();
+        }
+    }
+    
+    /**
+     * This method will update the order table depending on the condition of the order
+     * @param order_id
+     * @param comment
+     * @param status
+     */
+    public static void changeOrder(int order_id, String comment, String status, String table_name){
+        try{
+            prepStatement = connection.prepareStatement("UPDATE restaurant.order SET restaurant.order.comment = ? restaurant.order.order_status = ? "+
+                                                        "WHERE restaurant.order.order_id = ?");
+            prepStatement.setString(1, comment);
+            prepStatement.setString(2, status);
+            prepStatement.setInt(3, order_id);
+            prepStatement.executeUpdate();
+            System.out.println("change of order has been executed");
+        }catch(SQLSyntaxErrorException see){
+            System.out.println(see.getMessage());
+        }catch(SQLException ex){
+            System.out.println(ex.getMessage());
+        }catch(Exception e){
+            System.out.println(e.getMessage());
         }finally{
             closeStatement();
         }
@@ -367,14 +400,12 @@ public class DatabaseConnection {
             statement.close();
             prepStatement.close();
         } catch (SQLException | NullPointerException ex) {
-            ex.getMessage();
+            System.out.println(ex.getMessage());
         }    
     }
     
-//    public static void main(String[]args) throws SQLException{
-//    testing date
-//        java.util.Date date = new java.util.Date();
-//        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-//        System.out.println(formatter.format(date));
+//    public static void main(String[]args){
+//        DatabaseConnection.connection();
+//        DatabaseConnection.howManyUsers();
 //    }
 }
