@@ -296,6 +296,7 @@ public class OrderStatus extends javax.swing.JFrame {
         String status = "Close";
         String table_name = lblTableName.getText();
         DatabaseConnection.changeOrder(order_id, comment, status, table_name);
+        DatabaseConnection.updateTableStatus(table_name);
         this.dispose();
     }//GEN-LAST:event_btnCloseOrderActionPerformed
 
