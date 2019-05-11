@@ -24,7 +24,7 @@ public class Restaurant extends javax.swing.JFrame {
     
     public final String username;
     public final String title;
-    int a = 0;
+    int tableIds[] = {0, 0, 0, 0, 0};
     
     /**
      * Array that will store all the selected menu item/s. An item can only be
@@ -769,18 +769,38 @@ public class Restaurant extends javax.swing.JFrame {
         tblTableThree.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         tblTableThree.setForeground(new java.awt.Color(0, 51, 255));
         tblTableThree.setText("Table Three");
+        tblTableThree.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tblTableThreeActionPerformed(evt);
+            }
+        });
 
         tblTableFive.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         tblTableFive.setForeground(new java.awt.Color(0, 51, 255));
         tblTableFive.setText("Table Five");
+        tblTableFive.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tblTableFiveActionPerformed(evt);
+            }
+        });
 
         tblTableTwo.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         tblTableTwo.setForeground(new java.awt.Color(0, 51, 255));
         tblTableTwo.setText("Table Two");
+        tblTableTwo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tblTableTwoActionPerformed(evt);
+            }
+        });
 
         tblTableFour.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         tblTableFour.setForeground(new java.awt.Color(0, 51, 255));
         tblTableFour.setText("Table Four");
+        tblTableFour.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tblTableFourActionPerformed(evt);
+            }
+        });
 
         tblTableOne.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         tblTableOne.setForeground(new java.awt.Color(0, 51, 255));
@@ -891,7 +911,7 @@ public class Restaurant extends javax.swing.JFrame {
                             .addComponent(jLabel19)
                             .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.DEFAULT_SIZE, 1, Short.MAX_VALUE)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.DEFAULT_SIZE, 9, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlClearTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tblTableOne, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1001,11 +1021,21 @@ public class Restaurant extends javax.swing.JFrame {
             String table = tableData.get(a).getTable_name();
             String tableStatus = tableData.get(a).getTable_status();
             switch(table){
-                case "Table 1": setTableColor(tableStatus, tblTableOne);break;
-                case "Table 2": setTableColor(tableStatus, tblTableTwo);break;
-                case "Table 3": setTableColor(tableStatus, tblTableThree);break;
-                case "Table 4": setTableColor(tableStatus, tblTableFour);break;
-                case "Table 5": setTableColor(tableStatus, tblTableFive);break;
+                case "Table 1": 
+                    tableIds[0] = tableData.get(a).getTable_id();
+                    setTableColor(tableStatus, tblTableOne);break;
+                case "Table 2": 
+                    tableIds[1] = tableData.get(a).getTable_id();
+                    setTableColor(tableStatus, tblTableTwo);break;
+                case "Table 3": 
+                    tableIds[2] = tableData.get(a).getTable_id();
+                    setTableColor(tableStatus, tblTableThree);break;
+                case "Table 4": 
+                    tableIds[3] = tableData.get(a).getTable_id();
+                    setTableColor(tableStatus, tblTableFour);break;
+                case "Table 5": 
+                    tableIds[4] = tableData.get(a).getTable_id();
+                    setTableColor(tableStatus, tblTableFive);break;
             }
         }
     }//GEN-LAST:event_btnClearTableMouseClicked
@@ -1270,22 +1300,101 @@ public class Restaurant extends javax.swing.JFrame {
     }//GEN-LAST:event_btnStockReportMouseClicked
 
     private void tblTableOneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tblTableOneActionPerformed
-        // TODO add your handling code here:
-//        System.out.println(a+", Table One button click");
-//        switch(a){
-//            case 0: tblTableOne.setBackground(new Color(255,153,0)); a++;break;
-//            case 1: tblTableOne.setBackground(new Color(255,0,0));a++;break;
-//            case 2: tblTableOne.setBackground(new Color(51,255,51));a++;break;
-//            default: a = 0;break;
-//        }
+        /**
+         * Change table status
+         * [255,153,0] Orange color: Table is occupied hence cannot be cleaned
+         * [255,0,0] Red color
+         * [51,255,51] Green color
+         */
+        Color color = tblTableOne.getBackground();
+        String buttonColor = "["+color.getRed()+","+color.getGreen()+","+color.getBlue()+"]";
+        // Table cannot be cleaned if it has the orange color
+        if(buttonColor.equals("[255,153,0]")){
+            JOptionPane.showMessageDialog(null, "Table with orange color cannot be cleaned as it is \'Occupied\'", "Warning!", JOptionPane.WARNING_MESSAGE);
+        }else{
+            DatabaseConnection.updateTableStatus(tableIds[0]);
+            setTableColor("Clean", tblTableOne);
+        }
     }//GEN-LAST:event_tblTableOneActionPerformed
+
+    private void tblTableTwoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tblTableTwoActionPerformed
+        /**
+         * Change table status
+         * [255,153,0] Orange color: Table is occupied hence cannot be cleaned
+         * [255,0,0] Red color
+         * [51,255,51] Green color
+         */
+        Color color = tblTableTwo.getBackground();
+        String buttonColor = "["+color.getRed()+","+color.getGreen()+","+color.getBlue()+"]";
+        // Table cannot be cleaned if it has the orange color
+        if(buttonColor.equals("[255,153,0]")){
+            JOptionPane.showMessageDialog(null, "Table with orange color cannot be cleaned as it is \'Occupied\'", "Warning!", JOptionPane.WARNING_MESSAGE);
+        }else{
+            DatabaseConnection.updateTableStatus(tableIds[1]);
+            setTableColor("Clean", tblTableTwo);
+        }
+    }//GEN-LAST:event_tblTableTwoActionPerformed
+
+    private void tblTableThreeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tblTableThreeActionPerformed
+        /**
+         * Change table status
+         * [255,153,0] Orange color: Table is occupied hence cannot be cleaned
+         * [255,0,0] Red color
+         * [51,255,51] Green color
+         */
+        Color color = tblTableThree.getBackground();
+        String buttonColor = "["+color.getRed()+","+color.getGreen()+","+color.getBlue()+"]";
+        // Table cannot be cleaned if it has the orange color
+        if(buttonColor.equals("[255,153,0]")){
+            JOptionPane.showMessageDialog(null, "Table with orange color cannot be cleaned as it is \'Occupied\'", "Warning!", JOptionPane.WARNING_MESSAGE);
+        }else{
+            DatabaseConnection.updateTableStatus(tableIds[2]);
+            setTableColor("Clean", tblTableThree);
+        }
+    }//GEN-LAST:event_tblTableThreeActionPerformed
+
+    private void tblTableFourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tblTableFourActionPerformed
+        /**
+         * Change table status
+         * [255,153,0] Orange color: Table is occupied hence cannot be cleaned
+         * [255,0,0] Red color
+         * [51,255,51] Green color
+         */
+        Color color = tblTableFour.getBackground();
+        String buttonColor = "["+color.getRed()+","+color.getGreen()+","+color.getBlue()+"]";
+        // Table cannot be cleaned if it has the orange color
+        if(buttonColor.equals("[255,153,0]")){
+            JOptionPane.showMessageDialog(null, "Table with orange color cannot be cleaned as it is \'Occupied\'", "Warning!", JOptionPane.WARNING_MESSAGE);
+        }else{
+            DatabaseConnection.updateTableStatus(tableIds[3]);
+            setTableColor("Clean", tblTableFour);
+        }
+    }//GEN-LAST:event_tblTableFourActionPerformed
+
+    private void tblTableFiveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tblTableFiveActionPerformed
+        /**
+         * Change table status
+         * [255,153,0] Orange color: Table is occupied hence cannot be cleaned
+         * [255,0,0] Red color
+         * [51,255,51] Green color
+         */
+        Color color = tblTableFive.getBackground();
+        String buttonColor = "["+color.getRed()+","+color.getGreen()+","+color.getBlue()+"]";
+        // Table cannot be cleaned if it has the orange color
+        if(buttonColor.equals("[255,153,0]")){
+            JOptionPane.showMessageDialog(null, "Table with orange color cannot be cleaned as it is \'Occupied\'", "Warning!", JOptionPane.WARNING_MESSAGE);
+        }else{
+            DatabaseConnection.updateTableStatus(tableIds[4]);
+            setTableColor("Clean", tblTableFive);
+        }
+    }//GEN-LAST:event_tblTableFiveActionPerformed
 
     void setTableColor(String status, JButton button){
         switch(status){
             // status: Occupied, Dirty, Clean
-            case "Occupied": button.setBackground(new Color(255,153,0));break;
-            case "Dirty": button.setBackground(new Color(255,0,0));break;
-            case "Clean": button.setBackground(new Color(51,255,51));break;
+            case "Occupied": button.setBackground(new Color(255,153,0));break; //Orange color
+            case "Dirty": button.setBackground(new Color(255,0,0));break;   // Red color
+            case "Clean": button.setBackground(new Color(51,255,51));break; // Green color
         }
     }
     void setColour(JPanel panel){

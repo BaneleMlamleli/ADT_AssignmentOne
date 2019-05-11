@@ -419,8 +419,26 @@ public class DatabaseConnection {
         }    
     }
     
-//    public static void main(String[]args){
-//        DatabaseConnection.connection();
-//        DatabaseConnection.howManyUsers();
-//    }
+/**
+     * The below method will update the status of the table to "Clean"
+     * @param tableId
+     */
+    public static void updateTableStatus(int tableId){
+        try{
+            prepStatement = connection.prepareStatement("UPDATE restaurant.table SET restaurant.table.table_status = ? WHERE restaurant.table.table_id = ?");
+            prepStatement.setString(1, "Clean");
+            prepStatement.setInt(2, tableId);
+            prepStatement.executeUpdate();            
+            closeStatement();
+            System.out.println("Table status updated successfully");
+        }catch(SQLSyntaxErrorException see){
+            System.out.println(see.getMessage());
+        }catch(SQLException ex){
+            System.out.println(ex.getMessage());
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }finally{
+            closeStatement();
+        }
+    }
 }
