@@ -513,14 +513,14 @@ public class LoginForm extends javax.swing.JFrame {
 //            
 //            "com.birosoft.liquid.LiquidLookAndFeel"
 
-            String className = "com.alee.laf.WebLookAndFeel";
-            UIManager.setLookAndFeel(className);
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Metal".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
+//            String className = "com.alee.laf.WebLookAndFeel";
+//            UIManager.setLookAndFeel(className);
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Metal".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(LoginForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
