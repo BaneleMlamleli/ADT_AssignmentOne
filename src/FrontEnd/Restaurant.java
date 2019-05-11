@@ -39,10 +39,50 @@ public class Restaurant extends javax.swing.JFrame {
         this.username = username;
         this.title = title;
         lblLoginUser.setText(this.username);
-        pnlOrderMenu.setVisible(true);
-        pnlOrderBoard.setVisible(false);
-        pnlStockReport.setVisible(false);
-        pnlClearTable.setVisible(false);
+               
+        switch(title){
+            case "Manager":
+                pnlOrderMenu.setVisible(true);
+                pnlOrderBoard.setVisible(false);
+                pnlStockReport.setVisible(false);
+                pnlClearTable.setVisible(false);
+                // ======================
+                btnOrderMenu.setVisible(true);
+                btnOrderBoard.setVisible(true);
+                btnStockReport.setVisible(true);
+                btnClearTable.setVisible(true);break;
+            case "Chef":
+                pnlOrderMenu.setVisible(false);
+                pnlOrderBoard.setVisible(true);
+                pnlStockReport.setVisible(false);
+                pnlClearTable.setVisible(false);
+                // ======================
+                btnOrderMenu.setVisible(false);
+                btnOrderBoard.setVisible(true);
+                btnStockReport.setVisible(false);
+                btnClearTable.setVisible(false);break;
+            case "Waiter":
+                pnlOrderMenu.setVisible(false);
+                pnlOrderBoard.setVisible(true);
+                pnlStockReport.setVisible(false);
+                pnlClearTable.setVisible(true);
+                // ======================
+                btnOrderMenu.setVisible(true);
+                btnOrderBoard.setVisible(true);
+                btnStockReport.setVisible(false);
+                btnClearTable.setVisible(true);break;
+            case "Bus boy":
+                pnlOrderMenu.setVisible(false);
+                pnlOrderBoard.setVisible(false);
+                pnlStockReport.setVisible(false);
+                pnlClearTable.setVisible(true);
+                // ======================
+                btnOrderMenu.setVisible(false);
+                btnOrderBoard.setVisible(false);
+                btnStockReport.setVisible(false);
+                btnClearTable.setVisible(true);break;
+        }
+        
     }
 
     /**
