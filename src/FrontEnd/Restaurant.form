@@ -58,7 +58,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Assets/logout.png"/>
             </Property>
-            <Property name="toolTipText" type="java.lang.String" value="Mimimise window"/>
+            <Property name="toolTipText" type="java.lang.String" value="Logout"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblLogoutMouseClicked"/>

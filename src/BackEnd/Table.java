@@ -11,7 +11,7 @@ package BackEnd;
  */
 public class Table {
     private int table_id;
-    private String table_status;
+    private String table_status; // Status: Occupied, Dirty, Clean
     private String table_name;
     private String waiter_name;
 

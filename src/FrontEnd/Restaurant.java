@@ -25,6 +25,9 @@ public class Restaurant extends javax.swing.JFrame {
     public final String username;
     public final String title;
     int tableIds[] = {0, 0, 0, 0, 0};
+    ArrayList<Order> orderData;
+    ArrayList<Stock> stockData;
+    ArrayList<Table> tableData;
     
     /**
      * Array that will store all the selected menu item/s. An item can only be
@@ -81,6 +84,19 @@ public class Restaurant extends javax.swing.JFrame {
                 btnOrderBoard.setVisible(false);
                 btnStockReport.setVisible(false);
                 btnClearTable.setVisible(true);break;
+        }
+        
+        // removing all the items in the combobox
+        cmbTable.removeAllItems();
+        for(int a = 0; a < tableData.size(); a++){
+            if(tableData.get(a).getTable_status().equalsIgnoreCase("Dirty") || tableData.get(a).getTable_status().equalsIgnoreCase("Occupid")){
+                String tables[] = {"Table 1", "Table 2", "Table 3", "Table 4", "Table 5"};
+                for(int t = 0; t < tables.length; t++){
+                    if(!tableData.get(a).getTable_name().equalsIgnoreCase(tables[t])){
+                        cmbTable.addItem(tableData.get(a).getTable_name());
+                    }
+                }
+            }
         }
         
     }
@@ -188,7 +204,7 @@ public class Restaurant extends javax.swing.JFrame {
         lblLogout.setForeground(new java.awt.Color(255, 255, 255));
         lblLogout.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/logout.png"))); // NOI18N
-        lblLogout.setToolTipText("Mimimise window");
+        lblLogout.setToolTipText("Logout");
         lblLogout.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblLogoutMouseClicked(evt);
@@ -1041,7 +1057,7 @@ public class Restaurant extends javax.swing.JFrame {
         model.getDataVector().removeAllElements();
         model.fireTableDataChanged();
         tblCollectionOrder.revalidate();
-        ArrayList<Order> orderData = DatabaseConnection.selectAllOrders();
+        orderData = DatabaseConnection.selectAllOrders();
         for(int a = 0; a < orderData.size(); a++){
             int order_id = orderData.get(a).getOrder_id();
             //String comment = orderData.get(a).getComment();
@@ -1070,7 +1086,7 @@ public class Restaurant extends javax.swing.JFrame {
         pnlClearTable.setVisible(true);
         
         // Status: Collect, In-progress (New), Issue
-        ArrayList<Table> tableData = DatabaseConnection.selectAllTables();
+        tableData = DatabaseConnection.selectAllTables();
         for(int a = 0; a < tableData.size(); a++){
             System.out.println(a+": "+tableData.get(a).toString());
             String table = tableData.get(a).getTable_name();
@@ -1152,7 +1168,6 @@ public class Restaurant extends javax.swing.JFrame {
         Date dt = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String date = formatter.format(dt);
-        Calendar c = Calendar.getInstance();
         /**
          * This condition will check if the combobox has any items(tables) left
          * if there is nothing that means all the tables are occupied.
@@ -1242,9 +1257,7 @@ public class Restaurant extends javax.swing.JFrame {
         tblCollectionOrder.revalidate();
         tblInprogressOrder.revalidate();
         tblOrderWithIssue.revalidate();
-        ArrayList<Order> orderData = DatabaseConnection.selectAllOrders();
-        // ArrayList<Stock> stockData = DatabaseConnection.selectAllStock();
-        // ArrayList<Table> tableData = DatabaseConnection.selectAllTables();
+        orderData = DatabaseConnection.selectAllOrders();
         // Display all orders that must be collected in order to be served
         for (int a = 0; a < orderData.size(); a++) {
             int order_id = orderData.get(a).getOrder_id();
@@ -1546,7 +1559,7 @@ public class Restaurant extends javax.swing.JFrame {
         pnlClearTable.setVisible(false);
         pnlStockReport.setVisible(true);
         
-        ArrayList<Stock> stockData = DatabaseConnection.selectAllStock();
+        stockData = DatabaseConnection.selectAllStock();
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         for (int i = 0; i < stockData.size() - 15; i++) {
             dataset.setValue(stockData.get(i).getUsage(), "Used stock (%)", stockData.get(i).getItemName());
