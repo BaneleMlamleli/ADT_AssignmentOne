@@ -95,6 +95,7 @@ public class Restaurant extends javax.swing.JFrame {
     private void initComponents() {
 
         pnlMain = new javax.swing.JPanel();
+        lblLogout = new javax.swing.JLabel();
         lblMinimiseForm = new javax.swing.JLabel();
         lblCloseForm = new javax.swing.JLabel();
         pnlLeftSide = new javax.swing.JPanel();
@@ -183,21 +184,35 @@ public class Restaurant extends javax.swing.JFrame {
 
         pnlMain.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        lblLogout.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
+        lblLogout.setForeground(new java.awt.Color(255, 255, 255));
+        lblLogout.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/logout.png"))); // NOI18N
+        lblLogout.setToolTipText("Mimimise window");
+        lblLogout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblLogoutMouseClicked(evt);
+            }
+        });
+        pnlMain.add(lblLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 0, -1, 40));
+
         lblMinimiseForm.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         lblMinimiseForm.setForeground(new java.awt.Color(255, 255, 255));
         lblMinimiseForm.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblMinimiseForm.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/minus (1).png"))); // NOI18N
+        lblMinimiseForm.setToolTipText("Mimimise window");
         lblMinimiseForm.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblMinimiseFormMouseClicked(evt);
             }
         });
-        pnlMain.add(lblMinimiseForm, new org.netbeans.lib.awtextra.AbsoluteConstraints(932, 0, -1, 40));
+        pnlMain.add(lblMinimiseForm, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 0, -1, 40));
 
         lblCloseForm.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblCloseForm.setForeground(new java.awt.Color(255, 255, 255));
         lblCloseForm.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblCloseForm.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/x-button.png"))); // NOI18N
+        lblCloseForm.setToolTipText("Terminate program");
         lblCloseForm.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblCloseFormMouseClicked(evt);
@@ -1429,6 +1444,15 @@ public class Restaurant extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tblTableFiveActionPerformed
 
+    private void lblLogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLogoutMouseClicked
+        // TODO add your handling code here:
+        int confirmLogout = JOptionPane.showConfirmDialog(rootPane, "  Confirm logout?", "Confirm", JOptionPane.YES_NO_OPTION);
+        if(confirmLogout == 0){
+            this.dispose();
+            new LoginForm().setVisible(true);
+        }
+    }//GEN-LAST:event_lblLogoutMouseClicked
+
     void setTableColor(String status, JButton button){
         switch(status){
             // status: Occupied, Dirty, Clean
@@ -1645,6 +1669,7 @@ public class Restaurant extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lblCloseForm;
     private javax.swing.JLabel lblLoginUser;
+    private javax.swing.JLabel lblLogout;
     private javax.swing.JLabel lblMinimiseForm;
     private javax.swing.JPanel pnlClearTable;
     private javax.swing.JPanel pnlLeftSide;

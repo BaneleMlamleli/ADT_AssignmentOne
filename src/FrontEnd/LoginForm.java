@@ -126,6 +126,7 @@ public class LoginForm extends javax.swing.JFrame {
         lblMinimiseForm1.setForeground(new java.awt.Color(255, 255, 255));
         lblMinimiseForm1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblMinimiseForm1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/minus (1).png"))); // NOI18N
+        lblMinimiseForm1.setToolTipText("Minimise window");
         lblMinimiseForm1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblMinimiseForm1MouseClicked(evt);
@@ -138,6 +139,7 @@ public class LoginForm extends javax.swing.JFrame {
         lblBackButton.setForeground(new java.awt.Color(255, 255, 255));
         lblBackButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblBackButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/left.png"))); // NOI18N
+        lblBackButton.setToolTipText("Go back to login screen");
         lblBackButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblBackButtonMouseClicked(evt);
@@ -150,6 +152,7 @@ public class LoginForm extends javax.swing.JFrame {
         lblCloseForm.setForeground(new java.awt.Color(255, 255, 255));
         lblCloseForm.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblCloseForm.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/x-button.png"))); // NOI18N
+        lblCloseForm.setToolTipText("Terminate program");
         lblCloseForm.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblCloseFormMouseClicked(evt);

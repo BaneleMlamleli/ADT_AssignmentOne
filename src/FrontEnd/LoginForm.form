@@ -129,6 +129,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/Assets/minus (1).png"/>
         </Property>
+        <Property name="toolTipText" type="java.lang.String" value="Minimise window"/>
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblMinimiseForm1MouseClicked"/>
@@ -151,6 +152,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/Assets/left.png"/>
         </Property>
+        <Property name="toolTipText" type="java.lang.String" value="Go back to login screen"/>
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblBackButtonMouseClicked"/>
@@ -173,6 +175,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/Assets/x-button.png"/>
         </Property>
+        <Property name="toolTipText" type="java.lang.String" value="Terminate program"/>
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblCloseFormMouseClicked"/>
