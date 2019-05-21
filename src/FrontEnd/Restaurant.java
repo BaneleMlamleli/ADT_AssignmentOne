@@ -1076,7 +1076,6 @@ public class Restaurant extends javax.swing.JFrame {
         // Status: Collect, In-progress (New), Issue
         ArrayList<Table> tableData = DatabaseConnection.selectAllTables();
         for(int a = 0; a < tableData.size(); a++){
-            System.out.println(a+": "+tableData.get(a).toString());
             String table = tableData.get(a).getTable_name();
             String tableStatus = tableData.get(a).getTable_status();
             switch(table){
@@ -1574,8 +1573,7 @@ public class Restaurant extends javax.swing.JFrame {
     
     // Populate the table's combobox with the available tables
     public void populateTableCombobox(){
-        ArrayList<Table> tableData = DatabaseConnection.selectAllTables();
-        
+        ArrayList<Table> tableData = DatabaseConnection.selectAllTables();        
         if(tableData.size() > 0){
             for(int a = 0; a < tableData.size(); a++){
                 int intemsIncmbTable = cmbTable.getItemCount();
