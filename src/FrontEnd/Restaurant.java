@@ -25,9 +25,6 @@ public class Restaurant extends javax.swing.JFrame {
     public final String username;
     public final String title;
     int tableIds[] = {0, 0, 0, 0, 0};
-    //ArrayList<Order> orderData;
-    //ArrayList<Stock> stockData;
-    //ArrayList<Table> tableData;
     
     /**
      * Array that will store all the selected menu item/s. An item can only be
@@ -84,9 +81,8 @@ public class Restaurant extends javax.swing.JFrame {
                 btnOrderBoard.setVisible(false);
                 btnStockReport.setVisible(false);
                 btnClearTable.setVisible(true);break;
-        }
-        
-        populateTableCombobox();       
+        }        
+        removeTableInCombobox();       
     }
 
     /**
@@ -165,11 +161,11 @@ public class Restaurant extends javax.swing.JFrame {
         pnlOne = new javax.swing.JPanel();
         btnUpdateAllStock = new javax.swing.JButton();
         pnlClearTable = new javax.swing.JPanel();
-        tblTableThree = new javax.swing.JButton();
-        tblTableFive = new javax.swing.JButton();
-        tblTableTwo = new javax.swing.JButton();
-        tblTableFour = new javax.swing.JButton();
-        tblTableOne = new javax.swing.JButton();
+        btnTableThree = new javax.swing.JButton();
+        btnTableFive = new javax.swing.JButton();
+        btnTableTwo = new javax.swing.JButton();
+        btnTableFour = new javax.swing.JButton();
+        btnTableOne = new javax.swing.JButton();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
@@ -526,6 +522,11 @@ public class Restaurant extends javax.swing.JFrame {
         jLabel14.setText("Select table");
 
         cmbTable.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Table 1", "Table 2", "Table 3", "Table 4", "Table 5" }));
+        cmbTable.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbTableActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlOrderMenuLayout = new javax.swing.GroupLayout(pnlOrderMenu);
         pnlOrderMenu.setLayout(pnlOrderMenuLayout);
@@ -825,48 +826,48 @@ public class Restaurant extends javax.swing.JFrame {
 
         pnlMain.add(pnlStockReport, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 50, 730, 550));
 
-        tblTableThree.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        tblTableThree.setForeground(new java.awt.Color(0, 51, 255));
-        tblTableThree.setText("Table Three");
-        tblTableThree.addActionListener(new java.awt.event.ActionListener() {
+        btnTableThree.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        btnTableThree.setForeground(new java.awt.Color(0, 51, 255));
+        btnTableThree.setText("Table Three");
+        btnTableThree.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tblTableThreeActionPerformed(evt);
+                btnTableThreeActionPerformed(evt);
             }
         });
 
-        tblTableFive.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        tblTableFive.setForeground(new java.awt.Color(0, 51, 255));
-        tblTableFive.setText("Table Five");
-        tblTableFive.addActionListener(new java.awt.event.ActionListener() {
+        btnTableFive.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        btnTableFive.setForeground(new java.awt.Color(0, 51, 255));
+        btnTableFive.setText("Table Five");
+        btnTableFive.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tblTableFiveActionPerformed(evt);
+                btnTableFiveActionPerformed(evt);
             }
         });
 
-        tblTableTwo.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        tblTableTwo.setForeground(new java.awt.Color(0, 51, 255));
-        tblTableTwo.setText("Table Two");
-        tblTableTwo.addActionListener(new java.awt.event.ActionListener() {
+        btnTableTwo.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        btnTableTwo.setForeground(new java.awt.Color(0, 51, 255));
+        btnTableTwo.setText("Table Two");
+        btnTableTwo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tblTableTwoActionPerformed(evt);
+                btnTableTwoActionPerformed(evt);
             }
         });
 
-        tblTableFour.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        tblTableFour.setForeground(new java.awt.Color(0, 51, 255));
-        tblTableFour.setText("Table Four");
-        tblTableFour.addActionListener(new java.awt.event.ActionListener() {
+        btnTableFour.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        btnTableFour.setForeground(new java.awt.Color(0, 51, 255));
+        btnTableFour.setText("Table Four");
+        btnTableFour.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tblTableFourActionPerformed(evt);
+                btnTableFourActionPerformed(evt);
             }
         });
 
-        tblTableOne.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        tblTableOne.setForeground(new java.awt.Color(0, 51, 255));
-        tblTableOne.setText("Table One");
-        tblTableOne.addActionListener(new java.awt.event.ActionListener() {
+        btnTableOne.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        btnTableOne.setForeground(new java.awt.Color(0, 51, 255));
+        btnTableOne.setText("Table One");
+        btnTableOne.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tblTableOneActionPerformed(evt);
+                btnTableOneActionPerformed(evt);
             }
         });
 
@@ -923,21 +924,21 @@ public class Restaurant extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(pnlClearTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlClearTableLayout.createSequentialGroup()
-                        .addComponent(tblTableFour, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnTableFour, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(tblTableFive, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnTableFive, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnlClearTableLayout.createSequentialGroup()
                         .addGroup(pnlClearTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlClearTableLayout.createSequentialGroup()
                                 .addComponent(jLabel17)
                                 .addGap(18, 18, 18)
                                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(tblTableOne, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnTableOne, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(pnlClearTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlClearTableLayout.createSequentialGroup()
                                 .addGap(8, 8, 8)
                                 .addGroup(pnlClearTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tblTableThree, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnTableThree, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlClearTableLayout.createSequentialGroup()
                                         .addComponent(jLabel18)
                                         .addGap(18, 18, 18)
@@ -950,7 +951,7 @@ public class Restaurant extends javax.swing.JFrame {
                                 .addGap(26, 26, 26))
                             .addGroup(pnlClearTableLayout.createSequentialGroup()
                                 .addGap(241, 241, 241)
-                                .addComponent(tblTableTwo, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)))))
+                                .addComponent(btnTableTwo, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)))))
                 .addContainerGap())
             .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.LEADING)
         );
@@ -973,18 +974,18 @@ public class Restaurant extends javax.swing.JFrame {
                 .addComponent(jSeparator2, javax.swing.GroupLayout.DEFAULT_SIZE, 9, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlClearTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tblTableOne, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tblTableTwo, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnTableOne, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnTableTwo, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(pnlClearTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlClearTableLayout.createSequentialGroup()
                         .addGap(201, 201, 201)
                         .addGroup(pnlClearTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(tblTableFive, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tblTableFour, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnTableFive, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnTableFour, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlClearTableLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tblTableThree, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnTableThree, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(176, 176, 176))))
         );
 
@@ -1027,6 +1028,9 @@ public class Restaurant extends javax.swing.JFrame {
         pnlOrderBoard.setVisible(false);
         pnlStockReport.setVisible(false);
         pnlClearTable.setVisible(false);
+        
+        // 
+        removeTableInCombobox();
     }//GEN-LAST:event_btnOrderMenuMouseClicked
 
     private void btnOrderBoardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOrderBoardMouseClicked
@@ -1081,19 +1085,19 @@ public class Restaurant extends javax.swing.JFrame {
             switch(table){
                 case "Table 1": 
                     tableIds[0] = tableData.get(a).getTable_id();
-                    setTableColor(tableStatus, tblTableOne);break;
+                    setTableColor(tableStatus, btnTableOne);break;
                 case "Table 2": 
                     tableIds[1] = tableData.get(a).getTable_id();
-                    setTableColor(tableStatus, tblTableTwo);break;
+                    setTableColor(tableStatus, btnTableTwo);break;
                 case "Table 3": 
                     tableIds[2] = tableData.get(a).getTable_id();
-                    setTableColor(tableStatus, tblTableThree);break;
+                    setTableColor(tableStatus, btnTableThree);break;
                 case "Table 4": 
                     tableIds[3] = tableData.get(a).getTable_id();
-                    setTableColor(tableStatus, tblTableFour);break;
+                    setTableColor(tableStatus, btnTableFour);break;
                 case "Table 5": 
                     tableIds[4] = tableData.get(a).getTable_id();
-                    setTableColor(tableStatus, tblTableFive);break;
+                    setTableColor(tableStatus, btnTableFive);break;
             }
         }
     }//GEN-LAST:event_btnClearTableMouseClicked
@@ -1354,95 +1358,95 @@ public class Restaurant extends javax.swing.JFrame {
         displayStockData();
     }//GEN-LAST:event_btnStockReportMouseClicked
 
-    private void tblTableOneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tblTableOneActionPerformed
+    private void btnTableOneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTableOneActionPerformed
         /**
          * Change table status
          * [255,153,0] Orange color: Table is occupied hence cannot be cleaned
          * [255,0,0] Red color
          * [51,255,51] Green color
          */
-        Color color = tblTableOne.getBackground();
+        Color color = btnTableOne.getBackground();
         String buttonColor = "["+color.getRed()+","+color.getGreen()+","+color.getBlue()+"]";
         // Table cannot be cleaned if it has the orange color
         if(buttonColor.equals("[255,153,0]")){
             JOptionPane.showMessageDialog(null, "Table with orange color cannot be cleaned as it is \'Occupied\'", "Warning!", JOptionPane.WARNING_MESSAGE);
         }else{
             DatabaseConnection.updateTableStatus(tableIds[0]);
-            setTableColor("Clean", tblTableOne);
+            setTableColor("Clean", btnTableOne);
         }
-    }//GEN-LAST:event_tblTableOneActionPerformed
+    }//GEN-LAST:event_btnTableOneActionPerformed
 
-    private void tblTableTwoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tblTableTwoActionPerformed
+    private void btnTableTwoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTableTwoActionPerformed
         /**
          * Change table status
          * [255,153,0] Orange color: Table is occupied hence cannot be cleaned
          * [255,0,0] Red color
          * [51,255,51] Green color
          */
-        Color color = tblTableTwo.getBackground();
+        Color color = btnTableTwo.getBackground();
         String buttonColor = "["+color.getRed()+","+color.getGreen()+","+color.getBlue()+"]";
         // Table cannot be cleaned if it has the orange color
         if(buttonColor.equals("[255,153,0]")){
             JOptionPane.showMessageDialog(null, "Table with orange color cannot be cleaned as it is \'Occupied\'", "Warning!", JOptionPane.WARNING_MESSAGE);
         }else{
             DatabaseConnection.updateTableStatus(tableIds[1]);
-            setTableColor("Clean", tblTableTwo);
+            setTableColor("Clean", btnTableTwo);
         }
-    }//GEN-LAST:event_tblTableTwoActionPerformed
+    }//GEN-LAST:event_btnTableTwoActionPerformed
 
-    private void tblTableThreeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tblTableThreeActionPerformed
+    private void btnTableThreeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTableThreeActionPerformed
         /**
          * Change table status
          * [255,153,0] Orange color: Table is occupied hence cannot be cleaned
          * [255,0,0] Red color
          * [51,255,51] Green color
          */
-        Color color = tblTableThree.getBackground();
+        Color color = btnTableThree.getBackground();
         String buttonColor = "["+color.getRed()+","+color.getGreen()+","+color.getBlue()+"]";
         // Table cannot be cleaned if it has the orange color
         if(buttonColor.equals("[255,153,0]")){
             JOptionPane.showMessageDialog(null, "Table with orange color cannot be cleaned as it is \'Occupied\'", "Warning!", JOptionPane.WARNING_MESSAGE);
         }else{
             DatabaseConnection.updateTableStatus(tableIds[2]);
-            setTableColor("Clean", tblTableThree);
+            setTableColor("Clean", btnTableThree);
         }
-    }//GEN-LAST:event_tblTableThreeActionPerformed
+    }//GEN-LAST:event_btnTableThreeActionPerformed
 
-    private void tblTableFourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tblTableFourActionPerformed
+    private void btnTableFourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTableFourActionPerformed
         /**
          * Change table status
          * [255,153,0] Orange color: Table is occupied hence cannot be cleaned
          * [255,0,0] Red color
          * [51,255,51] Green color
          */
-        Color color = tblTableFour.getBackground();
+        Color color = btnTableFour.getBackground();
         String buttonColor = "["+color.getRed()+","+color.getGreen()+","+color.getBlue()+"]";
         // Table cannot be cleaned if it has the orange color
         if(buttonColor.equals("[255,153,0]")){
             JOptionPane.showMessageDialog(null, "Table with orange color cannot be cleaned as it is \'Occupied\'", "Warning!", JOptionPane.WARNING_MESSAGE);
         }else{
             DatabaseConnection.updateTableStatus(tableIds[3]);
-            setTableColor("Clean", tblTableFour);
+            setTableColor("Clean", btnTableFour);
         }
-    }//GEN-LAST:event_tblTableFourActionPerformed
+    }//GEN-LAST:event_btnTableFourActionPerformed
 
-    private void tblTableFiveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tblTableFiveActionPerformed
+    private void btnTableFiveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTableFiveActionPerformed
         /**
          * Change table status
          * [255,153,0] Orange color: Table is occupied hence cannot be cleaned
          * [255,0,0] Red color
          * [51,255,51] Green color
          */
-        Color color = tblTableFive.getBackground();
+        Color color = btnTableFive.getBackground();
         String buttonColor = "["+color.getRed()+","+color.getGreen()+","+color.getBlue()+"]";
         // Table cannot be cleaned if it has the orange color
         if(buttonColor.equals("[255,153,0]")){
             JOptionPane.showMessageDialog(null, "Table with orange color cannot be cleaned as it is \'Occupied\'", "Warning!", JOptionPane.WARNING_MESSAGE);
         }else{
             DatabaseConnection.updateTableStatus(tableIds[4]);
-            setTableColor("Clean", tblTableFive);
+            setTableColor("Clean", btnTableFive);
         }
-    }//GEN-LAST:event_tblTableFiveActionPerformed
+    }//GEN-LAST:event_btnTableFiveActionPerformed
 
     private void lblLogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLogoutMouseClicked
         // TODO add your handling code here:
@@ -1452,6 +1456,15 @@ public class Restaurant extends javax.swing.JFrame {
             new LoginForm().setVisible(true);
         }
     }//GEN-LAST:event_lblLogoutMouseClicked
+
+    private void cmbTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTableActionPerformed
+        // TODO add your handling code here:
+//        JOptionPane.showMessageDialog(null, "selected item: "+cmbTable.getSelectedItem()+"\n"+
+//                                            "selected index: "+cmbTable.getSelectedIndex()+"\n"+
+//                                            "getItemCount(): "+cmbTable.getItemCount()+"\n"+
+//                                            "getItemAt(): "+cmbTable.getItemAt(cmbTable.getSelectedIndex()));
+//        cmbTable.removeItemAt(cmbTable.getSelectedIndex());
+    }//GEN-LAST:event_cmbTableActionPerformed
 
     void setTableColor(String status, JButton button){
         switch(status){
@@ -1572,18 +1585,25 @@ public class Restaurant extends javax.swing.JFrame {
     }
     
     // Populate the table's combobox with the available tables
-    public void populateTableCombobox(){
+    public void removeTableInCombobox(){
         ArrayList<Table> tableData = DatabaseConnection.selectAllTables();        
         if(tableData.size() > 0){
             for(int a = 0; a < tableData.size(); a++){
-                int intemsIncmbTable = cmbTable.getItemCount();
-                if(tableData.get(a).getTable_status().equalsIgnoreCase("Dirty") || tableData.get(a).getTable_status().equalsIgnoreCase("Occupied")){
-                    while(intemsIncmbTable != 0){
-                        if(tableData.get(a).getTable_name().equalsIgnoreCase(cmbTable.getItemAt(intemsIncmbTable))){
-                            cmbTable.removeItemAt(intemsIncmbTable);
-                        }
-                        intemsIncmbTable--;
-                    }
+                int itemCount = cmbTable.getItemCount();
+                String table = tableData.get(a).getTable_status();
+                switch(table){
+                    case "Occupied":
+                        for(int l = 0; l < itemCount; l++){
+                            if(tableData.get(a).getTable_name().equals(cmbTable.getItemAt(l))){
+                                cmbTable.removeItemAt(l);
+                            }
+                        } ;break;
+                    case "Dirty":
+                        for(int l = 0; l < itemCount; l++){
+                            if(tableData.get(a).getTable_name().equals(cmbTable.getItemAt(l))){
+                                cmbTable.removeItemAt(l);
+                            }
+                        } ;break;
                 }
             }
         } 
@@ -1643,6 +1663,11 @@ public class Restaurant extends javax.swing.JFrame {
     private javax.swing.JPanel btnOrderMenu;
     private javax.swing.JButton btnPlaceOrder;
     private javax.swing.JPanel btnStockReport;
+    private javax.swing.JButton btnTableFive;
+    private javax.swing.JButton btnTableFour;
+    private javax.swing.JButton btnTableOne;
+    private javax.swing.JButton btnTableThree;
+    private javax.swing.JButton btnTableTwo;
     private javax.swing.JButton btnUpdateAllStock;
     private javax.swing.JComboBox<String> cmbTable;
     private javax.swing.JLabel jLabel1;
@@ -1712,11 +1737,6 @@ public class Restaurant extends javax.swing.JFrame {
     private javax.swing.JTable tblCollectionOrder;
     private javax.swing.JTable tblInprogressOrder;
     private javax.swing.JTable tblOrderWithIssue;
-    private javax.swing.JButton tblTableFive;
-    private javax.swing.JButton tblTableFour;
-    private javax.swing.JButton tblTableOne;
-    private javax.swing.JButton tblTableThree;
-    private javax.swing.JButton tblTableTwo;
     private javax.swing.JTextArea txtOrderComment;
     // End of variables declaration//GEN-END:variables
 }

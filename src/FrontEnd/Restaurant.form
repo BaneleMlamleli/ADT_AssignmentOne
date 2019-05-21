@@ -877,6 +877,9 @@
                   </StringArray>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbTableActionPerformed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
@@ -1357,9 +1360,9 @@
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="tblTableFour" min="-2" pref="222" max="-2" attributes="0"/>
+                              <Component id="btnTableFour" min="-2" pref="222" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="tblTableFive" min="-2" pref="239" max="-2" attributes="0"/>
+                              <Component id="btnTableFive" min="-2" pref="239" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -1368,13 +1371,13 @@
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="jPanel8" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="tblTableOne" alignment="0" min="-2" pref="222" max="-2" attributes="0"/>
+                                  <Component id="btnTableOne" alignment="0" min="-2" pref="222" max="-2" attributes="0"/>
                               </Group>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
                                       <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="tblTableThree" min="-2" pref="222" max="-2" attributes="0"/>
+                                          <Component id="btnTableThree" min="-2" pref="222" max="-2" attributes="0"/>
                                           <Group type="102" alignment="1" attributes="0">
                                               <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -1390,7 +1393,7 @@
                                   </Group>
                                   <Group type="102" attributes="0">
                                       <EmptySpace min="-2" pref="241" max="-2" attributes="0"/>
-                                      <Component id="tblTableTwo" pref="239" max="32767" attributes="0"/>
+                                      <Component id="btnTableTwo" pref="239" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -1423,21 +1426,21 @@
                       <Component id="jSeparator2" pref="9" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="tblTableOne" alignment="3" min="-2" pref="147" max="-2" attributes="0"/>
-                          <Component id="tblTableTwo" alignment="3" min="-2" pref="147" max="-2" attributes="0"/>
+                          <Component id="btnTableOne" alignment="3" min="-2" pref="147" max="-2" attributes="0"/>
+                          <Component id="btnTableTwo" alignment="3" min="-2" pref="147" max="-2" attributes="0"/>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <EmptySpace min="-2" pref="201" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="tblTableFive" alignment="3" min="-2" pref="138" max="-2" attributes="0"/>
-                                  <Component id="tblTableFour" alignment="3" min="-2" pref="138" max="-2" attributes="0"/>
+                                  <Component id="btnTableFive" alignment="3" min="-2" pref="138" max="-2" attributes="0"/>
+                                  <Component id="btnTableFour" alignment="3" min="-2" pref="138" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="tblTableThree" min="-2" pref="145" max="-2" attributes="0"/>
+                              <Component id="btnTableThree" min="-2" pref="145" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="176" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -1446,7 +1449,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="tblTableThree">
+            <Component class="javax.swing.JButton" name="btnTableThree">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="24" style="1"/>
@@ -1457,10 +1460,10 @@
                 <Property name="text" type="java.lang.String" value="Table Three"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tblTableThreeActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTableThreeActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="tblTableFive">
+            <Component class="javax.swing.JButton" name="btnTableFive">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="24" style="1"/>
@@ -1471,10 +1474,10 @@
                 <Property name="text" type="java.lang.String" value="Table Five"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tblTableFiveActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTableFiveActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="tblTableTwo">
+            <Component class="javax.swing.JButton" name="btnTableTwo">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="24" style="1"/>
@@ -1485,10 +1488,10 @@
                 <Property name="text" type="java.lang.String" value="Table Two"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tblTableTwoActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTableTwoActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="tblTableFour">
+            <Component class="javax.swing.JButton" name="btnTableFour">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="24" style="1"/>
@@ -1499,10 +1502,10 @@
                 <Property name="text" type="java.lang.String" value="Table Four"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tblTableFourActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTableFourActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="tblTableOne">
+            <Component class="javax.swing.JButton" name="btnTableOne">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="24" style="1"/>
@@ -1513,7 +1516,7 @@
                 <Property name="text" type="java.lang.String" value="Table One"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tblTableOneActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTableOneActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel17">
