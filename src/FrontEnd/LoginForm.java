@@ -7,7 +7,6 @@ package FrontEnd;
 
 import BackEnd.DatabaseConnection;
 import javax.swing.JOptionPane;
-import javax.swing.UIManager;
 
 /**
  *

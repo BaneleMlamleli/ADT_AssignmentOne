@@ -25,9 +25,9 @@ public class Restaurant extends javax.swing.JFrame {
     public final String username;
     public final String title;
     int tableIds[] = {0, 0, 0, 0, 0};
-    ArrayList<Order> orderData;
-    ArrayList<Stock> stockData;
-    ArrayList<Table> tableData;
+    //ArrayList<Order> orderData;
+    //ArrayList<Stock> stockData;
+    //ArrayList<Table> tableData;
     
     /**
      * Array that will store all the selected menu item/s. An item can only be
@@ -35,13 +35,13 @@ public class Restaurant extends javax.swing.JFrame {
      */
     public static TakeOrder[] selectedItem = new TakeOrder[12];
     
-    
     // Creates new form Restaurant
     public Restaurant(String username, String title) {
         initComponents();
         this.username = username;
         this.title = title;
         lblLoginUser.setText(this.username);
+        
                
         switch(title){
             case "Manager":
@@ -86,19 +86,7 @@ public class Restaurant extends javax.swing.JFrame {
                 btnClearTable.setVisible(true);break;
         }
         
-        // removing all the items in the combobox
-        cmbTable.removeAllItems();
-        for(int a = 0; a < tableData.size(); a++){
-            if(tableData.get(a).getTable_status().equalsIgnoreCase("Dirty") || tableData.get(a).getTable_status().equalsIgnoreCase("Occupid")){
-                String tables[] = {"Table 1", "Table 2", "Table 3", "Table 4", "Table 5"};
-                for(int t = 0; t < tables.length; t++){
-                    if(!tableData.get(a).getTable_name().equalsIgnoreCase(tables[t])){
-                        cmbTable.addItem(tableData.get(a).getTable_name());
-                    }
-                }
-            }
-        }
-        
+        populateTableCombobox();       
     }
 
     /**
@@ -1057,7 +1045,7 @@ public class Restaurant extends javax.swing.JFrame {
         model.getDataVector().removeAllElements();
         model.fireTableDataChanged();
         tblCollectionOrder.revalidate();
-        orderData = DatabaseConnection.selectAllOrders();
+        ArrayList<Order> orderData = DatabaseConnection.selectAllOrders();
         for(int a = 0; a < orderData.size(); a++){
             int order_id = orderData.get(a).getOrder_id();
             //String comment = orderData.get(a).getComment();
@@ -1086,7 +1074,7 @@ public class Restaurant extends javax.swing.JFrame {
         pnlClearTable.setVisible(true);
         
         // Status: Collect, In-progress (New), Issue
-        tableData = DatabaseConnection.selectAllTables();
+        ArrayList<Table> tableData = DatabaseConnection.selectAllTables();
         for(int a = 0; a < tableData.size(); a++){
             System.out.println(a+": "+tableData.get(a).toString());
             String table = tableData.get(a).getTable_name();
@@ -1257,7 +1245,7 @@ public class Restaurant extends javax.swing.JFrame {
         tblCollectionOrder.revalidate();
         tblInprogressOrder.revalidate();
         tblOrderWithIssue.revalidate();
-        orderData = DatabaseConnection.selectAllOrders();
+        ArrayList<Order> orderData = DatabaseConnection.selectAllOrders();
         // Display all orders that must be collected in order to be served
         for (int a = 0; a < orderData.size(); a++) {
             int order_id = orderData.get(a).getOrder_id();
@@ -1559,7 +1547,7 @@ public class Restaurant extends javax.swing.JFrame {
         pnlClearTable.setVisible(false);
         pnlStockReport.setVisible(true);
         
-        stockData = DatabaseConnection.selectAllStock();
+        ArrayList<Stock> stockData = DatabaseConnection.selectAllStock();
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         for (int i = 0; i < stockData.size() - 15; i++) {
             dataset.setValue(stockData.get(i).getUsage(), "Used stock (%)", stockData.get(i).getItemName());
@@ -1582,6 +1570,25 @@ public class Restaurant extends javax.swing.JFrame {
         pnlTwo.add(chartPanel1);
         pnlOne.updateUI();
         pnlTwo.updateUI();
+    }
+    
+    // Populate the table's combobox with the available tables
+    public void populateTableCombobox(){
+        ArrayList<Table> tableData = DatabaseConnection.selectAllTables();
+        
+        if(tableData.size() > 0){
+            for(int a = 0; a < tableData.size(); a++){
+                int intemsIncmbTable = cmbTable.getItemCount();
+                if(tableData.get(a).getTable_status().equalsIgnoreCase("Dirty") || tableData.get(a).getTable_status().equalsIgnoreCase("Occupied")){
+                    while(intemsIncmbTable != 0){
+                        if(tableData.get(a).getTable_name().equalsIgnoreCase(cmbTable.getItemAt(intemsIncmbTable))){
+                            cmbTable.removeItemAt(intemsIncmbTable);
+                        }
+                        intemsIncmbTable--;
+                    }
+                }
+            }
+        } 
     }
     
     /**
