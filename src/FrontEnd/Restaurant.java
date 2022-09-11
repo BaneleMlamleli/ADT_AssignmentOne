@@ -7,6 +7,7 @@ package FrontEnd;
 
 import BackEnd.*;
 import java.awt.Color;
+import java.math.RoundingMode;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import javax.swing.*;
@@ -14,6 +15,8 @@ import javax.swing.table.DefaultTableModel;
 import org.jfree.chart.*;
 import org.jfree.chart.plot.*;
 import org.jfree.data.category.*;
+        //import org.xml.sax.Attributes;
+//import org.netbeans.lib.awtextra;
 
 
 /**
@@ -174,6 +177,7 @@ public class Restaurant extends javax.swing.JFrame {
         jPanel15 = new javax.swing.JPanel();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
+        lblCloseForm1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Restaurant");
@@ -199,14 +203,14 @@ public class Restaurant extends javax.swing.JFrame {
         lblMinimiseForm.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         lblMinimiseForm.setForeground(new java.awt.Color(255, 255, 255));
         lblMinimiseForm.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblMinimiseForm.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/minus (1).png"))); // NOI18N
+        lblMinimiseForm.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/minus.png"))); // NOI18N
         lblMinimiseForm.setToolTipText("Mimimise window");
         lblMinimiseForm.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblMinimiseFormMouseClicked(evt);
             }
         });
-        pnlMain.add(lblMinimiseForm, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 0, -1, 40));
+        pnlMain.add(lblMinimiseForm, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 0, 30, 40));
 
         lblCloseForm.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblCloseForm.setForeground(new java.awt.Color(255, 255, 255));
@@ -992,15 +996,27 @@ public class Restaurant extends javax.swing.JFrame {
         pnlMain.add(pnlClearTable, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 50, 730, 550));
         pnlMain.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 45, 730, 10));
 
+        lblCloseForm1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblCloseForm1.setForeground(new java.awt.Color(255, 255, 255));
+        lblCloseForm1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblCloseForm1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/x-button.png"))); // NOI18N
+        lblCloseForm1.setToolTipText("Terminate program");
+        lblCloseForm1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblCloseForm1MouseClicked(evt);
+            }
+        });
+        pnlMain.add(lblCloseForm1, new org.netbeans.lib.awtextra.AbsoluteConstraints(966, 0, -1, 40));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         setSize(new java.awt.Dimension(1000, 600));
@@ -1159,6 +1175,9 @@ public class Restaurant extends javax.swing.JFrame {
         Date dt = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String date = formatter.format(dt);
+        // Randomly generating the bill and formating it to 2 decimal places after the comma.
+        String strBill = String.format( "%.2f",  1.0 + (Math.random() * (2000.00 - 1.0)));
+        double bill = Double.parseDouble(strBill.replace(",","."));
         /**
          * This condition will check if the combobox has any items(tables) left
          * if there is nothing that means all the tables are occupied.
@@ -1174,7 +1193,7 @@ public class Restaurant extends javax.swing.JFrame {
                     if (selectedItem[a].isSelectedRadioButtonItem()) {
                         updateStockForSelectedMenuName(a);
                     }
-                    DatabaseConnection.insertOrderDetails(orderComment, selectedItem[a].getOrder_name(), selectedTable, waiterName, "In-progress", Double.parseDouble(String.format( "%.2f",  1.0 + (Math.random() * (2000.00 - 1.0)))), date);
+                    DatabaseConnection.insertOrderDetails(orderComment, selectedItem[a].getOrder_name(), selectedTable, waiterName, "In-progress", bill, date);
                 }
                 DatabaseConnection.insertTableDetails("Occupied", selectedTable, waiterName);
                 cmbTable.removeItemAt(cmbTable.getSelectedIndex()); // removing the table in the list since it is occupied
@@ -1466,6 +1485,10 @@ public class Restaurant extends javax.swing.JFrame {
 //        cmbTable.removeItemAt(cmbTable.getSelectedIndex());
     }//GEN-LAST:event_cmbTableActionPerformed
 
+    private void lblCloseForm1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCloseForm1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblCloseForm1MouseClicked
+
     void setTableColor(String status, JButton button){
         switch(status){
             // status: Occupied, Dirty, Clean
@@ -1711,6 +1734,7 @@ public class Restaurant extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lblCloseForm;
+    private javax.swing.JLabel lblCloseForm1;
     private javax.swing.JLabel lblLoginUser;
     private javax.swing.JLabel lblLogout;
     private javax.swing.JLabel lblMinimiseForm;

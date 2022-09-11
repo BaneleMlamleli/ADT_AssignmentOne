@@ -119,12 +119,12 @@ public class LoginForm extends javax.swing.JFrame {
         );
 
         getContentPane().add(pnlLeftSide);
-        pnlLeftSide.setBounds(0, 0, 390, 600);
+        pnlLeftSide.setBounds(0, 0, 390, 602);
 
         lblMinimiseForm1.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         lblMinimiseForm1.setForeground(new java.awt.Color(255, 255, 255));
         lblMinimiseForm1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblMinimiseForm1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/minus (1).png"))); // NOI18N
+        lblMinimiseForm1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/minus.png"))); // NOI18N
         lblMinimiseForm1.setToolTipText("Minimise window");
         lblMinimiseForm1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -132,7 +132,7 @@ public class LoginForm extends javax.swing.JFrame {
             }
         });
         getContentPane().add(lblMinimiseForm1);
-        lblMinimiseForm1.setBounds(730, 0, 24, 40);
+        lblMinimiseForm1.setBounds(730, 0, 30, 40);
 
         lblBackButton.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         lblBackButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -541,6 +541,7 @@ public class LoginForm extends javax.swing.JFrame {
                 // executing the database connection method
                 DatabaseConnection.connection();
                 new LoginForm().setVisible(true);
+                System.out.println("Amount of users: "+ DatabaseConnection.howManyUsers());
             }
         });
     }

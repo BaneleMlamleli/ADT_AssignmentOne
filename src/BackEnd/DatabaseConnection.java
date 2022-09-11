@@ -87,13 +87,13 @@ public class DatabaseConnection {
      * @param newUser
      */
     public static void registerUser(String... newUser){
-        try{
+        try{            
             prepStatement = connection.prepareStatement("INSERT INTO restaurant.user (name, surname, title, username, password) VALUES(?, ?, ?, ?, ?)");
             prepStatement.setString(1, newUser[0]);
             prepStatement.setString(2, newUser[1]);
             prepStatement.setString(3, newUser[2]);
             prepStatement.setString(4, newUser[3]);
-            prepStatement.setString(5, newUser[4]);
+            prepStatement.setString(5, EncryptDecrypt.getEncryption(newUser[4]));
             prepStatement.execute();
             System.out.println(newUser[0]+" has been registered successfully");
         }catch(SQLSyntaxErrorException see){
@@ -123,8 +123,11 @@ public class DatabaseConnection {
             resultset=  statement.executeQuery("SELECT username, password, title FROM restaurant.user;");
             // processing the results to very the entered login details
             while(resultset.next()){
-                verify = ((resultset.getString("username").equals(username)) &&
-                        (resultset.getString("password").equals(password)) &&
+                //encrypted = encryptCipher.doFinal(plainText);
+                String encryptedText = resultset.getString("password");
+                System.out.println("Decrypted: " + EncryptDecrypt.getDecryption(encryptedText));
+                verify = ((resultset.getString("username").equalsIgnoreCase(username)) &&
+                        (EncryptDecrypt.getDecryption(resultset.getString("password")).equals(password)) &&
                         (resultset.getString("title").equals(title)));
                 if(verify)
                     break;
@@ -152,11 +155,13 @@ public class DatabaseConnection {
             // creating the statement
             statement = connection.createStatement();
             // execute the sql query
-            resultset =  statement.executeQuery("SELECT * FROM restaurant.user");
+            //resultset =  statement.executeQuery("SELECT * FROM restaurant.user");
+            resultset = statement.executeQuery("SELECT COUNT(user_id) AS amount_of_users FROM restaurant.user");
+            totalUsers = Integer.parseInt(resultset.getString("amount_of_users"));
             // processing the results to very the entered login details
-            while(resultset.next()){
-                totalUsers++;
-            }
+            //while(resultset.next()){
+                //totalUsers++;
+            //}
             System.out.println("total user calculation executed");
         }catch(SQLSyntaxErrorException see){
             System.out.println(see.getMessage());

@@ -127,7 +127,7 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Assets/minus (1).png"/>
+          <Image iconType="3" name="/Assets/minus.png"/>
         </Property>
         <Property name="toolTipText" type="java.lang.String" value="Minimise window"/>
       </Properties>
@@ -136,7 +136,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="730" y="0" width="-1" height="40"/>
+          <AbsoluteConstraints x="730" y="0" width="30" height="40"/>
         </Constraint>
       </Constraints>
     </Component>
