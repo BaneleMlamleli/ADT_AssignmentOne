@@ -3,16 +3,10 @@
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
-    <Property name="title" type="java.lang.String" value="OrderStatus"/>
-    <Property name="name" type="java.lang.String" value="frmOrderStatus" noResource="true"/>
-    <Property name="undecorated" type="boolean" value="true"/>
-    <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
-    <SyntheticProperty name="formSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,1,89,0,0,1,-82"/>
-    <SyntheticProperty name="formSizePolicy" type="int" value="0"/>
-    <SyntheticProperty name="generateSize" type="boolean" value="true"/>
-    <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -29,12 +23,12 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel2" min="-2" pref="430" max="-2" attributes="0"/>
+          <Component id="jPanel2" alignment="0" min="-2" pref="430" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel2" alignment="1" max="32767" attributes="0"/>
+          <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -64,8 +58,8 @@
                           </Group>
                           <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblOrderID1" max="32767" attributes="0"/>
-                              <Component id="lblTableName1" max="32767" attributes="0"/>
+                              <Component id="lblOrderID1" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lblTableName1" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="lblCloseForm1" min="-2" max="-2" attributes="0"/>
@@ -89,17 +83,17 @@
                               </Group>
                           </Group>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="lblOrderName1" pref="237" max="32767" attributes="0"/>
-                              <Component id="lblWaiterName1" max="32767" attributes="0"/>
+                              <Component id="lblOrderName1" alignment="0" pref="237" max="32767" attributes="0"/>
+                              <Component id="lblWaiterName1" alignment="0" max="32767" attributes="0"/>
                               <Component id="lblOrderDate1" alignment="0" max="32767" attributes="0"/>
-                              <Component id="lblOrderBill1" max="32767" attributes="0"/>
+                              <Component id="lblOrderBill1" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="131" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jScrollPane2" max="32767" attributes="0"/>
-                              <Group type="102" attributes="0">
+                              <Component id="jScrollPane2" alignment="0" max="32767" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
                                   <Component id="btnInprogressOrder1" min="-2" pref="109" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="btnCollectOrder1" min="-2" pref="91" max="-2" attributes="0"/>
@@ -121,35 +115,35 @@
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jLabel8" max="32767" attributes="0"/>
-                          <Component id="lblOrderID1" min="-2" pref="14" max="-2" attributes="0"/>
+                          <Component id="jLabel8" alignment="0" max="32767" attributes="0"/>
+                          <Component id="lblOrderID1" alignment="0" min="-2" pref="14" max="-2" attributes="0"/>
                       </Group>
                       <Component id="lblCloseForm1" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jLabel9" max="32767" attributes="0"/>
-                      <Component id="lblTableName1" min="-2" pref="14" max="-2" attributes="0"/>
+                      <Component id="jLabel9" alignment="0" max="32767" attributes="0"/>
+                      <Component id="lblTableName1" alignment="0" min="-2" pref="14" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="lblWaiterName1" max="32767" attributes="0"/>
-                      <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblWaiterName1" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jLabel11" max="32767" attributes="0"/>
-                      <Component id="lblOrderName1" min="-2" pref="14" max="-2" attributes="0"/>
+                      <Component id="jLabel11" alignment="0" max="32767" attributes="0"/>
+                      <Component id="lblOrderName1" alignment="0" min="-2" pref="14" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jLabel12" max="32767" attributes="0"/>
-                      <Component id="lblOrderDate1" min="-2" pref="14" max="-2" attributes="0"/>
+                      <Component id="jLabel12" alignment="0" max="32767" attributes="0"/>
+                      <Component id="lblOrderDate1" alignment="0" min="-2" pref="14" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="lblOrderBill1" max="32767" attributes="0"/>
-                      <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblOrderBill1" alignment="1" max="32767" attributes="0"/>
+                      <Component id="jLabel13" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jScrollPane2" min="-2" max="-2" attributes="0"/>
@@ -262,7 +256,7 @@
             <Property name="text" type="java.lang.String" value="CLOSE"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCloseOrderActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCloseOrder1btnCloseOrderActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnInprogressOrder1">
@@ -273,7 +267,7 @@
             <Property name="text" type="java.lang.String" value="IN-PROGRESS"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInprogressOrderActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInprogressOrder1btnInprogressOrderActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnIssueOrder1">
@@ -284,7 +278,7 @@
             <Property name="text" type="java.lang.String" value="ISSUE"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnIssueOrderActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnIssueOrder1btnIssueOrderActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnCollectOrder1">
@@ -295,7 +289,7 @@
             <Property name="text" type="java.lang.String" value="COLLECT"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCollectOrderActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCollectOrder1btnCollectOrderActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblCloseForm1">
@@ -312,7 +306,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblCloseFormMouseClicked"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblCloseForm1lblCloseFormMouseClicked"/>
           </Events>
         </Component>
       </SubComponents>

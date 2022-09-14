@@ -24,7 +24,7 @@ public class DatabaseConnection {
      */
     public static void connection(){
         try{
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/restaurant", "root", "B!n@ryM@n01");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/restaurant", "root", "In!t!@l1In!t!@l!");
             System.out.println("Database connection successfully established");
             /**
              * The purpose of this selection is to check if the stock table is
@@ -390,10 +390,11 @@ public class DatabaseConnection {
      * @param order_id
      * @param comment
      * @param status
+     * @param table_name
      */
     public static void changeOrder(int order_id, String comment, String status, String table_name){
         try{
-            prepStatement = connection.prepareStatement("UPDATE restaurant.order SET restaurant.order.comment = ? restaurant.order.order_status = ? "+
+            prepStatement = connection.prepareStatement("UPDATE restaurant.order SET restaurant.order.comment = ?, restaurant.order.order_status = ? "+
                                                         "WHERE restaurant.order.order_id = ?");
             prepStatement.setString(1, comment);
             prepStatement.setString(2, status);
@@ -434,7 +435,7 @@ public class DatabaseConnection {
             prepStatement.setString(1, "Clean");
             prepStatement.setInt(2, tableId);
             prepStatement.executeUpdate();            
-            closeStatement();
+            //closeStatement();
             System.out.println("Table status updated successfully");
         }catch(SQLSyntaxErrorException see){
             System.out.println(see.getMessage());
@@ -457,7 +458,7 @@ public class DatabaseConnection {
             prepStatement.setString(1, "Clean");
             prepStatement.setString(2, table);
             prepStatement.executeUpdate();            
-            closeStatement();
+            //closeStatement();
             System.out.println("Table status updated successfully");
         }catch(SQLSyntaxErrorException see){
             System.out.println(see.getMessage());

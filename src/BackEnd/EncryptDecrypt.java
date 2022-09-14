@@ -1,6 +1,5 @@
 package BackEnd;
 
-import java.math.RoundingMode;
 import java.text.DecimalFormat;
 
 /*
@@ -52,26 +51,5 @@ public class EncryptDecrypt {
         String fullPassword = decryptedPassword.substring(0, 3) + decryptedPassword.substring(6, decryptedPassword.length());
         decryptedPassword = fullPassword;
         return decryptedPassword;
-    }
-    
-    private static final DecimalFormat df = new DecimalFormat("0.00");
-    
-    public static void main(String[]args){
-        
-        //EncryptDecrypt cipher = new EncryptDecrypt();
-        //System.out.println("Encrypted: " + cipher.getEncryption("Test"));
-        //System.out.println("Decryption: " + cipher.getDecryption(cipher.getEncryption("Test")));
-        //Double.parseDouble(String.format( "%.2f",  1.0 + (Math.random() * (2000.00 - 1.0))));
-        
-        String strBill = String.format( "%.2f",  1.0 + (Math.random() * (2000.00 - 1.0)));
-        double bill = Double.parseDouble(strBill.replace(",","."));
-        
-        System.out.println(bill +"\n"+(bill+ 1));
-        
-//        System.out.println(1.0 + (Math.random() * (2000.00 - 1.0)));
-//        
-//        df.setRoundingMode(RoundingMode.DOWN);
-//        double bill = Double.parseDouble(df.format(1.0 + (Math.random() * (2000.00 - 1.0))));
-//        System.out.println(bill);
     }
 }

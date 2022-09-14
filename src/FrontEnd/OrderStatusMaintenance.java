@@ -1,48 +1,63 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package FrontEnd;
 
 import BackEnd.DatabaseConnection;
 import java.awt.Color;
-import javax.swing.JButton;
 
 /**
  *
- * @author Banele
+ * @author Mlamlelib
  */
-public class OrderStatus extends javax.swing.JFrame {
+public class OrderStatusMaintenance extends javax.swing.JFrame {
 
     /**
-     * Creates new form OrderStatus
+     * Creates new form OrderStatusMaintenance
+     * @param order_id
+     * @param table_name
+     * @param waiter_name
+     * @param order_name
+     * @param order_status
+     * @param comment
+     * @param order_date
+     * @param order_bill
      */
-     public OrderStatus(){
+    public OrderStatusMaintenance(String order_id, String table_name, String waiter_name, String order_name, String order_status, String comment, String order_date, String order_bill){
         initComponents();
-     }
-     
-    public OrderStatus(String ...arg){
-        initComponents();
-        switch(arg[4]){
-            case "Collect": displayData(btnCollectOrder, arg); break;
-            case "In-progress": displayData(btnInprogressOrder, arg); break;
-            case "Issue": displayData(btnIssueOrder, arg); break;
-            case "Close": displayData(btnCloseOrder, arg); break;
+        switch(order_status){
+            case "In-progress":
+                btnInprogressOrder1.setEnabled(false);
+                btnInprogressOrder1.setBackground(new Color(204, 204, 204));
+                lblOrderBill1.setText(order_bill);
+                lblOrderDate1.setText(order_date);
+                lblOrderID1.setText(order_id);
+                lblOrderName1.setText(order_name);
+                lblTableName1.setText(order_name);
+                lblWaiterName1.setText(waiter_name);
+                txtCommentArea1.setText(comment); break;
+            case "Issue":
+                btnIssueOrder1.setEnabled(false);
+                btnIssueOrder1.setBackground(new Color(204, 204, 204));
+                lblOrderBill1.setText(order_bill);
+                lblOrderDate1.setText(order_date);
+                lblOrderID1.setText(order_id);
+                lblOrderName1.setText(order_name);
+                lblTableName1.setText(order_name);
+                lblWaiterName1.setText(waiter_name);
+                txtCommentArea1.setText(comment); break;
+            case "Collect":
+                btnCollectOrder1.setEnabled(false);
+                btnCollectOrder1.setBackground(new Color(204, 204, 204));
+                lblOrderBill1.setText(order_bill);
+                lblOrderDate1.setText(order_date);
+                lblOrderID1.setText(order_id);
+                lblOrderName1.setText(order_name);
+                lblTableName1.setText(order_name);
+                lblWaiterName1.setText(waiter_name);
+                txtCommentArea1.setText(comment); break;
         }
-    }
-    
-    void displayData(JButton button, String ...arg){
-        button.setEnabled(false);
-        button.setBackground(new Color(204, 204, 204));
-        //order_id, table_name, waiter_name, order_name, order_status, comment, order_date, order_bill
-        lblOrderBill.setText(arg[7]);
-        lblOrderDate.setText(arg[6]);
-        lblOrderID.setText(arg[0]);
-        lblOrderName.setText(arg[3]);
-        lblTableName.setText(arg[1]);
-        lblWaiterName.setText(arg[2]);
-        txtCommentArea.setText(arg[5]);
     }
 
     /**
@@ -76,10 +91,6 @@ public class OrderStatus extends javax.swing.JFrame {
         lblCloseForm1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("OrderStatus");
-        setName("frmOrderStatus"); // NOI18N
-        setUndecorated(true);
-        setResizable(false);
 
         jPanel2.setBackground(new java.awt.Color(255, 204, 204));
         jPanel2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -117,7 +128,7 @@ public class OrderStatus extends javax.swing.JFrame {
         btnCloseOrder1.setText("CLOSE");
         btnCloseOrder1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCloseOrderActionPerformed(evt);
+                btnCloseOrder1btnCloseOrderActionPerformed(evt);
             }
         });
 
@@ -125,7 +136,7 @@ public class OrderStatus extends javax.swing.JFrame {
         btnInprogressOrder1.setText("IN-PROGRESS");
         btnInprogressOrder1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnInprogressOrderActionPerformed(evt);
+                btnInprogressOrder1btnInprogressOrderActionPerformed(evt);
             }
         });
 
@@ -133,7 +144,7 @@ public class OrderStatus extends javax.swing.JFrame {
         btnIssueOrder1.setText("ISSUE");
         btnIssueOrder1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIssueOrderActionPerformed(evt);
+                btnIssueOrder1btnIssueOrderActionPerformed(evt);
             }
         });
 
@@ -141,7 +152,7 @@ public class OrderStatus extends javax.swing.JFrame {
         btnCollectOrder1.setText("COLLECT");
         btnCollectOrder1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCollectOrderActionPerformed(evt);
+                btnCollectOrder1btnCollectOrderActionPerformed(evt);
             }
         });
 
@@ -151,7 +162,7 @@ public class OrderStatus extends javax.swing.JFrame {
         lblCloseForm1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/x-button.png"))); // NOI18N
         lblCloseForm1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblCloseFormMouseClicked(evt);
+                lblCloseForm1lblCloseFormMouseClicked(evt);
             }
         });
 
@@ -252,58 +263,57 @@ public class OrderStatus extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        setSize(new java.awt.Dimension(430, 345));
-        setLocationRelativeTo(null);
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void lblCloseFormMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCloseFormMouseClicked
-        // Close or terminate program
-        this.dispose();
-    }//GEN-LAST:event_lblCloseFormMouseClicked
-
-    private void btnCollectOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCollectOrderActionPerformed
+    private void btnCloseOrder1btnCloseOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseOrder1btnCloseOrderActionPerformed
         // TODO add your handling code here:
-        int order_id = Integer.parseInt(lblOrderID.getText());
-        String comment = txtCommentArea.getText();
-        String status = "Collect";
-        String table_name = lblTableName.getText();
-        DatabaseConnection.changeOrder(order_id, comment, status, table_name);
-        this.dispose();
-    }//GEN-LAST:event_btnCollectOrderActionPerformed
-
-    private void btnIssueOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIssueOrderActionPerformed
-        // TODO add your handling code here:
-        int order_id = Integer.parseInt(lblOrderID.getText());
-        String comment = txtCommentArea.getText();
-        String status = "Issue";
-        String table_name = lblTableName.getText();
-        DatabaseConnection.changeOrder(order_id, comment, status, table_name);
-        this.dispose();
-    }//GEN-LAST:event_btnIssueOrderActionPerformed
-
-    private void btnInprogressOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInprogressOrderActionPerformed
-        // TODO add your handling code here:
-        int order_id = Integer.parseInt(lblOrderID.getText());
-        String comment = txtCommentArea.getText();
-        String status = "In-progress";
-        String table_name = lblTableName.getText();
-        DatabaseConnection.changeOrder(order_id, comment, status, table_name);
-        this.dispose();
-    }//GEN-LAST:event_btnInprogressOrderActionPerformed
-
-    private void btnCloseOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseOrderActionPerformed
-        // TODO add your handling code here:
-        int order_id = Integer.parseInt(lblOrderID.getText());
-        String comment = txtCommentArea.getText();
+        int order_id = Integer.parseInt(lblOrderID1.getText());
+        String comment = txtCommentArea1.getText();
         String status = "Close";
-        String table_name = lblTableName.getText();
+        String table_name = lblTableName1.getText();
         DatabaseConnection.changeOrder(order_id, comment, status, table_name);
         DatabaseConnection.updateTableStatus(table_name);
         this.dispose();
-    }//GEN-LAST:event_btnCloseOrderActionPerformed
+    }//GEN-LAST:event_btnCloseOrder1btnCloseOrderActionPerformed
+
+    private void btnInprogressOrder1btnInprogressOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInprogressOrder1btnInprogressOrderActionPerformed
+        // TODO add your handling code here:
+        int order_id = Integer.parseInt(lblOrderID1.getText());
+        String comment = txtCommentArea1.getText();
+        String status = "In-progress";
+        String table_name = lblTableName1.getText();
+        DatabaseConnection.changeOrder(order_id, comment, status, table_name);
+        this.dispose();
+    }//GEN-LAST:event_btnInprogressOrder1btnInprogressOrderActionPerformed
+
+    private void btnIssueOrder1btnIssueOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIssueOrder1btnIssueOrderActionPerformed
+        // TODO add your handling code here:
+        int order_id = Integer.parseInt(lblOrderID1.getText());
+        String comment = txtCommentArea1.getText();
+        String status = "Issue";
+        String table_name = lblTableName1.getText();
+        DatabaseConnection.changeOrder(order_id, comment, status, table_name);
+        this.dispose();
+    }//GEN-LAST:event_btnIssueOrder1btnIssueOrderActionPerformed
+
+    private void btnCollectOrder1btnCollectOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCollectOrder1btnCollectOrderActionPerformed
+        // TODO add your handling code here:
+        int order_id = Integer.parseInt(lblOrderID1.getText());
+        String comment = txtCommentArea1.getText();
+        String status = "Collect";
+        String table_name = lblTableName1.getText();
+        DatabaseConnection.changeOrder(order_id, comment, status, table_name);
+        this.dispose();
+    }//GEN-LAST:event_btnCollectOrder1btnCollectOrderActionPerformed
+
+    private void lblCloseForm1lblCloseFormMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCloseForm1lblCloseFormMouseClicked
+        // Close or terminate program
+        this.dispose();
+    }//GEN-LAST:event_lblCloseForm1lblCloseFormMouseClicked
 
     /**
      * @param args the command line arguments
@@ -322,64 +332,44 @@ public class OrderStatus extends javax.swing.JFrame {
 //                }
 //            }
 //        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(OrderStatus.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(OrderStatusMaintenance.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(OrderStatus.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(OrderStatusMaintenance.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(OrderStatus.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(OrderStatusMaintenance.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(OrderStatus.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(OrderStatusMaintenance.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        }
 //        //</editor-fold>
 //
 //        /* Create and display the form */
 //        java.awt.EventQueue.invokeLater(new Runnable() {
 //            public void run() {
-//                new OrderStatus().setVisible(true);
+//                new OrderStatusMaintenance().setVisible(true);
 //            }
 //        });
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCloseOrder;
     private javax.swing.JButton btnCloseOrder1;
-    private javax.swing.JButton btnCollectOrder;
     private javax.swing.JButton btnCollectOrder1;
-    private javax.swing.JButton btnInprogressOrder;
     private javax.swing.JButton btnInprogressOrder1;
-    private javax.swing.JButton btnIssueOrder;
     private javax.swing.JButton btnIssueOrder1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JLabel lblCloseForm;
     private javax.swing.JLabel lblCloseForm1;
-    private javax.swing.JLabel lblOrderBill;
     private javax.swing.JLabel lblOrderBill1;
-    private javax.swing.JLabel lblOrderDate;
     private javax.swing.JLabel lblOrderDate1;
-    private javax.swing.JLabel lblOrderID;
     private javax.swing.JLabel lblOrderID1;
-    private javax.swing.JLabel lblOrderName;
     private javax.swing.JLabel lblOrderName1;
-    private javax.swing.JLabel lblTableName;
     private javax.swing.JLabel lblTableName1;
-    private javax.swing.JLabel lblWaiterName;
     private javax.swing.JLabel lblWaiterName1;
-    private javax.swing.JTextArea txtCommentArea;
     private javax.swing.JTextArea txtCommentArea1;
     // End of variables declaration//GEN-END:variables
 }
