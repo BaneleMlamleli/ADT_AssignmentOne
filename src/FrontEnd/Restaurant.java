@@ -1382,12 +1382,15 @@ public class Restaurant extends javax.swing.JFrame {
         System.out.println("color: " + color + "\nbuttonColor: " + buttonColor);
         ArrayList<Order> order = DatabaseConnection.selectAllOrders();
         for(int a = 0; a < order.size(); a++){
+            System.out.println("Table name: " + order.get(a).getTable_name() + ", Table status: " + order.get(a).getOrder_status());
             if(order.get(a).getTable_name().equalsIgnoreCase("Table 1") && order.get(a).getOrder_status().equalsIgnoreCase("Close")){
-                DatabaseConnection.updateTableStatus(tableIds[0]);
-                setTableColor("Clean", btnTableOne);break;
-            }//else{
-                //JOptionPane.showMessageDialog(null, "Table with orange color cannot be cleaned as it is \'Occupied\'", "Warning!", JOptionPane.WARNING_MESSAGE);break;
-            //}
+                if(buttonColor.equals("[255,153,0]")){
+                    DatabaseConnection.updateTableStatus(tableIds[0]);
+                    setTableColor("Clean", btnTableOne);break;
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "Table with orange color cannot be cleaned as it is \'Occupied\'", "Warning!", JOptionPane.WARNING_MESSAGE);break;
+            }
         }
     }//GEN-LAST:event_btnTableOneActionPerformed
 

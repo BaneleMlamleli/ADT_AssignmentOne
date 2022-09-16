@@ -432,7 +432,7 @@ public class DatabaseConnection {
     public static void updateTableStatus(int tableId){
         try{
             prepStatement = connection.prepareStatement("UPDATE restaurant.table SET restaurant.table.table_status = ? WHERE restaurant.table.table_id = ?");
-            prepStatement.setString(1, "Clean");
+            prepStatement.setString(1, "'Clean'");
             prepStatement.setInt(2, tableId);
             prepStatement.executeUpdate();            
             //closeStatement();
@@ -455,7 +455,7 @@ public class DatabaseConnection {
     public static void updateTableStatus(String table){
         try{
             prepStatement = connection.prepareStatement("UPDATE restaurant.table SET restaurant.table.table_status = ? WHERE restaurant.table.table_name = ?");
-            prepStatement.setString(1, "Clean");
+            prepStatement.setString(1, "'Clean'");
             prepStatement.setString(2, table);
             prepStatement.executeUpdate();            
             //closeStatement();
