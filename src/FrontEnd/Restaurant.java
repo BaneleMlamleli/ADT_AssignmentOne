@@ -1038,7 +1038,6 @@ public class Restaurant extends javax.swing.JFrame {
         pnlStockReport.setVisible(false);
         pnlClearTable.setVisible(false);
         
-        // 
         removeTableInCombobox();
     }//GEN-LAST:event_btnOrderMenuMouseClicked
 
@@ -1379,17 +1378,19 @@ public class Restaurant extends javax.swing.JFrame {
          */
         Color color = btnTableOne.getBackground();
         String buttonColor = "["+color.getRed()+","+color.getGreen()+","+color.getBlue()+"]";
-        System.out.println("color: " + color + "\nbuttonColor: " + buttonColor);
         ArrayList<Order> order = DatabaseConnection.selectAllOrders();
+        String tableStatusUpdate = "Clean";
         for(int a = 0; a < order.size(); a++){
-            System.out.println("Table name: " + order.get(a).getTable_name() + ", Table status: " + order.get(a).getOrder_status());
+            System.out.println("Table name: " + order.get(a).getTable_name() + ", Table status: " + order.get(a).getOrder_status() + ", Table ID: " + tableIds[0]);
             if(order.get(a).getTable_name().equalsIgnoreCase("Table 1") && order.get(a).getOrder_status().equalsIgnoreCase("Close")){
                 if(buttonColor.equals("[255,153,0]")){
-                    DatabaseConnection.updateTableStatus(tableIds[0]);
+                    DatabaseConnection.updateTableStatus(tableStatusUpdate, "Table 1");
                     setTableColor("Clean", btnTableOne);break;
+                }else{
+                    JOptionPane.showMessageDialog(null, "Table 1 is Clean and Open", "Warning!", JOptionPane.WARNING_MESSAGE);break;
                 }
             }else{
-                JOptionPane.showMessageDialog(null, "Table with orange color cannot be cleaned as it is \'Occupied\'", "Warning!", JOptionPane.WARNING_MESSAGE);break;
+                JOptionPane.showMessageDialog(null, "Table 1 is currently Occupied", "Warning!", JOptionPane.WARNING_MESSAGE);break;
             }
         }
     }//GEN-LAST:event_btnTableOneActionPerformed
@@ -1403,15 +1404,19 @@ public class Restaurant extends javax.swing.JFrame {
          */
         Color color = btnTableTwo.getBackground();
         String buttonColor = "["+color.getRed()+","+color.getGreen()+","+color.getBlue()+"]";
-        System.out.println("color: " + color + "\nbuttonColor: " + buttonColor);
         ArrayList<Order> order = DatabaseConnection.selectAllOrders();
+        String tableStatusUpdate = "Clean";
         for(int a = 0; a < order.size(); a++){
             if(order.get(a).getTable_name().equalsIgnoreCase("Table 2") && order.get(a).getOrder_status().equalsIgnoreCase("Close")){
-                DatabaseConnection.updateTableStatus(tableIds[1]);
-                setTableColor("Clean", btnTableTwo);break;
-            }//else{
-                //JOptionPane.showMessageDialog(null, "Table with orange color cannot be cleaned as it is \'Occupied\'", "Warning!", JOptionPane.WARNING_MESSAGE);break;
-            //}
+                if(buttonColor.equals("[255,153,0]")){
+                    DatabaseConnection.updateTableStatus(tableStatusUpdate, "Table 2");
+                    setTableColor("Clean", btnTableTwo);break;
+                }else{
+                    JOptionPane.showMessageDialog(null, "Table 2 is Clean and Open", "Warning!", JOptionPane.WARNING_MESSAGE);break;
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "Table 2 is currently Occupied", "Warning!", JOptionPane.WARNING_MESSAGE);break;
+            }
         }
     }//GEN-LAST:event_btnTableTwoActionPerformed
 
@@ -1424,15 +1429,19 @@ public class Restaurant extends javax.swing.JFrame {
          */
         Color color = btnTableThree.getBackground();
         String buttonColor = "["+color.getRed()+","+color.getGreen()+","+color.getBlue()+"]";
-        System.out.println("color: " + color + "\nbuttonColor: " + buttonColor);
         ArrayList<Order> order = DatabaseConnection.selectAllOrders();
+        String tableStatusUpdate = "Clean";
         for(int a = 0; a < order.size(); a++){
             if(order.get(a).getTable_name().equalsIgnoreCase("Table 3") && order.get(a).getOrder_status().equalsIgnoreCase("Close")){
-                DatabaseConnection.updateTableStatus(tableIds[2]);
-                setTableColor("Clean", btnTableThree);break;
-            }//else{
-                //JOptionPane.showMessageDialog(null, "Table with orange color cannot be cleaned as it is \'Occupied\'", "Warning!", JOptionPane.WARNING_MESSAGE);break;
-            //}
+                if(buttonColor.equals("[255,153,0]")){
+                    DatabaseConnection.updateTableStatus(tableStatusUpdate, "Table 3");
+                    setTableColor("Clean", btnTableThree);break;
+                }else{
+                    JOptionPane.showMessageDialog(null, "Table 3 is Clean and Open", "Warning!", JOptionPane.WARNING_MESSAGE);break;
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "Table 3 is currently Occupied", "Warning!", JOptionPane.WARNING_MESSAGE);break;
+            }
         }
     }//GEN-LAST:event_btnTableThreeActionPerformed
 
@@ -1445,12 +1454,18 @@ public class Restaurant extends javax.swing.JFrame {
          */
         Color color = btnTableFour.getBackground();
         String buttonColor = "["+color.getRed()+","+color.getGreen()+","+color.getBlue()+"]";
-        System.out.println("color: " + color + "\nbuttonColor: " + buttonColor);
         ArrayList<Order> order = DatabaseConnection.selectAllOrders();
+        String tableStatusUpdate = "Clean";
         for(int a = 0; a < order.size(); a++){
             if(order.get(a).getTable_name().equalsIgnoreCase("Table 4") && order.get(a).getOrder_status().equalsIgnoreCase("Close")){
-                DatabaseConnection.updateTableStatus(tableIds[3]);
-                setTableColor("Clean", btnTableFour);break;
+                if(buttonColor.equals("[255,153,0]")){
+                    DatabaseConnection.updateTableStatus(tableStatusUpdate, "Table 4");
+                    setTableColor("Clean", btnTableFour);break;
+                }else{
+                    JOptionPane.showMessageDialog(null, "Table 4 is Clean and Open", "Warning!", JOptionPane.WARNING_MESSAGE);break;
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "Table 4 is currently Occupied", "Warning!", JOptionPane.WARNING_MESSAGE);break;
             }
         }
     }//GEN-LAST:event_btnTableFourActionPerformed
@@ -1464,12 +1479,18 @@ public class Restaurant extends javax.swing.JFrame {
          */
         Color color = btnTableFive.getBackground();
         String buttonColor = "["+color.getRed()+","+color.getGreen()+","+color.getBlue()+"]";
-        System.out.println("color: " + color + "\nbuttonColor: " + buttonColor);
         ArrayList<Order> order = DatabaseConnection.selectAllOrders();
+        String tableStatusUpdate = "Clean";
         for(int a = 0; a < order.size(); a++){
             if(order.get(a).getTable_name().equalsIgnoreCase("Table 5") && order.get(a).getOrder_status().equalsIgnoreCase("Close")){
-                DatabaseConnection.updateTableStatus(tableIds[4]);
-                setTableColor("Clean", btnTableFive);break;
+                if(buttonColor.equals("[255,153,0]")){
+                    DatabaseConnection.updateTableStatus(tableStatusUpdate, "Table 5");
+                    setTableColor("Clean", btnTableFive);break;
+                }else{
+                    JOptionPane.showMessageDialog(null, "Table 5 is Clean and Open", "Warning!", JOptionPane.WARNING_MESSAGE);break;
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "Table 5 is currently Occupied", "Warning!", JOptionPane.WARNING_MESSAGE);break;
             }
         }
     }//GEN-LAST:event_btnTableFiveActionPerformed
@@ -1534,7 +1555,9 @@ public class Restaurant extends javax.swing.JFrame {
                 DatabaseConnection.updateStock(steakAndChips);
                 break;
             case 2:
-
+                // These are all the items that make up the 'Grilled Steak with Black-Eyed Peas' food
+                String grilledSteakWithBlack_Eyed_Peas[] = {"Beef", "Potatoes", "Black-eyed peas"};
+                DatabaseConnection.updateStock(grilledSteakWithBlack_Eyed_Peas);
                 break;
             case 3:
                 // These are all the items that make up the 'Cheese burger' food

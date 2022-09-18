@@ -34,7 +34,7 @@ public class OrderStatusMaintenance extends javax.swing.JFrame {
                 lblOrderDate1.setText(order_date);
                 lblOrderID1.setText(order_id);
                 lblOrderName1.setText(order_name);
-                lblTableName1.setText(order_name);
+                lblTableName1.setText(table_name);
                 lblWaiterName1.setText(waiter_name);
                 txtCommentArea1.setText(comment); break;
             case "Issue":
@@ -44,7 +44,7 @@ public class OrderStatusMaintenance extends javax.swing.JFrame {
                 lblOrderDate1.setText(order_date);
                 lblOrderID1.setText(order_id);
                 lblOrderName1.setText(order_name);
-                lblTableName1.setText(order_name);
+                lblTableName1.setText(table_name);
                 lblWaiterName1.setText(waiter_name);
                 txtCommentArea1.setText(comment); break;
             case "Collect":
@@ -54,7 +54,7 @@ public class OrderStatusMaintenance extends javax.swing.JFrame {
                 lblOrderDate1.setText(order_date);
                 lblOrderID1.setText(order_id);
                 lblOrderName1.setText(order_name);
-                lblTableName1.setText(order_name);
+                lblTableName1.setText(table_name);
                 lblWaiterName1.setText(waiter_name);
                 txtCommentArea1.setText(comment); break;
         }
@@ -276,7 +276,24 @@ public class OrderStatusMaintenance extends javax.swing.JFrame {
         String status = "Close";
         String table_name = lblTableName1.getText();
         DatabaseConnection.changeOrder(order_id, comment, status, table_name);
-        DatabaseConnection.updateTableStatus(table_name);
+        DatabaseConnection.updateTableStatus(status, table_name);
+//        switch(table_name){
+//            case "Table 1":
+//                DatabaseConnection.changeOrder(order_id, comment, status, table_name);
+//                DatabaseConnection.updateTableStatus(status, 1); break;
+//            case "Table 2":
+//                DatabaseConnection.changeOrder(order_id, comment, status, table_name);
+//                DatabaseConnection.updateTableStatus(status, 2); break;
+//            case "Table 3":
+//                DatabaseConnection.changeOrder(order_id, comment, status, table_name);
+//                DatabaseConnection.updateTableStatus(status, 3); break;
+//            case "Table 4":
+//                DatabaseConnection.changeOrder(order_id, comment, status, table_name);
+//                DatabaseConnection.updateTableStatus(status, 4); break;
+//            case "Table 5":
+//                DatabaseConnection.changeOrder(order_id, comment, status, table_name);
+//                DatabaseConnection.updateTableStatus(status, 5); break;
+//        }        
         this.dispose();
     }//GEN-LAST:event_btnCloseOrder1btnCloseOrderActionPerformed
 

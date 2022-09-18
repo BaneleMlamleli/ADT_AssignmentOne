@@ -123,9 +123,6 @@ public class DatabaseConnection {
             resultset=  statement.executeQuery("SELECT username, password, title FROM restaurant.user;");
             // processing the results to very the entered login details
             while(resultset.next()){
-                //encrypted = encryptCipher.doFinal(plainText);
-                String encryptedText = resultset.getString("password");
-                System.out.println("Decrypted: " + EncryptDecrypt.getDecryption(encryptedText));
                 verify = ((resultset.getString("username").equalsIgnoreCase(username)) &&
                         (EncryptDecrypt.getDecryption(resultset.getString("password")).equals(password)) &&
                         (resultset.getString("title").equals(title)));
@@ -427,36 +424,14 @@ public class DatabaseConnection {
     
     /**
      * The below method will update the status of the table to "Clean"
-     * @param tableId
+     * @param tableStatusUpdate
+     * @param tableName
      */
-    public static void updateTableStatus(int tableId){
-        try{
-            prepStatement = connection.prepareStatement("UPDATE restaurant.table SET restaurant.table.table_status = ? WHERE restaurant.table.table_id = ?");
-            prepStatement.setString(1, "'Clean'");
-            prepStatement.setInt(2, tableId);
-            prepStatement.executeUpdate();            
-            //closeStatement();
-            System.out.println("Table status updated successfully");
-        }catch(SQLSyntaxErrorException see){
-            System.out.println(see.getMessage());
-        }catch(SQLException ex){
-            System.out.println(ex.getMessage());
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }finally{
-            closeStatement();
-        }
-    }
-    
-    /**
-     * The below method will update the status of the table to "Clean"
-     * @param table
-     */
-    public static void updateTableStatus(String table){
+    public static void updateTableStatus(String tableStatusUpdate, String tableName){
         try{
             prepStatement = connection.prepareStatement("UPDATE restaurant.table SET restaurant.table.table_status = ? WHERE restaurant.table.table_name = ?");
-            prepStatement.setString(1, "'Clean'");
-            prepStatement.setString(2, table);
+            prepStatement.setString(1, tableStatusUpdate);
+            prepStatement.setString(2, tableName);
             prepStatement.executeUpdate();            
             //closeStatement();
             System.out.println("Table status updated successfully");
