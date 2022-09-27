@@ -24,7 +24,7 @@ public class DatabaseConnection {
      */
     public static void connection(){
         try{
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/restaurant", "root", "In!t!@l1In!t!@l!");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/restaurant", "root", "B!n@ryM@n01");
             System.out.println("Database connection successfully established");
             /**
              * The purpose of this selection is to check if the stock table is
